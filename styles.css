@@ -45,7 +45,7 @@
 }
 
 /* =========================================================
-   Base / Reset
+    Base / Reset
    ========================================================= */
 * {
     box-sizing: border-box;
@@ -89,7 +89,7 @@ body {
 }
 
 /* =========================================================
-   Background texture (light premium)
+    Background texture (light premium)
    ========================================================= */
 .bg-grid {
     background:
@@ -100,7 +100,7 @@ body {
 }
 
 /* =========================================================
-   Header (Matte)
+    Header (Matte)
    ========================================================= */
 .glass-header {
     background: var(--matte-header);
@@ -130,7 +130,7 @@ body {
 }
 
 /* =========================================================
-   Panels / Cards
+    Panels / Cards
    ========================================================= */
 .panel {
     background: var(--panel);
@@ -142,11 +142,6 @@ body {
     background: var(--panel-strong);
     border: 1px solid var(--line);
     box-shadow: var(--shadow);
-}
-
-/* In hero (dark) */
-.panel-hero {
-    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
 }
 
 /* Uniform media height */
@@ -179,7 +174,7 @@ body {
 }
 
 /* =========================================================
-   Interactions / Motion
+    Interactions / Motion
    ========================================================= */
 .fade-in {
     animation: fadeIn 0.85s ease-out both;
@@ -231,7 +226,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   HERO (Dark image + premium overlay)
+    HERO (Dark image + premium overlay)
    ========================================================= */
 .hero-bg {
     position: relative;
@@ -271,7 +266,6 @@ button:focus-visible {
             rgba(0, 0, 0, 0.18) 100%);
 }
 
-/* Mobile composition */
 @media (max-width: 640px) {
     .hero-bg {
         background-position: 72% center;
@@ -295,7 +289,115 @@ button:focus-visible {
 }
 
 /* =========================================================
-   Section divider
+    HERO UI helpers (premium, clean)
+   ========================================================= */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(99, 102, 241, 0.95);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18);
+}
+
+.hero-h1 {
+    margin-top: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    font-size: 40px;
+}
+
+@media (min-width: 640px) {
+    .hero-h1 {
+        font-size: 52px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-h1 {
+        font-size: 64px;
+    }
+}
+
+.hero-sub {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+@media (min-width: 640px) {
+    .hero-sub {
+        font-size: 18px;
+    }
+}
+
+.hero-li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-li-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(99, 102, 241, 0.95);
+    opacity: 0.95;
+}
+
+/* Buttons (match header + hero) */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent), #6366f1);
+    box-shadow: 0 18px 52px rgba(0, 0, 0, 0.25);
+    transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease;
+}
+
+.btn-primary:hover {
+    opacity: .96;
+    transform: translateY(-1px);
+}
+
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    transition: transform .2s ease, background .2s ease, opacity .2s ease;
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+    Section divider
    ========================================================= */
 .section-sep {
     height: 1px;
@@ -316,7 +418,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   Footer
+    Footer
    ========================================================= */
 .matte-footer {
     background: var(--matte-footer);
