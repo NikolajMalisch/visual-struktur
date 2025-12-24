@@ -1,51 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* =========================================================
+    Visual Struktur — Premium Light Theme (DE only)
+    Typografie-System:
+    - Display/Brand/H1-H2: Cormorant SC (Small Caps)
+    - UI/Body/Forms/Buttons: Inter
+   ========================================================= */
 
+/* ---------- Schriften (Google) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+SC:wght@400;500;600;700&display=swap');
+
+/* ---------- Design Tokens (CSS Variablen) ---------- */
 :root {
-    /* Light premium base */
+    /* Schrift-Token */
+    --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Cormorant SC', Georgia, 'Times New Roman', serif;
+
+    /* Basis (hell, premium) */
     --bg: #f6f8fc;
     --bg2: #ffffff;
 
-    /* Panels */
+    /* Panels (soft / glass-ish) */
     --panel: rgba(255, 255, 255, 0.92);
     --panel-strong: rgba(255, 255, 255, 0.96);
     --line: rgba(15, 23, 42, 0.10);
     --line2: rgba(15, 23, 42, 0.07);
 
-    /* Text */
-    --text: #0f172a; /* slate-900 */
+    /* Textfarben */
+    --text: #0f172a;              /* slate-900 */
     --muted: rgba(15, 23, 42, 0.72);
     --muted2: rgba(15, 23, 42, 0.62);
 
-    /* Accent */
-    --accent: #2563eb; /* blue-600 */
-    --accent-strong: #1d4ed8; /* blue-700 */
+    /* Akzent */
+    --accent: #2563eb;            /* blue-600 */
+    --accent-strong: #1d4ed8;     /* blue-700 */
 
-    /* Shadows (lighter) */
+    /* Schatten (leicht, modern) */
     --shadow: 0 16px 44px rgba(15, 23, 42, 0.10);
     --shadow2: 0 10px 26px rgba(15, 23, 42, 0.08);
 
-    /* Matte (header/footer) */
+    /* Matte Oberflächen (Header/Footer) */
     --matte-header: #ffffff;
-    --matte-footer: #0f172a; /* footer dark for contrast */
+    --matte-footer: #0f172a;      /* dunkler Footer für Kontrast */
 }
 
+/* =========================================================
+    Basis / Reset
+   ========================================================= */
 * {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     box-sizing: border-box;
+    font-family: var(--font-ui);
 }
 
-html,
-body {
+html, body {
     height: 100%;
     background: var(--bg);
     color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.smooth-scroll {
-    scroll-behavior: smooth;
+.smooth-scroll { scroll-behavior: smooth; }
+
+/* =========================================================
+    Helpers: Typo-Rollen (im HTML verwenden)
+   ========================================================= */
+.font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em; /* Small Caps brauchen etwas Luft */
 }
 
-/* Light premium background texture */
+.brand-title {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+    transition: font-size 220ms ease, letter-spacing 220ms ease;
+}
+
+.h-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.015em;
+}
+
+/* Tabellarische Zahlen (sauber ausgerichtet) */
+.num-tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+}
+
+/* =========================================================
+    Hintergrund: Light Premium Texture
+   ========================================================= */
 .bg-grid {
     background:
         radial-gradient(900px 520px at 18% 12%, rgba(37, 99, 235, 0.10), transparent 55%),
@@ -54,18 +96,17 @@ body {
         linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(246, 248, 252, 1));
 }
 
-/* =========================
-   Matte Header (Light)
-   ========================= */
+/* =========================================================
+    Header (Matte Light)
+   ========================================================= */
 .glass-header {
     background: var(--matte-header);
     border-bottom: 1px solid var(--line);
-    backdrop-filter: none;
+    backdrop-filter: none; /* bewusst „matte“, kein Glas */
     box-shadow: none;
     transition: padding 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
-/* Header sizing (normal vs shrink) */
 .nav-wrap {
     padding-top: 14px;
     padding-bottom: 14px;
@@ -77,19 +118,13 @@ body {
     padding-bottom: 8px;
 }
 
-.brand-title {
-    transition: font-size 220ms ease, letter-spacing 220ms ease;
-}
+.nav-shrink .brand-title { font-size: 1.35rem; }
 
-.nav-shrink .brand-title {
-    font-size: 1.35rem;
-}
+.nav-shadow { box-shadow: 0 12px 24px rgba(15, 23, 42, 0.10); }
 
-.nav-shadow {
-    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.10);
-}
-
-/* Panels */
+/* =========================================================
+    Panels / Cards
+   ========================================================= */
 .panel {
     background: var(--panel);
     border: 1px solid var(--line2);
@@ -102,7 +137,21 @@ body {
     box-shadow: var(--shadow);
 }
 
-/* Brand gradient (text) */
+/* Bildplatz in Karten: einheitliche Höhe + schöner Crop */
+.card-media {
+    height: 170px;               /* einheitlich für alle Cards */
+    background: rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Brand-Gradient (für kurze Akzente) */
 .brand-gradient {
     background: linear-gradient(135deg, var(--accent) 0%, #6366f1 100%);
     -webkit-background-clip: text;
@@ -110,20 +159,29 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-/* Animations */
-.fade-in {
-    animation: fadeIn 0.85s ease-out both;
+/* Kleine Nummer/Badge-Optik (Vertrauen-Icons) */
+.mini-icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    color: rgba(15,23,42,0.70);
+    background: rgba(37,99,235,0.10);
+    border: 1px solid rgba(37,99,235,0.18);
 }
 
+/* =========================================================
+    Interaktionen / Animationen
+   ========================================================= */
+.fade-in { animation: fadeIn 0.85s ease-out both; }
+
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .hover-lift {
@@ -136,7 +194,7 @@ body {
     border-color: rgba(15, 23, 42, 0.14);
 }
 
-/* Focus */
+/* Fokus (Accessibility) */
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid rgba(37, 99, 235, 0.45);
@@ -144,29 +202,34 @@ button:focus-visible {
     border-radius: 12px;
 }
 
-/* =========================
-   HERO (DARK image + premium overlay)
-   ========================= */
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .fade-in { animation: none !important; }
+    .hover-lift { transition: none !important; }
+    .smooth-scroll { scroll-behavior: auto; }
+}
 
-/* ВАЖНО: hero меняет переменные только внутри себя.
-   Весь сайт остаётся светлым, но в hero текст/мьютед — белые. */
+/* =========================================================
+    HERO (Dark Image + Premium Overlay)
+    WICHTIG: Hero überschreibt Variablen NUR lokal im Hero
+   ========================================================= */
 .hero-bg{
     position: relative;
     isolation: isolate;
     min-height: 100vh;
 
-    background-image: url("images/hero.webp"); /* твой hero */
+    background-image: url("images/hero-web.webp");
     background-size: cover;
     background-position: right center;
     background-repeat: no-repeat;
 
-    /* переключаем цвета ТОЛЬКО внутри hero */
+    /* Lokale Textfarben (nur im Hero) */
     --text: #f9fafb;
     --muted: rgba(249, 250, 251, 0.78);
     --muted2: rgba(249, 250, 251, 0.66);
 }
 
-/* Тёмный overlay: слева читаемость, справа видно картинку */
+/* Overlay: links Lesbarkeit, rechts bleibt Bild sichtbar */
 .hero-bg::before{
     content:"";
     position:absolute;
@@ -174,17 +237,14 @@ button:focus-visible {
     z-index:-1;
 
     background:
-        /* аккуратный glow справа */
         radial-gradient(900px 520px at 78% 45%,
             rgba(37, 99, 235, 0.20),
             rgba(37, 99, 235, 0.00) 62%),
 
-        /* мягкая виньетка */
         radial-gradient(1200px 900px at 40% 30%,
             rgba(0,0,0,0.10),
             rgba(0,0,0,0.58) 72%),
 
-        /* основной градиент (без белой вуали) */
         linear-gradient(90deg,
             rgba(0,0,0,0.74) 0%,
             rgba(0,0,0,0.58) 38%,
@@ -192,7 +252,7 @@ button:focus-visible {
             rgba(0,0,0,0.20) 100%);
 }
 
-/* Мобилка: чуть сдвигаем композицию */
+/* Mobile: Komposition anpassen */
 @media (max-width: 640px){
     .hero-bg{
         background-position: 72% center;
@@ -215,16 +275,18 @@ button:focus-visible {
     }
 }
 
-/* Premium divider */
+/* =========================================================
+    Premium Section Divider
+   ========================================================= */
 .section-sep {
     height: 1px;
     width: 100%;
     background: linear-gradient(90deg,
-            transparent 0%,
-            rgba(37, 99, 235, 0.22) 18%,
-            rgba(15, 23, 42, 0.12) 50%,
-            rgba(99, 102, 241, 0.18) 82%,
-            transparent 100%);
+        transparent 0%,
+        rgba(37, 99, 235, 0.22) 18%,
+        rgba(15, 23, 42, 0.12) 50%,
+        rgba(99, 102, 241, 0.18) 82%,
+        transparent 100%);
     opacity: 1;
 }
 
@@ -234,15 +296,13 @@ button:focus-visible {
     padding: 0 1.5rem;
 }
 
-/* =========================
-   Matte Footer (Dark for contrast)
-   ========================= */
+/* =========================================================
+    Footer (Matte Dark)
+========================================================= */
 .matte-footer {
     background: var(--matte-footer);
     border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-/* Optional */
-@view-transition {
-    navigation: auto;
-}
+/* Optional: View Transitions */
+@view-transition { navigation: auto; }

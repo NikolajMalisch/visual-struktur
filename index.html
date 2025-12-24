@@ -9,445 +9,582 @@
     <meta name="description"
         content="Visual Struktur in Hameln: Webdesign, Digitalisierung, Corporate Design sowie SEO & lokale Sichtbarkeit. Klar strukturiert, sauber umgesetzt." />
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="Visual Struktur — Webdesign & Digitalisierung | Hameln" />
+    <meta property="og:description"
+        content="Websites und digitale Abläufe, die Ordnung schaffen. Klar strukturiert, sauber umgesetzt." />
+    <meta property="og:type" content="website" />
+
     <!-- Tailwind (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Deine CSS-Datei -->
+    <!-- Deine CSS -->
     <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="smooth-scroll bg-grid">
+<body id="top" class="smooth-scroll bg-grid">
 
     <!-- =========================
-       Navigation (matte + shrink)
-       ========================= -->
+        NAV (Matte + Shrink)
+    ========================= -->
     <nav id="siteNav" class="w-full sticky top-0 z-50 glass-header">
-        <div class="max-w-7xl mx-auto px-6 nav-wrap">
-            <div class="flex justify-between items-center gap-4">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
+            <div class="flex items-center justify-between gap-6">
 
                 <!-- Brand -->
-                <a href="#top" class="flex flex-col leading-tight">
-                    <span class="brand-title text-xl md:text-2xl font-bold text-[color:var(--text)]">
-                        <span class="brand-gradient">Visual</span><span class="text-[color:var(--text)]">
-                            Struktur</span>
-                    </span>
-                    <span class="text-sm md:text-[13.5px] text-[color:var(--muted)]">
-                        Digitale Lösungen mit Struktur und Kreativität.
-                    </span>
+                <a href="#top" class="flex items-center gap-3" aria-label="Startseite">
+                    <!-- Optional: Logo -->
+                    <!-- <img src="images/logo.svg" alt="Visual Struktur Logo" class="h-9 w-9" width="36" height="36" /> -->
+
+                    <div class="leading-tight">
+                        <div class="brand-title text-[1.25rem] md:text-2xl font-semibold text-[color:var(--text)]">
+                            <span class="brand-gradient">Visual</span> Struktur
+                        </div>
+                        <div class="text-xs md:text-sm text-[color:var(--muted2)]">
+                            Webdesign · Digitalisierung · SEO
+                        </div>
+                    </div>
                 </a>
 
-                <!-- Desktop Nav -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#leistungen"
-                        class="text-base font-medium text-[color:var(--text)] hover:opacity-80 transition-opacity">
-                        Leistungen
-                    </a>
-                    <a href="#vertrauen"
-                        class="text-base font-medium text-[color:var(--text)] hover:opacity-80 transition-opacity">
-                        Vertrauen
-                    </a>
-                    <a href="#ablauf"
-                        class="text-base font-medium text-[color:var(--text)] hover:opacity-80 transition-opacity">
-                        Ablauf
-                    </a>
-                    <a href="#branchen"
-                        class="text-base font-medium text-[color:var(--text)] hover:opacity-80 transition-opacity">
-                        Branchen
-                    </a>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-7 text-sm font-medium text-[color:var(--muted)]">
+                    <a class="hover:opacity-90" href="#leistungen">Leistungen</a>
+                    <a class="hover:opacity-90" href="#vertrauen">Vertrauen</a>
+                    <a class="hover:opacity-90" href="#ablauf">Ablauf</a>
+                    <a class="hover:opacity-90" href="#branchen">Branchen</a>
+                    <a class="hover:opacity-90" href="#kontakt">Kontakt</a>
+                </div>
 
-                    <a href="#kontakt"
-                        class="px-6 py-2.5 rounded-xl font-semibold hover-lift bg-[color:var(--accent-strong)] text-white">
-                        Kontakt
+                <!-- Desktop CTA -->
+                <div class="hidden md:flex">
+                    <a href="#kontakt" class="rounded-2xl px-4 py-2.5 text-sm font-semibold text-white hover:opacity-95"
+                        style="background: linear-gradient(135deg, var(--accent), #6366f1); box-shadow: var(--shadow2);">
+                        Projekt anfragen
                     </a>
                 </div>
 
                 <!-- Mobile Button -->
-                <button id="menuBtn"
-                    class="md:hidden inline-flex items-center justify-center rounded-xl px-3 py-2 border border-[color:var(--line)] text-[color:var(--text)]">
-                    <span class="sr-only">Menü öffnen</span>
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                        aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+                <button id="menuBtn" class="md:hidden rounded-xl px-3 py-2 text-sm font-semibold panel hover-lift"
+                    aria-expanded="false" aria-controls="mobileMenu">
+                    Menü
                 </button>
             </div>
 
             <!-- Mobile Menu -->
-            <div id="mobileMenu" class="md:hidden mt-4 hidden">
-                <div class="panel-strong rounded-2xl p-4">
-                    <div class="flex flex-col gap-2">
-                        <a href="#leistungen"
-                            class="px-3 py-2 rounded-xl border border-black/10 text-[color:var(--text)] hover:opacity-90 transition-opacity">
-                            Leistungen
-                        </a>
-                        <a href="#vertrauen"
-                            class="px-3 py-2 rounded-xl border border-black/10 text-[color:var(--text)] hover:opacity-90 transition-opacity">
-                            Vertrauen
-                        </a>
-                        <a href="#ablauf"
-                            class="px-3 py-2 rounded-xl border border-black/10 text-[color:var(--text)] hover:opacity-90 transition-opacity">
-                            Ablauf
-                        </a>
-                        <a href="#branchen"
-                            class="px-3 py-2 rounded-xl border border-black/10 text-[color:var(--text)] hover:opacity-90 transition-opacity">
-                            Branchen
-                        </a>
+            <div id="mobileMenu" class="md:hidden hidden mt-3 panel rounded-2xl p-4">
+                <div class="flex flex-col gap-3 text-sm font-medium text-[color:var(--muted)]">
+                    <a class="hover:opacity-90" href="#leistungen">Leistungen</a>
+                    <a class="hover:opacity-90" href="#vertrauen">Vertrauen</a>
+                    <a class="hover:opacity-90" href="#ablauf">Ablauf</a>
+                    <a class="hover:opacity-90" href="#branchen">Branchen</a>
+                    <a class="hover:opacity-90" href="#kontakt">Kontakt</a>
 
-                        <a href="#kontakt"
-                            class="mt-2 px-4 py-3 rounded-xl font-semibold text-center hover-lift bg-[color:var(--accent-strong)] text-white">
-                            Kontakt
-                        </a>
-                    </div>
+                    <a href="#kontakt" class="mt-2 rounded-2xl px-4 py-2.5 text-sm font-semibold text-white"
+                        style="background: linear-gradient(135deg, var(--accent), #6366f1);">
+                        Projekt anfragen
+                    </a>
                 </div>
             </div>
-
         </div>
     </nav>
 
     <!-- =========================
-        Hero (DARK + text left)
+        HERO (DARK IMAGE)
     ========================= -->
-    <header id="top" class="w-full hero-bg">
-        <div class="max-w-7xl mx-auto px-6 py-20 md:py-28 fade-in">
+    <header class="hero-bg">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-14 sm:pt-20 sm:pb-20">
+            <div class="max-w-2xl fade-in">
 
-            <!-- Контент чуть левее (но не в край) -->
-            <div class="max-w-xl lg:max-w-2xl lg:ml-8 xl:ml-12 text-left">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 rounded-2xl px-3 py-1.5 text-xs font-semibold"
+                    style="background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.14);">
+                    <span
+                        style="width:8px;height:8px;border-radius:999px;background:rgba(99,102,241,0.9);display:inline-block;"></span>
+                    Hameln · Niedersachsen
+                </div>
 
-                <!-- Badge (glass, подходит для dark hero) -->
-                <p
-                    class="inline-flex items-center gap-2 text-xs md:text-sm font-semibold tracking-wide mb-5 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-[color:var(--muted)]">
-                    <span class="w-2 h-2 rounded-full bg-[color:var(--accent)]"></span>
-                    Klar. Modern. Wartbar.
-                </p>
-
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-[color:var(--text)]">
-                    Websites &amp; digitale Abläufe, die Ordnung schaffen.
+                <!-- H1 (Cormorant SC) -->
+                <h1
+                    class="h-display text-4xl sm:text-5xl lg:text-6xl font-semibold mt-5 leading-tight text-[color:var(--text)]">
+                    Digitale Struktur. Klare Ergebnisse.
                 </h1>
 
-                <p class="text-lg md:text-2xl mb-10 leading-relaxed text-[color:var(--muted)]">
-                    Webdesign, Digitalisierung und lokale Sichtbarkeit – strukturiert aufgebaut, sauber umgesetzt,
-                    langfristig nutzbar.
+                <!-- Subline (Inter) -->
+                <p class="mt-5 text-base sm:text-lg leading-relaxed text-[color:var(--muted)]">
+                    Websites und digitale Abläufe, die verständlich sind – für Kunden und für Ihr Team.
+                    Fokus: Qualität, Tempo, DSGVO-Basis und lokale Sichtbarkeit.
                 </p>
 
-                <!-- CTA: слева -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-start items-start">
-                    <a href="#kontakt"
-                        class="inline-flex items-center justify-center px-8 py-4 rounded-xl text-base md:text-lg font-semibold hover-lift bg-[color:var(--accent-strong)] text-white">
+                <!-- Bullets -->
+                <div class="mt-6 grid gap-3 sm:grid-cols-3 text-sm text-[color:var(--muted)]">
+                    <div class="panel rounded-2xl px-4 py-3"
+                        style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.14);">
+                        Webdesign + Umsetzung
+                    </div>
+                    <div class="panel rounded-2xl px-4 py-3"
+                        style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.14);">
+                        Formulare & Automationen
+                    </div>
+                    <div class="panel rounded-2xl px-4 py-3"
+                        style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.14);">
+                        SEO & Local (Google)
+                    </div>
+                </div>
+
+                <!-- CTAs -->
+                <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                    <a href="#kontakt" class="rounded-2xl px-5 py-3 text-sm font-semibold text-white hover:opacity-95"
+                        style="background: linear-gradient(135deg, var(--accent), #6366f1); box-shadow: 0 18px 52px rgba(0,0,0,0.25);">
                         Projekt anfragen
                     </a>
 
-                    <!-- Secondary на dark: glass -->
-                    <a href="#leistungen"
-                        class="inline-flex items-center justify-center px-8 py-4 rounded-xl text-base md:text-lg font-semibold hover-lift bg-white/10 text-white border border-white/15">
+                    <a href="#leistungen" class="rounded-2xl px-5 py-3 text-sm font-semibold hover:opacity-95"
+                        style="background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.16); color: var(--text);">
                         Leistungen ansehen
                     </a>
                 </div>
-
-                <p class="mt-8 text-sm text-[color:var(--muted2)]">
-                    Antwort in 24h · Klarer Umfang · Keine Floskeln
-                </p>
 
             </div>
         </div>
     </header>
 
-
+    <!-- Divider -->
     <div class="sep-wrap">
         <div class="section-sep"></div>
     </div>
 
     <!-- =========================
-       Content
-       ========================= -->
-    <main class="w-full">
-
-        <!-- Leistungen -->
-        <section id="leistungen" class="w-full py-16 md:py-20">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[color:var(--text)]">Leistungen</h2>
-                    <p class="text-base md:text-lg text-[color:var(--muted)]">
-                        Klar abgegrenzt, sauber umgesetzt – damit Ergebnisse messbar und Systeme stabil bleiben.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="panel rounded-2xl p-7 hover-lift">
-                        <h3 class="text-xl font-semibold mb-2 text-[color:var(--text)]">Webdesign</h3>
-                        <p class="mb-4 leading-relaxed text-[color:var(--muted)]">
-                            Landingpages, Business-Websites und Premium-Auftritte – schnell, mobil, SEO-basiert.
-                        </p>
-                        <ul class="space-y-2 text-sm text-[color:var(--muted2)]">
-                            <li class="flex items-start gap-2"><span class="text-[color:var(--accent)]">•</span>Struktur
-                                &amp; Inhalte</li>
-                            <li class="flex items-start gap-2"><span
-                                    class="text-[color:var(--accent)]">•</span>Performance &amp; Technik</li>
-                            <li class="flex items-start gap-2"><span class="text-[color:var(--accent)]">•</span>Wartbar
-                                &amp; erweiterbar</li>
-                        </ul>
-                    </div>
-
-                    <div class="panel rounded-2xl p-7 hover-lift">
-                        <h3 class="text-xl font-semibold mb-2 text-[color:var(--text)]">Digitalisierung</h3>
-                        <p class="mb-4 leading-relaxed text-[color:var(--muted)]">
-                            Formulare, Workflows und einfache CRM-Logik – weniger Handarbeit, mehr Übersicht.
-                        </p>
-                        <ul class="space-y-2 text-sm text-[color:var(--muted2)]">
-                            <li class="flex items-start gap-2"><span class="text-[color:var(--accent)]">•</span>Digitale
-                                Anfragen</li>
-                            <li class="flex items-start gap-2"><span
-                                    class="text-[color:var(--accent)]">•</span>Automatisierung</li>
-                            <li class="flex items-start gap-2"><span
-                                    class="text-[color:var(--accent)]">•</span>Dokumentation</li>
-                        </ul>
-                    </div>
-
-                    <div class="panel rounded-2xl p-7 hover-lift">
-                        <h3 class="text-xl font-semibold mb-2 text-[color:var(--text)]">SEO &amp; Local</h3>
-                        <p class="mb-4 leading-relaxed text-[color:var(--muted)]">
-                            Technische Basis, Inhalte und lokale Optimierung – damit Sie in Ihrer Region gefunden
-                            werden.
-                        </p>
-                        <ul class="space-y-2 text-sm text-[color:var(--muted2)]">
-                            <li class="flex items-start gap-2"><span
-                                    class="text-[color:var(--accent)]">•</span>Onpage-Struktur</li>
-                            <li class="flex items-start gap-2"><span class="text-[color:var(--accent)]">•</span>Lokale
-                                Signale</li>
-                            <li class="flex items-start gap-2"><span
-                                    class="text-[color:var(--accent)]">•</span>Technische Checks</li>
-                        </ul>
-                    </div>
-                </div>
+        LEISTUNGEN (Cards + Bild)
+    ========================= -->
+    <section id="leistungen" class="py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl">
+                <h2 class="h-display text-3xl sm:text-4xl font-semibold text-[color:var(--text)]">
+                    Leistungen
+                </h2>
+                <p class="mt-3 text-[color:var(--muted)] leading-relaxed">
+                    Klar definiert, sauber umgesetzt. Ohne Overengineering – aber mit Substanz.
+                </p>
             </div>
-        </section>
 
-        <div class="sep-wrap">
-            <div class="section-sep"></div>
+            <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+                <!-- Card 1 -->
+                <article class="panel rounded-3xl p-5 hover-lift">
+                    <!-- Bildplatz -->
+                    <div class="card-media rounded-2xl overflow-hidden mb-4">
+                        <img src="images/web-design.webp" alt="Website-Layout auf Laptop-Mockup" loading="lazy"
+                            decoding="async" />
+                    </div>
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Webdesign & Website</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">
+                        Struktur, Nutzerführung, Performance – modern und wartbar.
+                    </p>
+                    <ul class="mt-3 text-sm text-[color:var(--muted)] list-disc pl-5">
+                        <li>Mobile-first</li>
+                        <li>Schnell & sauber</li>
+                        <li>Klare Inhalte</li>
+                    </ul>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="panel rounded-3xl p-5 hover-lift">
+                    <div class="card-media rounded-2xl overflow-hidden mb-4">
+                        <img src="images/digitalisierung.webp" alt="Prozess-Flow mit Automations-Knoten"
+                            loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Digitalisierung</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">
+                        Formulare, Prozesse, Automationen – weniger Handarbeit im Alltag.
+                    </p>
+                    <ul class="mt-3 text-sm text-[color:var(--muted)] list-disc pl-5">
+                        <li>Formulare</li>
+                        <li>CRM-Anbindung</li>
+                        <li>Automationen</li>
+                    </ul>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="panel rounded-3xl p-5 hover-lift">
+                    <div class="card-media rounded-2xl overflow-hidden mb-4">
+                        <img src="images/seo-1.webp" alt="Lokale Suche mit Karten-Pin" loading="lazy"
+                            decoding="async" />
+                    </div>
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">SEO & Lokal</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">
+                        Technik + Inhalte, damit man Sie in Ihrer Region findet.
+                    </p>
+                    <ul class="mt-3 text-sm text-[color:var(--muted)] list-disc pl-5">
+                        <li>Google Business</li>
+                        <li>Struktur</li>
+                        <li>Inhalte</li>
+                    </ul>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="panel rounded-3xl p-5 hover-lift">
+                    <div class="card-media rounded-2xl overflow-hidden mb-4">
+                        <img src="images/visiten.webp" alt="Corporate-Design-Set mit Visitenkarte" loading="lazy"
+                            decoding="async" />
+                    </div>
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Branding & Print</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">
+                        Logo, Vorlagen, Karten, Banner – konsistent und seriös.
+                    </p>
+                    <ul class="mt-3 text-sm text-[color:var(--muted)] list-disc pl-5">
+                        <li>Corporate Look</li>
+                        <li>Assets</li>
+                        <li>Druckdaten</li>
+                    </ul>
+                </article>
+            </div>
         </div>
+    </section>
 
-        <!-- Vertrauen -->
-        <section id="vertrauen" class="w-full py-16 md:py-20">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[color:var(--text)]">Warum Kunden uns vertrauen
-                    </h2>
-                    <p class="text-base md:text-lg text-[color:var(--muted)]">
-                        Planbar, transparent, sauber umgesetzt – ohne Umwege.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                    <div class="panel rounded-2xl p-7 hover-lift">
-                        <h3 class="text-lg font-semibold mb-2 text-[color:var(--text)]">Klare Kommunikation</h3>
-                        <p class="text-[color:var(--muted2)]">Sie wissen jederzeit, was als Nächstes passiert – ohne
-                            Fachjargon.</p>
-                    </div>
-
-                    <div class="panel rounded-2xl p-7 hover-lift">
-                        <h3 class="text-lg font-semibold mb-2 text-[color:var(--text)]">Saubere Umsetzung</h3>
-                        <p class="text-[color:var(--muted2)]">Stabil, schnell, wartbar – damit Ihre Website langfristig
-                            funktioniert.</p>
-                    </div>
-
-                    <div class="panel rounded-2xl p-7 hover-lift">
-                        <h3 class="text-lg font-semibold mb-2 text-[color:var(--text)]">Klarer Umfang</h3>
-                        <p class="text-[color:var(--muted2)]">Transparente Leistungen und Grenzen – keine
-                            Überraschungen.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="sep-wrap">
-            <div class="section-sep"></div>
-        </div>
-
-        <!-- Ablauf -->
-        <section id="ablauf" class="w-full py-16 md:py-20">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[color:var(--text)]">Ablauf</h2>
-                    <p class="text-base md:text-lg text-[color:var(--muted)]">
-                        In fünf klaren Schritten vom Erstgespräch bis zum Launch.
-                    </p>
-                </div>
-
-                <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-6">
-                    <div class="panel rounded-2xl p-7 hover-lift">
-                        <h3 class="text-lg font-semibold mb-1 text-[color:var(--text)]">1) Ziel &amp; Rahmen</h3>
-                        <p class="text-[color:var(--muted2)]">Ziele, Zielgruppe, Umfang und Prioritäten werden
-                            definiert.</p>
-                    </div>
-
-                    <div class="panel rounded-2xl p-7 hover-lift">
-                        <h3 class="text-lg font-semibold mb-1 text-[color:var(--text)]">2) Struktur &amp; Inhalte</h3>
-                        <p class="text-[color:var(--muted2)]">Seitenstruktur, Texte und Inhalte werden klar aufgebaut.
-                        </p>
-                    </div>
-
-                    <div class="panel rounded-2xl p-7 hover-lift">
-                        <h3 class="text-lg font-semibold mb-1 text-[color:var(--text)]">3) Design &amp; Komponenten</h3>
-                        <p class="text-[color:var(--muted2)]">Konsistenz und Wiederverwendbarkeit statt Bastellösung.
-                        </p>
-                    </div>
-
-                    <div class="panel rounded-2xl p-7 hover-lift">
-                        <h3 class="text-lg font-semibold mb-1 text-[color:var(--text)]">4) Technik &amp; Tests</h3>
-                        <p class="text-[color:var(--muted2)]">Mobile, Performance, Formulare und Basis-SEO vor Livegang.
-                        </p>
-                    </div>
-
-                    <div class="panel rounded-2xl p-7 hover-lift lg:col-span-2">
-                        <h3 class="text-lg font-semibold mb-1 text-[color:var(--text)]">5) Launch &amp; Betrieb</h3>
-                        <p class="text-[color:var(--muted2)]">Livegang, Übergabe, optional Betreuung und
-                            Weiterentwicklung.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="sep-wrap">
-            <div class="section-sep"></div>
-        </div>
-
-        <!-- Branchen -->
-        <section id="branchen" class="w-full py-16 md:py-20">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="max-w-4xl mx-auto text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[color:var(--text)]">Branchen</h2>
-                    <p class="text-base md:text-lg text-[color:var(--muted)]">
-                        Für Selbstständige und Unternehmen, die professionell auftreten und intern weniger Reibung haben
-                        wollen.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-                    <div class="panel rounded-2xl p-6 text-center hover-lift">
-                        <h3 class="font-semibold mb-2 text-[color:var(--text)]">Gesundheit</h3>
-                        <p class="text-sm text-[color:var(--muted2)]">Praxen, Therapie, Heilberufe</p>
-                    </div>
-                    <div class="panel rounded-2xl p-6 text-center hover-lift">
-                        <h3 class="font-semibold mb-2 text-[color:var(--text)]">Handwerk</h3>
-                        <p class="text-sm text-[color:var(--muted2)]">lokale Dienstleistungen</p>
-                    </div>
-                    <div class="panel rounded-2xl p-6 text-center hover-lift">
-                        <h3 class="font-semibold mb-2 text-[color:var(--text)]">Beratung</h3>
-                        <p class="text-sm text-[color:var(--muted2)]">B2B, Kanzleien, Services</p>
-                    </div>
-                    <div class="panel rounded-2xl p-6 text-center hover-lift">
-                        <h3 class="font-semibold mb-2 text-[color:var(--text)]">Handel &amp; Gastro</h3>
-                        <p class="text-sm text-[color:var(--muted2)]">Angebote, Reservierung, Sichtbarkeit</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="sep-wrap">
-            <div class="section-sep"></div>
-        </div>
-
-        <!-- Kontakt -->
-        <section id="kontakt" class="w-full py-16 md:py-20">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="panel-strong rounded-3xl p-10 text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-5 text-[color:var(--text)]">Kontakt</h2>
-                    <p class="text-base md:text-lg mb-8 text-[color:var(--muted)]">
-                        Kurze Nachricht reicht. Wir melden uns mit einem klaren nächsten Schritt.
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <a href="tel:+490000000000"
-                            class="inline-flex items-center justify-center px-8 py-4 rounded-xl text-base md:text-lg font-semibold hover-lift bg-[color:var(--accent-strong)] text-white">
-                            Anrufen
-                        </a>
-
-                        <a href="mailto:kontakt@beispiel.de"
-                            class="inline-flex items-center justify-center px-8 py-4 rounded-xl text-base md:text-lg font-semibold hover-lift bg-white/80 text-[color:var(--text)] border border-black/10">
-                            E-Mail schreiben
-                        </a>
-                    </div>
-
-                    <p class="mt-7 text-sm text-[color:var(--muted2)]">
-                        Keine Sales-Show. Klare Antworten.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-    </main>
+    <!-- Divider -->
+    <div class="sep-wrap">
+        <div class="section-sep"></div>
+    </div>
 
     <!-- =========================
-       Footer
-       ========================= -->
-    <footer class="w-full py-12 matte-footer">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <div class="text-2xl font-bold mb-3 text-white">
-                        <span class="brand-gradient">Visual</span><span class="text-white"> Struktur</span>
-                    </div>
-                    <p class="text-sm leading-relaxed text-white/70">
-                        Webdesign, Digitalisierung und lokale Sichtbarkeit – klar strukturiert, sauber umgesetzt.
-                    </p>
+        WARUM VERTRAUEN ENTSTEHT
+    ========================= -->
+    <section id="vertrauen" class="py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl">
+                <h2 class="h-display text-3xl sm:text-4xl font-semibold text-[color:var(--text)]">
+                    Warum Vertrauen entsteht
+                </h2>
+                <p class="mt-3 text-[color:var(--muted)] leading-relaxed">
+                    Fokus auf Klarheit, saubere Umsetzung und ein System, das langfristig funktioniert.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+                <div class="panel rounded-3xl p-5 hover-lift">
+                    <div class="mini-icon">01</div>
+                    <h3 class="mt-3 text-sm font-semibold text-[color:var(--text)]">Klare Struktur</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Kein Chaos – nur Relevanz.</p>
                 </div>
 
-                <div>
-                    <h4 class="font-semibold mb-4 text-white">Leistungen</h4>
-                    <ul class="space-y-2 text-sm text-white/70">
-                        <li><a href="#leistungen" class="hover:opacity-80 transition-opacity">Webdesign</a></li>
-                        <li><a href="#leistungen" class="hover:opacity-80 transition-opacity">Digitalisierung</a></li>
-                        <li><a href="#leistungen" class="hover:opacity-80 transition-opacity">SEO &amp; Local</a></li>
+                <div class="panel rounded-3xl p-5 hover-lift">
+                    <div class="mini-icon">02</div>
+                    <h3 class="mt-3 text-sm font-semibold text-[color:var(--text)]">Saubere Umsetzung</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Performance, Semantik, DSGVO-Basis.</p>
+                </div>
+
+                <div class="panel rounded-3xl p-5 hover-lift">
+                    <div class="mini-icon">03</div>
+                    <h3 class="mt-3 text-sm font-semibold text-[color:var(--text)]">Transparente Schritte</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Sie wissen, was als Nächstes passiert.</p>
+                </div>
+
+                <div class="panel rounded-3xl p-5 hover-lift">
+                    <div class="mini-icon">04</div>
+                    <h3 class="mt-3 text-sm font-semibold text-[color:var(--text)]">Wartbar & erweiterbar</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Keine „Einbahnstraße“.</p>
+                </div>
+
+                <div class="panel rounded-3xl p-5 hover-lift">
+                    <div class="mini-icon">05</div>
+                    <h3 class="mt-3 text-sm font-semibold text-[color:var(--text)]">Lokal gedacht</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Ton, Inhalte, Google-Sichtbarkeit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="sep-wrap">
+        <div class="section-sep"></div>
+    </div>
+
+    <!-- =========================
+        ABLAUF
+    ========================= -->
+    <section id="ablauf" class="py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl">
+                <h2 class="h-display text-3xl sm:text-4xl font-semibold text-[color:var(--text)]">
+                    So arbeiten wir
+                </h2>
+                <p class="mt-3 text-[color:var(--muted)] leading-relaxed">
+                    Ein klarer Prozess: schnell, nachvollziehbar, ohne Überraschungen.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-5 lg:grid-cols-4">
+                <div class="panel rounded-3xl p-6 hover-lift">
+                    <div class="num-tabular text-sm font-semibold text-[color:var(--muted2)]">01</div>
+                    <h3 class="mt-2 text-base font-semibold text-[color:var(--text)]">Analyse</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Ziele, Zielgruppe, Inhalte, Prioritäten.</p>
+                </div>
+
+                <div class="panel rounded-3xl p-6 hover-lift">
+                    <div class="num-tabular text-sm font-semibold text-[color:var(--muted2)]">02</div>
+                    <h3 class="mt-2 text-base font-semibold text-[color:var(--text)]">Konzept</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Struktur, Wireframe, Texte, Designrichtung.</p>
+                </div>
+
+                <div class="panel rounded-3xl p-6 hover-lift">
+                    <div class="num-tabular text-sm font-semibold text-[color:var(--muted2)]">03</div>
+                    <h3 class="mt-2 text-base font-semibold text-[color:var(--text)]">Build</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Umsetzung, Performance, SEO-Basics, Formulare.</p>
+                </div>
+
+                <div class="panel rounded-3xl p-6 hover-lift">
+                    <div class="num-tabular text-sm font-semibold text-[color:var(--muted2)]">04</div>
+                    <h3 class="mt-2 text-base font-semibold text-[color:var(--text)]">Launch & Pflege</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Livegang, Indexierung, Optimierung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="sep-wrap">
+        <div class="section-sep"></div>
+    </div>
+
+    <!-- =========================
+        BRANCHEN (Für wen wir bauen) + Bild
+    ========================= -->
+    <section id="branchen" class="py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl">
+                <h2 class="h-display text-3xl sm:text-4xl font-semibold text-[color:var(--text)]">
+                    Für wen wir bauen
+                </h2>
+                <p class="mt-3 text-[color:var(--muted)] leading-relaxed">
+                    Ideal für lokale Unternehmen, die professionell auftreten und Prozesse vereinfachen wollen.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                <article class="panel rounded-3xl p-5 hover-lift">
+                    <div class="card-media rounded-2xl overflow-hidden mb-4">
+                        <img src="images/praxis.webp" alt="Praxis-Website Fokus Vertrauen" loading="lazy"
+                            decoding="async" />
+                    </div>
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Praxis & Gesundheit</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Vertrauen, klare Infos, schnelle Kontaktwege.</p>
+                </article>
+
+                <article class="panel rounded-3xl p-5 hover-lift">
+                    <div class="card-media rounded-2xl overflow-hidden mb-4">
+                        <img src="images/bau.webp" alt="Handwerksbetrieb Website mit Projektgalerie"
+                            loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Handwerk & Bau</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Leistungen, Projekte, Anfragen ohne Reibung.</p>
+                </article>
+
+                <article class="panel rounded-3xl p-5 hover-lift">
+                    <div class="card-media rounded-2xl overflow-hidden mb-4">
+                        <img src="images/gastro.webp" alt="Event-Anfrage und Kalender-UI" loading="lazy"
+                            decoding="async" />
+                    </div>
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Gastro & Events</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Buchungen, Anfragen, Sichtbarkeit – auf den Punkt.
+                    </p>
+                </article>
+
+                <article class="panel rounded-3xl p-5 hover-lift">
+                    <div class="card-media rounded-2xl overflow-hidden mb-4">
+                        <img src="images/kanzelar.webp" alt="Beratungs-Website mit Anfrageformular"
+                            loading="lazy" decoding="async" />
+                    </div>
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Kanzlei & Beratung</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Seriosität, Struktur, klare Erstberatung-CTA.</p>
+                </article>
+
+                <article class="panel rounded-3xl p-5 hover-lift">
+                    <div class="card-media rounded-2xl overflow-hidden mb-4">
+                        <img src="images/beauty.webp" alt="Termin-UI für Servicebetrieb" loading="lazy"
+                            decoding="async" />
+                    </div>
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Beauty & Services</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Termin-Logik, Angebote, Vertrauen durch Design.
+                    </p>
+                </article>
+
+                <article class="panel rounded-3xl p-5 hover-lift">
+                    <div class="card-media rounded-2xl overflow-hidden mb-4">
+                        <img src="images/lokal-unternemer.webp" alt="Lokale Sichtbarkeit und Website-Karte" loading="lazy"
+                            decoding="async" />
+                    </div>
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Lokale Unternehmen</h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Schnell online, professionell, ausbaufähig.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="sep-wrap">
+        <div class="section-sep"></div>
+    </div>
+
+    <!-- =========================
+        VORTEILE (Klarer Vergleich)
+    ========================= -->
+    <section class="py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl">
+                <h2 class="h-display text-3xl sm:text-4xl font-semibold text-[color:var(--text)]">
+                    Vorteile in der Praxis
+                </h2>
+                <p class="mt-3 text-[color:var(--muted)] leading-relaxed">
+                    Nicht „mehr Design“, sondern mehr Klarheit, bessere Abläufe und messbare Sichtbarkeit.
+                </p>
+            </div>
+
+            <div class="mt-10 grid gap-5 lg:grid-cols-2">
+                <div class="panel rounded-3xl p-6">
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Was Sie bekommen</h3>
+                    <ul class="mt-4 space-y-3 text-sm text-[color:var(--muted)]">
+                        <li>• Strukturierte Inhalte (weniger Rückfragen)</li>
+                        <li>• Schnell ladende Seiten (besser für Google & Nutzer)</li>
+                        <li>• Klare Anfragen über Formulare (weniger Chaos)</li>
+                        <li>• Saubere Basis für SEO & Local (Hameln + Region)</li>
                     </ul>
                 </div>
 
-                <div>
-                    <h4 class="font-semibold mb-4 text-white">Kontakt</h4>
-                    <ul class="space-y-2 text-sm text-white/70">
-                        <li>Tel: +49 (0) …</li>
-                        <li>E-Mail: kontakt@…</li>
-                        <li>Mo–Fr: 9:00 – 18:00 Uhr</li>
+                <div class="panel rounded-3xl p-6">
+                    <h3 class="text-base font-semibold text-[color:var(--text)]">Wie wir arbeiten</h3>
+                    <ul class="mt-4 space-y-3 text-sm text-[color:var(--muted)]">
+                        <li>• Kurze Abstimmungswege</li>
+                        <li>• Transparente Schritte & klare Deliverables</li>
+                        <li>• Wartbar & erweiterbar (kein „Baukasten-Limit“)</li>
+                        <li>• Fokus auf Nutzen – nicht auf „Show“</li>
                     </ul>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div
-                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/60">
-                <p>© <span id="year"></span> Visual Struktur. Alle Rechte vorbehalten.</p>
-                <div class="flex gap-6 mt-4 md:mt-0">
-                    <a href="./impressum.html" class="hover:opacity-80 transition-opacity">Impressum</a>
-                    <a href="./datenschutz.html" class="hover:opacity-80 transition-opacity">Datenschutz</a>
-                    <a href="./agb.html" class="hover:opacity-80 transition-opacity">AGB</a>
+    <!-- Divider -->
+    <div class="sep-wrap">
+        <div class="section-sep"></div>
+    </div>
+
+    <!-- =========================
+        KONTAKT (CTA)
+    ========================= -->
+    <section id="kontakt" class="py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="panel-strong rounded-[2rem] p-7 sm:p-10">
+                <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+
+                    <div>
+                        <h2 class="h-display text-3xl sm:text-4xl font-semibold text-[color:var(--text)]">
+                            Kontakt
+                        </h2>
+                        <p class="mt-3 text-[color:var(--muted)] leading-relaxed">
+                            Schreiben Sie kurz, was Sie vorhaben. Ich antworte mit einem klaren Vorschlag (Umfang,
+                            Timeline, nächste Schritte).
+                        </p>
+
+                        <div class="mt-6 grid gap-3 text-sm text-[color:var(--muted)]">
+                            <div class="panel rounded-2xl px-4 py-3">
+                                <span class="font-semibold text-[color:var(--text)]">Ort:</span> Hameln (Niedersachsen)
+                            </div>
+                            <div class="panel rounded-2xl px-4 py-3">
+                                <span class="font-semibold text-[color:var(--text)]">E-Mail:</span>
+                                hello@visual-struktur.de
+                            </div>
+                            <div class="panel rounded-2xl px-4 py-3">
+                                <span class="font-semibold text-[color:var(--text)]">Telefon:</span> +49 … (optional)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Simple Form (placeholder) -->
+                    <form class="panel rounded-3xl p-6" action="#" method="post">
+                        <label class="block text-sm font-semibold text-[color:var(--text)]">Name</label>
+                        <input class="mt-2 w-full rounded-2xl px-4 py-3 text-sm panel" type="text" name="name"
+                            placeholder="Ihr Name" />
+
+                        <label class="block mt-4 text-sm font-semibold text-[color:var(--text)]">E-Mail</label>
+                        <input class="mt-2 w-full rounded-2xl px-4 py-3 text-sm panel" type="email" name="email"
+                            placeholder="name@domain.de" />
+
+                        <label class="block mt-4 text-sm font-semibold text-[color:var(--text)]">Nachricht</label>
+                        <textarea class="mt-2 w-full rounded-2xl px-4 py-3 text-sm panel" name="message" rows="5"
+                            placeholder="Kurz: Was soll die Website/Automatisierung leisten?"></textarea>
+
+                        <button type="submit"
+                            class="mt-5 w-full rounded-2xl px-5 py-3 text-sm font-semibold text-white hover:opacity-95"
+                            style="background: linear-gradient(135deg, var(--accent), #6366f1); box-shadow: var(--shadow2);">
+                            Anfrage senden
+                        </button>
+
+                        <p class="mt-3 text-xs text-[color:var(--muted2)]">
+                            DSGVO-Hinweis: Ihre Daten werden nur zur Bearbeitung Ihrer Anfrage verwendet.
+                        </p>
+                    </form>
+
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+        FOOTER (Dark)
+    ========================= -->
+    <footer class="matte-footer">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <div>
+                    <div class="brand-title text-2xl font-semibold text-white">
+                        <span class="brand-gradient">Visual</span> <span class="text-white">Struktur</span>
+                    </div>
+                    <p class="mt-2 text-sm text-white/70">
+                        Webdesign · Digitalisierung · SEO — Hameln
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/75">
+                    <a href="#" class="hover:underline">Impressum</a>
+                    <a href="#" class="hover:underline">Datenschutz</a>
+                </div>
+            </div>
+
+            <div class="mt-8 text-xs text-white/55">
+                © <span id="year"></span> Visual Struktur. Alle Rechte vorbehalten.
             </div>
         </div>
     </footer>
 
-    <!-- JS -->
+    <!-- =========================
+        JS (Shrink Nav + Mobile Menu)
+    ========================= -->
     <script>
-        // Jahr im Footer
-        document.getElementById('year').textContent = new Date().getFullYear();
+        // Footer year
+        document.getElementById("year").textContent = new Date().getFullYear();
 
-        // Mobile Menü
-        const btn = document.getElementById('menuBtn');
-        const menu = document.getElementById('mobileMenu');
-        btn?.addEventListener('click', () => menu.classList.toggle('hidden'));
-        menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+        // Mobile menu
+        const btn = document.getElementById("menuBtn");
+        const menu = document.getElementById("mobileMenu");
+        if (btn && menu) {
+            btn.addEventListener("click", () => {
+                const isOpen = !menu.classList.contains("hidden");
+                menu.classList.toggle("hidden");
+                btn.setAttribute("aria-expanded", String(!isOpen));
+            });
+        }
 
-        // Sticky Header Shrink
-        const nav = document.getElementById('siteNav');
-        let lastState = false;
-
+        // Shrink nav on scroll
+        const nav = document.getElementById("siteNav");
         const onScroll = () => {
-            const shrink = window.scrollY > 18;
-            if (shrink !== lastState) {
-                lastState = shrink;
-                nav.classList.toggle('nav-shrink', shrink);
-                nav.classList.toggle('nav-shadow', shrink);
+            const y = window.scrollY || 0;
+            if (y > 12) {
+                nav.classList.add("nav-shrink", "nav-shadow");
+            } else {
+                nav.classList.remove("nav-shrink", "nav-shadow");
             }
         };
-
-        window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
     </script>
 
 </body>
