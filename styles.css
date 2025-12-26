@@ -1,51 +1,60 @@
 /* =========================================================
-    Visual Struktur — Premium Light Theme (DE)
-    Typography:
-    - Display/Brand/H1-H2: Space Grotesk
-    - UI/Body/Forms/Buttons: Inter
+    Visual Struktur — Premium Theme (DE)
+    Fokus: Tokens → Header/Nav → Panels/Cards → Hero → Buttons
    ========================================================= */
 
-/* ---------- Fonts (Google) ---------- */
+/* =========================================================
+    1) FONTS
+   ========================================================= */
+/* Hinweis (wichtig): @import in CSS ist ok, aber für Performance besser:
+    <link rel="preconnect"> + <link href="..." rel="stylesheet"> im <head>.
+    (LCP/CLS wird oft stabiler) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-/* ---------- Design Tokens ---------- */
+/* =========================================================
+    2) DESIGN TOKENS (globales Theme)
+   ========================================================= */
 :root {
+    /* Schriften */
     --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-    /* Base (light, premium) */
+    /* Base-Hintergründe (hell, premium) */
     --bg: #f6f8fc;
     --bg2: #ffffff;
 
-    /* Panels */
+    /* Flächen / Panels (Glass / Matte) */
     --panel: rgba(255, 255, 255, 0.92);
     --panel-strong: rgba(255, 255, 255, 0.96);
+
+    /* Linien / Borders */
     --line: rgba(15, 23, 42, 0.10);
     --line2: rgba(15, 23, 42, 0.07);
 
-    /* Text */
+    /* Typografie */
     --text: #0f172a;
-    /* slate-900 */
+    /* Haupttext */
     --muted: rgba(15, 23, 42, 0.72);
+    /* Sekundärtext */
     --muted2: rgba(15, 23, 42, 0.62);
 
-    /* Accent */
+    /* Accent (Brand-Farbe) */
     --accent: #2563eb;
     /* blue-600 */
     --accent-strong: #1d4ed8;
     /* blue-700 */
 
-    /* Shadow */
+    /* Schatten (Card-Depth) */
     --shadow: 0 16px 44px rgba(15, 23, 42, 0.10);
     --shadow2: 0 10px 26px rgba(15, 23, 42, 0.08);
 
-    /* Matte surfaces */
+    /* Matte Header/Footer */
     --matte-header: #ffffff;
     --matte-footer: #0f172a;
 }
 
 /* =========================================================
-    Base / Reset
+    3) BASE / RESET
    ========================================================= */
 * {
     box-sizing: border-box;
@@ -57,6 +66,8 @@ body {
     background: var(--bg);
     color: var(--text);
     font-family: var(--font-ui);
+
+    /* Rendering: sauberer Look */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -65,7 +76,7 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Display helpers */
+/* Display-Font nur dort, wo "Brand/Headlines" */
 .font-display,
 .h-display,
 .brand-title {
@@ -74,24 +85,26 @@ body {
 
 .h-display {
     letter-spacing: -0.02em;
-    /* premium tech */
 }
 
+/* Premium-Tech Feeling */
 .brand-title {
     letter-spacing: -0.01em;
     transition: font-size 220ms ease, letter-spacing 220ms ease;
 }
 
-/* Tabular numbers */
+/* Zahlen optisch stabil (Preise, KPIs, Zeiten) */
 .num-tabular {
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum" 1, "lnum" 1;
 }
 
 /* =========================================================
-    Background texture (light premium)
+    4) BACKGROUND TEXTURE (Light Premium)
    ========================================================= */
 .bg-grid {
+    /* Erklärung: 2–3 Radial-Glows + sanfter Verlauf.
+     Das macht "Premium", ohne laut zu wirken. */
     background:
         radial-gradient(900px 520px at 18% 12%, rgba(37, 99, 235, 0.10), transparent 55%),
         radial-gradient(900px 540px at 86% 22%, rgba(14, 165, 233, 0.10), transparent 55%),
@@ -100,13 +113,16 @@ body {
 }
 
 /* =========================================================
-    Header (Matte)
+    5) HEADER / NAV (Matte + Shrink)
    ========================================================= */
 .glass-header {
     background: var(--matte-header);
     border-bottom: 1px solid var(--line);
+
+    /* Matte-Style: kein blur, wirkt seriöser */
     backdrop-filter: none;
     box-shadow: none;
+
     transition: padding 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
@@ -116,6 +132,7 @@ body {
     transition: padding 220ms ease;
 }
 
+/* Wird per JS/Scroll gesetzt (class="nav-shrink") */
 .nav-shrink .nav-wrap {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -125,12 +142,13 @@ body {
     font-size: 1.35rem;
 }
 
+/* Optional: Schatten nur beim Scroll (class="nav-shadow") */
 .nav-shadow {
     box-shadow: 0 12px 24px rgba(15, 23, 42, 0.10);
 }
 
 /* =========================================================
-    Panels / Cards
+    6) PANELS / CARDS (Wiederverwendbar)
    ========================================================= */
 .panel {
     background: var(--panel);
@@ -144,7 +162,7 @@ body {
     box-shadow: var(--shadow);
 }
 
-/* Uniform media height */
+/* Einheitliche Medienhöhe für Karten (sauberer Grid) */
 .card-media {
     height: 170px;
     background: rgba(15, 23, 42, 0.04);
@@ -158,7 +176,7 @@ body {
     display: block;
 }
 
-/* Small icon badge */
+/* Kleine Icon-Badges (konsistente Formensprache) */
 .mini-icon {
     width: 40px;
     height: 40px;
@@ -174,7 +192,7 @@ body {
 }
 
 /* =========================================================
-    Interactions / Motion
+    7) INTERACTIONS / ACCESSIBILITY
    ========================================================= */
 .fade-in {
     animation: fadeIn 0.85s ease-out both;
@@ -202,7 +220,7 @@ body {
     border-color: rgba(15, 23, 42, 0.14);
 }
 
-/* Focus */
+/* Tastatur-Fokus (sehr wichtig für UX/Barrierefreiheit) */
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid rgba(37, 99, 235, 0.45);
@@ -210,7 +228,7 @@ button:focus-visible {
     border-radius: 12px;
 }
 
-/* Reduced motion */
+/* Reduced Motion respektieren */
 @media (prefers-reduced-motion: reduce) {
     .fade-in {
         animation: none !important;
@@ -226,7 +244,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-    HERO (Dark image + premium overlay)
+    8) HERO (Dark Image + Overlay)
    ========================================================= */
 .hero-bg {
     position: relative;
@@ -238,12 +256,13 @@ button:focus-visible {
     background-position: right center;
     background-repeat: no-repeat;
 
-    /* Local text variables */
+    /* Wichtig: lokale Typo-Farben NUR für Hero überschreiben */
     --text: #f9fafb;
     --muted: rgba(249, 250, 251, 0.78);
     --muted2: rgba(249, 250, 251, 0.66);
 }
 
+/* Overlay: sorgt für Lesbarkeit + Premium Glow */
 .hero-bg::before {
     content: "";
     position: absolute;
@@ -266,6 +285,7 @@ button:focus-visible {
             rgba(0, 0, 0, 0.18) 100%);
 }
 
+/* Mobile: andere Bildposition + stärkeres Overlay */
 @media (max-width: 640px) {
     .hero-bg {
         background-position: 72% center;
@@ -277,9 +297,11 @@ button:focus-visible {
             radial-gradient(700px 420px at 70% 35%,
                 rgba(37, 99, 235, 0.14),
                 rgba(37, 99, 235, 0.00) 65%),
+
             radial-gradient(900px 800px at 50% 25%,
                 rgba(0, 0, 0, 0.10),
                 rgba(0, 0, 0, 0.62) 74%),
+
             linear-gradient(90deg,
                 rgba(0, 0, 0, 0.76) 0%,
                 rgba(0, 0, 0, 0.60) 48%,
@@ -288,9 +310,7 @@ button:focus-visible {
     }
 }
 
-/* =========================================================
-    HERO UI helpers (premium, clean)
-   ========================================================= */
+/* Kleine UI-Elemente im Hero (Badge, Typo) */
 .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -357,7 +377,9 @@ button:focus-visible {
     opacity: 0.95;
 }
 
-/* Buttons (match header + hero) */
+/* =========================================================
+    9) BUTTONS (einheitliches System)
+   ========================================================= */
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -367,6 +389,7 @@ button:focus-visible {
     font-size: 15px;
     font-weight: 700;
     color: #fff;
+
     background: linear-gradient(135deg, var(--accent), #6366f1);
     box-shadow: 0 18px 52px rgba(0, 0, 0, 0.25);
     transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease;
@@ -386,6 +409,7 @@ button:focus-visible {
     font-size: 15px;
     font-weight: 700;
     color: var(--text);
+
     background: rgba(255, 255, 255, 0.10);
     border: 1px solid rgba(255, 255, 255, 0.16);
     transition: transform .2s ease, background .2s ease, opacity .2s ease;
@@ -397,7 +421,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-    Section divider
+    10) SECTION DIVIDER
    ========================================================= */
 .section-sep {
     height: 1px;
@@ -408,7 +432,6 @@ button:focus-visible {
             rgba(15, 23, 42, 0.12) 50%,
             rgba(99, 102, 241, 0.18) 82%,
             transparent 100%);
-    opacity: 1;
 }
 
 .sep-wrap {
@@ -418,76 +441,40 @@ button:focus-visible {
 }
 
 /* =========================================================
-    Footer
+    11) FOOTER
    ========================================================= */
 .matte-footer {
     background: var(--matte-footer);
     border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
 
-/* Optional view transitions */
+/* Optional: View Transitions (wenn Browser unterstützt) */
 @view-transition {
     navigation: auto;
 }
 
 /* =========================================================
-   Leistungen: Premium media (image overlay + divider)
+    12) LEISTUNGEN / MEDIA (Premium Image Overlay)
    ========================================================= */
-
-/* Обёртка для картинки */
 .media-premium {
     position: relative;
     overflow: hidden;
 }
 
-/* Мягкая “премиум” подсветка + виньетка */
+/* Premium Glow + leichte Vignette (ruhig, hochwertig) */
 .media-premium::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
 
-    /* Сверху лёгкий свет, снизу чуть темнее + едва заметный блю-глоу */
     background:
         radial-gradient(700px 380px at 30% 20%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
         radial-gradient(900px 520px at 80% 30%, rgba(37, 99, 235, 0.14), rgba(37, 99, 235, 0) 60%),
         linear-gradient(180deg, rgba(15, 23, 42, 0.00) 0%, rgba(15, 23, 42, 0.12) 70%, rgba(15, 23, 42, 0.18) 100%);
 }
 
-/* Тонкая линия-разделитель под картинкой (как в продуктовых лендингах) */
-.media-sep {
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-}
-
-/* Чуть приятнее, если картинка темная/контрастная */
-.media-premium img {
-    transform: scale(1.01);
-    transition: transform 260ms ease;
-}
-
-.media-premium:hover img {
-    transform: scale(1.04);
-}
-/* =========================================================
-   Leistungen: Premium media (image overlay + divider)
-   ========================================================= */
-
-.media-premium {
-    position: relative;
-    overflow: hidden;
-}
-
-.media-premium::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(700px 380px at 30% 20%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
-        radial-gradient(900px 520px at 80% 30%, rgba(37, 99, 235, 0.14), rgba(37, 99, 235, 0) 60%),
-        linear-gradient(180deg, rgba(15, 23, 42, 0.00) 0%, rgba(15, 23, 42, 0.12) 70%, rgba(15, 23, 42, 0.18) 100%);
-}
-
+/* Saubere Trennlinie unter dem Bild */
 .media-sep {
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
@@ -501,7 +488,7 @@ button:focus-visible {
     transform: scale(1.04);
 }
 
-/* Внутренняя тонкая рамка на карточке (очень “премиум”) */
+/* Innere "Premium"-Kante (sehr subtil) */
 .panel.premium-card {
     position: relative;
 }
@@ -515,3 +502,6 @@ button:focus-visible {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
     opacity: 0.55;
 }
+/* =========================================================
+    Ende styles.css
+   ========================================================= */
