@@ -454,14 +454,19 @@ button:focus-visible {
 }
 
 /* =========================================================
-    12) LEISTUNGEN / MEDIA (Premium Image Overlay)
+    12) LEISTUNGEN / MEDIA
+    Ziel: Premium-Look, aber Bild bleibt "original" (nicht aufgehellt)
    ========================================================= */
+
 .media-premium {
     position: relative;
     overflow: hidden;
+    /* Schneidet Zoom/Overlays sauber ab */
 }
 
-/* Premium Glow + leichte Vignette (ruhig, hochwertig) */
+/* Overlay:
+    - KEIN weißer Glow (der macht Bilder optisch heller)
+   - nur dezente Vignette + minimaler kühler Akzent für "Tech-Premium" */
 .media-premium::after {
     content: "";
     position: absolute;
@@ -469,16 +474,29 @@ button:focus-visible {
     pointer-events: none;
 
     background:
-        radial-gradient(700px 380px at 30% 20%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
-        radial-gradient(900px 520px at 80% 30%, rgba(37, 99, 235, 0.14), rgba(37, 99, 235, 0) 60%),
-        linear-gradient(180deg, rgba(15, 23, 42, 0.00) 0%, rgba(15, 23, 42, 0.12) 70%, rgba(15, 23, 42, 0.18) 100%);
+        /* Sehr subtile blaue Lichtkante (ohne Aufhellung) */
+        radial-gradient(900px 520px at 80% 30%,
+            rgba(37, 99, 235, 0.10),
+            rgba(37, 99, 235, 0.00) 62%),
+
+        /* Leichte Vignette für bessere Lesbarkeit/Depth */
+        radial-gradient(1200px 900px at 50% 15%,
+            rgba(15, 23, 42, 0.00),
+            rgba(15, 23, 42, 0.18) 70%),
+
+        /* Untere Kante minimal dunkler, wirkt hochwertig */
+        linear-gradient(180deg,
+            rgba(15, 23, 42, 0.00) 0%,
+            rgba(15, 23, 42, 0.10) 68%,
+            rgba(15, 23, 42, 0.16) 100%);
 }
 
-/* Saubere Trennlinie unter dem Bild */
+/* Saubere Trennlinie unter dem Bild (ruhig, premium) */
 .media-sep {
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
+/* Minimaler Zoom für "Lebendigkeit" beim Hover */
 .media-premium img {
     transform: scale(1.01);
     transition: transform 260ms ease;
@@ -488,7 +506,8 @@ button:focus-visible {
     transform: scale(1.04);
 }
 
-/* Innere "Premium"-Kante (sehr subtil) */
+/* Innere "Premium"-Kante:
+   sehr subtiler Inset-Rand, damit Cards teurer wirken */
 .panel.premium-card {
     position: relative;
 }
@@ -502,6 +521,7 @@ button:focus-visible {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
     opacity: 0.55;
 }
+
 /* =========================================================
     Ende styles.css
    ========================================================= */
