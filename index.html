@@ -6,24 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- =========================
-        SEO Basis
-    ========================= -->
+      SEO Basis
+  ========================= -->
     <title>Visual Struktur — Webdesign & Digitalisierung | Hameln</title>
     <meta name="description"
         content="Visual Struktur in Hameln: Webdesign, Digitalisierung, Corporate Design sowie SEO & lokale Sichtbarkeit. Klar strukturiert, sauber umgesetzt." />
 
     <!-- =========================
-        Open Graph (Social Preview)
-    ========================= -->
+      Open Graph (Social Preview)
+  ========================= -->
     <meta property="og:title" content="Visual Struktur — Webdesign & Digitalisierung | Hameln" />
     <meta property="og:description"
         content="Websites und digitale Abläufe, die Ordnung schaffen. Klar strukturiert, sauber umgesetzt." />
     <meta property="og:type" content="website" />
 
     <!-- =========================
-        Tailwind + eigene Styles
-        Hinweis: Du nutzt Tailwind per CDN + deine styles.css Tokens/Komponenten
-    ========================= -->
+      Tailwind + eigene Styles
+      Hinweis: Du nutzt Tailwind per CDN + deine styles.css Tokens/Komponenten
+  ========================= -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -32,14 +32,14 @@
 
     <!-- =========================
         NAV (Matte + Shrink)
-        Ziel: klare Navigation auf separate Seiten (statt Section-Anchor)
+        Ziel: One-Page Navigation + Kontakt als eigene Seite
     ========================= -->
     <nav id="siteNav" class="w-full sticky top-0 z-50 glass-header">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
             <div class="flex items-center justify-between gap-6">
 
                 <!-- Brand -->
-                <a href="./index.html" class="flex items-center gap-3" aria-label="Startseite">
+                <a href="#top" class="flex items-center gap-3" aria-label="Startseite">
                     <img src="images/logo-visual.png" alt="Visual Struktur Logo"
                         class="h-12 md:h-14 lg:h-16 w-auto shrink-0" />
                     <div class="leading-tight">
@@ -52,15 +52,11 @@
                     </div>
                 </a>
 
-
-
-
-                <!-- Desktop Menü (Links auf eigene Unterseiten) -->
+                <!-- Desktop Menü (One-Page Anchors) -->
                 <div class="hidden md:flex items-center gap-7 text-sm font-medium text-[color:var(--muted)]">
-                    <!-- Hinweis: Passe Dateinamen an, wenn du andere Struktur willst -->
-                    <a class="hover:opacity-90" href="./leistungen.html">Leistungen</a>
-                    <a class="hover:opacity-90" href="./branchen.html">Branchen</a>
-                    <a class="hover:opacity-90" href="./ablauf.html">Ablauf</a>
+                    <a class="hover:opacity-90" href="#leistungen">Leistungen</a>
+                    <a class="hover:opacity-90" href="#branchen">Branchen</a>
+                    <a class="hover:opacity-90" href="#ablauf">Ablauf</a>
                     <a class="hover:opacity-90" href="./kontakt.html">Kontakt</a>
                 </div>
 
@@ -80,12 +76,12 @@
                 </button>
             </div>
 
-            <!-- Mobile Menü (Links auf eigene Unterseiten) -->
+            <!-- Mobile Menü -->
             <div id="mobileMenu" class="md:hidden hidden mt-3 panel rounded-2xl p-4">
                 <div class="flex flex-col gap-3 text-sm font-medium text-[color:var(--muted)]">
-                    <a class="hover:opacity-90" href="./leistungen.html">Leistungen</a>
-                    <a class="hover:opacity-90" href="./branchen.html">Branchen</a>
-                    <a class="hover:opacity-90" href="./ablauf.html">Ablauf</a>
+                    <a class="hover:opacity-90" href="#leistungen" data-close-menu>Leistungen</a>
+                    <a class="hover:opacity-90" href="#branchen" data-close-menu>Branchen</a>
+                    <a class="hover:opacity-90" href="#ablauf" data-close-menu>Ablauf</a>
                     <a class="hover:opacity-90" href="./kontakt.html">Kontakt</a>
 
                     <a href="./kontakt.html" class="mt-2 rounded-2xl px-4 py-2.5 text-sm font-semibold text-white"
@@ -97,93 +93,254 @@
         </div>
     </nav>
 
+<!-- =========================
+    HERO (DARK IMAGE) — Premium (Logo + Text)
+========================= -->
+<header class="hero-bg">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="min-h-[86vh] sm:min-h-[78vh] flex items-center py-12 sm:py-16 lg:py-20">
+            <div class="max-w-2xl fade-in">
+
+                <!-- SEO H1 (скрытый, чтобы не дублировать текст логотипа) -->
+                <h1 class="sr-only">Visual Struktur — Webdesign & Digitalisierung in Hameln</h1>
+
+                <!-- Badge -->
+                <div class="hero-badge">
+                    <span class="hero-badge-dot" aria-hidden="true"></span>
+                    Hameln · Deutschland
+                </div>
+
+            <!-- Logo + Brandname -->
+            <div class="mt-6">
+                <div class="inline-flex flex-col items-start">
+                    <img src="images/logo-visual.png" alt="Visual Struktur" width="520" height="180" loading="eager"
+                        decoding="async" fetchpriority="high" class="h-auto w-[260px] sm:w-[320px] lg:w-[380px] select-none"
+                        style="filter: drop-shadow(0 18px 45px rgba(0,0,0,.35));" />
+
+                    <!-- Brandtext unter dem Logo -->
+                    <div class="mt-3 leading-tight">
+                        <div class="brand-title text-[1.35rem] sm:text-[1.6rem] font-semibold text-[color:var(--text)]">
+                            <span class="brand-gradient">Visual</span> Struktur
+                        </div>
+                        <div class="mt-1 text-sm text-[color:var(--muted2)]">
+                            Webdesign · Digitalisierung · SEO
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                <!-- Text unter dem Logo -->
+                <p class="mt-5 hero-sub text-[color:var(--muted)] text-[15px] sm:text-base leading-relaxed">
+                    Premium Webdesign, Digitalisierung und SEO — strukturiert, technisch sauber und auf Anfragen
+                    optimiert.
+                </p>
+
+                <!-- Key-Punkte -->
+                <ul class="mt-6 grid gap-2 text-[15px] text-[color:var(--muted2)]">
+                    <li class="hero-li"><span class="hero-li-dot" aria-hidden="true"></span>Premium Webdesign &amp;
+                        Umsetzung</li>
+                    <li class="hero-li"><span class="hero-li-dot" aria-hidden="true"></span>Formulare, Automationen
+                        &amp; CRM-Logik</li>
+                    <li class="hero-li"><span class="hero-li-dot" aria-hidden="true"></span>SEO &amp; Local (Google
+                        Business)</li>
+                </ul>
+
+                <!-- Primary CTAs -->
+                <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                    <a href="./kontakt.html" class="btn-primary">Projekt anfragen</a>
+                    <a href="#leistungen" class="btn-ghost">Leistungen ansehen</a>
+                </div>
+
+                <!-- Micro-Trust -->
+                <p class="mt-4 text-[13px] text-[color:var(--muted2)]">
+                    Antwort in 24–48 Std. · Transparente Schritte · DSGVO-Basis
+                </p>
+
+                <!-- Quick Links -->
+                <div class="mt-10 grid gap-3 sm:grid-cols-2">
+                    <a href="#leistungen" class="panel rounded-2xl p-4 hover-lift">
+                        <div class="text-sm font-semibold text-[color:var(--text)]">Leistungen</div>
+                        <div class="mt-1 text-sm text-[color:var(--muted)]">Websites, Digitalisierung, SEO, Branding.
+                        </div>
+                    </a>
+
+                    <a href="#branchen" class="panel rounded-2xl p-4 hover-lift">
+                        <div class="text-sm font-semibold text-[color:var(--text)]">Branchen</div>
+                        <div class="mt-1 text-sm text-[color:var(--muted)]">Praxis, Handwerk, Gastro, Kanzlei, Beauty.
+                        </div>
+                    </a>
+
+                    <a href="#ablauf" class="panel rounded-2xl p-4 hover-lift">
+                        <div class="text-sm font-semibold text-[color:var(--text)]">Ablauf</div>
+                        <div class="mt-1 text-sm text-[color:var(--muted)]">Analyse → Konzept → Build → Launch.</div>
+                    </a>
+
+                    <a href="./kontakt.html" class="panel rounded-2xl p-4 hover-lift">
+                        <div class="text-sm font-semibold text-[color:var(--text)]">Kontakt</div>
+                        <div class="mt-1 text-sm text-[color:var(--muted)]">Kurze Anfrage – klarer Vorschlag zurück.
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
     <!-- =========================
-        HERO (DARK IMAGE) — Premium
-        Ziel: Wau-Effekt + klare CTA Richtung Unterseiten
-    ========================= -->
-    <header class="hero-bg">
+      LEISTUNGEN (Preview auf der Startseite)
+      Ziel: Sofort zeigen, wofür ihr steht + klare Next Steps
+  ========================= -->
+    <section id="leistungen" class="scroll-mt-28">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+
+            <!-- Section Head -->
+            <div class="max-w-2xl">
+                <div class="text-xs font-semibold tracking-wide text-[color:var(--muted2)] uppercase">
+                    Leistungen
+                </div>
+                <h2 class="mt-2 text-2xl sm:text-3xl font-semibold text-[color:var(--text)]">
+                    Bausteine für eine saubere digitale Struktur
+                </h2>
+                <p class="mt-3 text-[15px] text-[color:var(--muted)]">
+                    Modular gedacht: Du bekommst genau das, was du brauchst — vom schnellen Premium-Landing bis zu
+                    Prozessen mit Automationen.
+                </p>
+            </div>
+
+            <!-- Cards -->
+            <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <a href="./leistungen.html#webdesign" class="panel rounded-2xl p-5 hover-lift">
+                    <div class="text-sm font-semibold text-[color:var(--text)]">Webdesign &amp; Build</div>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">
+                        Premium Layout, klare UX, schnelle Performance, saubere Komponenten. Mobil-first.
+                    </p>
+                    <div class="mt-4 text-xs text-[color:var(--muted2)]">Landing · Business-Website · Premium</div>
+                </a>
+
+                <a href="./leistungen.html#seo" class="panel rounded-2xl p-5 hover-lift">
+                    <div class="text-sm font-semibold text-[color:var(--text)]">SEO &amp; Local</div>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">
+                        Struktur, Inhalte, Meta, Schema, Pagespeed — plus Google Business Optimierung.
+                    </p>
+                    <div class="mt-4 text-xs text-[color:var(--muted2)]">On-Page · Local · Sichtbarkeit</div>
+                </a>
+
+                <a href="./leistungen.html#digitalisierung" class="panel rounded-2xl p-5 hover-lift">
+                    <div class="text-sm font-semibold text-[color:var(--text)]">Digitalisierung</div>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">
+                        Formulare, Termin-Logik, Lead-Routing, CRM-Übergabe — weniger Reibung, mehr Klarheit.
+                    </p>
+                    <div class="mt-4 text-xs text-[color:var(--muted2)]">Formulare · Automationen · Prozesse</div>
+                </a>
+
+                <a href="./leistungen.html#branding" class="panel rounded-2xl p-5 hover-lift">
+                    <div class="text-sm font-semibold text-[color:var(--text)]">Branding &amp; Assets</div>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">
+                        Logo-Refresh, Farb-/Typo-System, Social Vorlagen, Print-Basics — konsistent &amp; hochwertig.
+                    </p>
+                    <div class="mt-4 text-xs text-[color:var(--muted2)]">CI/Styleguide · Vorlagen</div>
+                </a>
+
+                <a href="./leistungen.html#wartung" class="panel rounded-2xl p-5 hover-lift">
+                    <div class="text-sm font-semibold text-[color:var(--text)]">Wartung &amp; Betreuung</div>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">
+                        Updates, Backups, Monitoring, kleine Iterationen — deine Seite bleibt stabil und schnell.
+                    </p>
+                    <div class="mt-4 text-xs text-[color:var(--muted2)]">Sicherheit · Pflege · Support</div>
+                </a>
+
+                <a href="./leistungen.html#pakete" class="panel rounded-2xl p-5 hover-lift">
+                    <div class="text-sm font-semibold text-[color:var(--text)]">Pakete &amp; Preise</div>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">
+                        Klarer Rahmen, transparente Schritte. Du bekommst ein Angebot passend zu Ziel und Umfang.
+                    </p>
+                    <div class="mt-4 text-xs text-[color:var(--muted2)]">Starter · Growth · Pro</div>
+                </a>
+            </div>
+
+            <!-- CTA Row -->
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                <a href="./leistungen.html" class="btn-ghost">Alle Leistungen im Detail</a>
+                <a href="./kontakt.html" class="btn-primary">Projekt anfragen</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- =========================
+      ABLAUF (Kurz, sehr klar)
+  ========================= -->
+    <section id="ablauf" class="scroll-mt-28">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-14 sm:pb-16">
+            <div class="max-w-2xl">
+                <div class="text-xs font-semibold tracking-wide text-[color:var(--muted2)] uppercase">
+                    Ablauf
+                </div>
+                <h2 class="mt-2 text-2xl sm:text-3xl font-semibold text-[color:var(--text)]">
+                    Wenig Meetings. Klare Schritte. Saubere Übergabe.
+                </h2>
+                <p class="mt-3 text-[15px] text-[color:var(--muted)]">
+                    Du bekommst Struktur, Dokumentation und einen nachvollziehbaren Prozess — ohne Chaos.
+                </p>
+            </div>
+
+            <div class="mt-8 grid gap-4 lg:grid-cols-4">
+                <div class="panel rounded-2xl p-5">
+                    <div class="text-sm font-semibold text-[color:var(--text)]">1) Analyse</div>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Ziele, Zielgruppe, Inhalte, Konkurrenz,
+                        Tech-Setup.</p>
+                </div>
+                <div class="panel rounded-2xl p-5">
+                    <div class="text-sm font-semibold text-[color:var(--text)]">2) Konzept</div>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Struktur, Wireframe, Copy-Bausteine,
+                        SEO-Fundament.</p>
+                </div>
+                <div class="panel rounded-2xl p-5">
+                    <div class="text-sm font-semibold text-[color:var(--text)]">3) Build</div>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Umsetzung, Performance, Forms/Tracking, QA.</p>
+                </div>
+                <div class="panel rounded-2xl p-5">
+                    <div class="text-sm font-semibold text-[color:var(--text)]">4) Launch</div>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">Go-live, Übergabe, Wartungsoptionen, Iterationen.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <a href="./ablauf.html" class="btn-ghost">Ablauf im Detail</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================
+      FINAL CTA (Kurz + hart)
+  ========================= -->
+    <section class="pb-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="min-h-[86vh] sm:min-h-[78vh] flex items-center py-12 sm:py-16 lg:py-20">
-                <div class="max-w-2xl fade-in">
-
-                    <!-- Badge -->
-                    <div class="hero-badge">
-                        <span class="hero-badge-dot" aria-hidden="true"></span>
-                        Hameln · Deutschland
-                    </div>
-
-                    <!-- Headline -->
-                    <h1 class="h-display hero-h1 text-[color:var(--text)]">
-                        Webdesign &amp; Digitalisierung<br class="hidden sm:block" />
-                        <span class="text-[color:var(--text)]/95">für Deutsche Unternehmen.</span>
-                    </h1>
-
-                    <!-- Subline -->
-                    <p class="mt-5 hero-sub text-[color:var(--muted)]">
-                        Strukturiert. Schnell umgesetzt. Technisch sauber — mit Fokus auf Anfragen und
-                        Google-Sichtbarkeit.
+            <div
+                class="panel rounded-3xl p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <div class="max-w-2xl">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-[color:var(--text)]">
+                        Bereit für eine Website, die wirklich Anfragen bringt?
+                    </h3>
+                    <p class="mt-2 text-sm text-[color:var(--muted)]">
+                        Kurze Anfrage senden — du bekommst einen klaren Vorschlag mit nächsten Schritten.
                     </p>
-
-                    <!-- Key-Punkte (kurz, klar, ohne „Pillen“) -->
-                    <ul class="mt-6 grid gap-2 text-[15px] text-[color:var(--muted2)]">
-                        <li class="hero-li"><span class="hero-li-dot" aria-hidden="true"></span>Webdesign &amp;
-                            Umsetzung</li>
-                        <li class="hero-li"><span class="hero-li-dot" aria-hidden="true"></span>Formulare &amp;
-                            Automationen</li>
-                        <li class="hero-li"><span class="hero-li-dot" aria-hidden="true"></span>SEO &amp; Local (Google)
-                        </li>
-                    </ul>
-
-                    <!-- Primary CTAs -->
-                    <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                        <a href="./kontakt.html" class="btn-primary">Projekt anfragen</a>
-                        <a href="./leistungen.html" class="btn-ghost">Leistungen ansehen</a>
-                    </div>
-
-                    <!-- Micro-Trust -->
-                    <p class="mt-4 text-[13px] text-[color:var(--muted2)]">
-                        Antwort in 24–48 Std. · Transparente Schritte · DSGVO-Basis
-                    </p>
-
-                    <!-- =========================
-                        Quick Links (Seiten-Shortcuts)
-                        Ziel: Nutzer sofort „weiterleiten“ ohne scroll-lastige Startseite
-                    ========================= -->
-                    <div class="mt-10 grid gap-3 sm:grid-cols-2">
-                        <a href="./leistungen.html" class="panel rounded-2xl p-4 hover-lift">
-                            <div class="text-sm font-semibold text-[color:var(--text)]">Leistungen</div>
-                            <div class="mt-1 text-sm text-[color:var(--muted)]">Websites, Digitalisierung, SEO,
-                                Branding.</div>
-                        </a>
-
-                        <a href="./branchen.html" class="panel rounded-2xl p-4 hover-lift">
-                            <div class="text-sm font-semibold text-[color:var(--text)]">Branchen</div>
-                            <div class="mt-1 text-sm text-[color:var(--muted)]">Praxis, Handwerk, Gastro, Kanzlei,
-                                Beauty.</div>
-                        </a>
-
-                        <a href="./ablauf.html" class="panel rounded-2xl p-4 hover-lift">
-                            <div class="text-sm font-semibold text-[color:var(--text)]">Ablauf</div>
-                            <div class="mt-1 text-sm text-[color:var(--muted)]">Analyse → Konzept → Build → Launch.
-                            </div>
-                        </a>
-
-                        <a href="./kontakt.html" class="panel rounded-2xl p-4 hover-lift">
-                            <div class="text-sm font-semibold text-[color:var(--text)]">Kontakt</div>
-                            <div class="mt-1 text-sm text-[color:var(--muted)]">Kurze Anfrage – klarer Vorschlag zurück.
-                            </div>
-                        </a>
-                    </div>
-
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="./kontakt.html" class="btn-primary">Projekt anfragen</a>
+                    <a href="./leistungen.html#pakete" class="btn-ghost">Pakete ansehen</a>
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- =========================
-        FOOTER (Dark)
-        Ziel: Trust + Rechtliches + klare Navigation
-    ========================= -->
+      FOOTER (Dark)
+  ========================= -->
     <footer class="matte-footer">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
             <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -200,7 +357,6 @@
 
                 <!-- Footer Links -->
                 <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/75">
-                    <!-- Hinweis: Verlinke hier auf deine echten Rechtstexte -->
                     <a href="./impressum.html" class="hover:underline">Impressum</a>
                     <a href="./datenschutz.html" class="hover:underline">Datenschutz</a>
                     <a href="./agb.html" class="hover:underline">AGB</a>
@@ -214,9 +370,8 @@
     </footer>
 
     <!-- =========================
-        JS: Footer Jahr + Mobile Menu + Shrink Nav
-        Hinweis: bewusst minimal gehalten
-    ========================= -->
+      JS: Footer Jahr + Mobile Menu + Shrink Nav + Close on click
+  ========================= -->
     <script>
         // Aktuelles Jahr im Footer setzen
         document.getElementById("year").textContent = new Date().getFullYear();
@@ -224,11 +379,20 @@
         // Mobile Menü öffnen/schließen
         const btn = document.getElementById("menuBtn");
         const menu = document.getElementById("mobileMenu");
+
         if (btn && menu) {
             btn.addEventListener("click", () => {
                 const isOpen = !menu.classList.contains("hidden");
                 menu.classList.toggle("hidden");
                 btn.setAttribute("aria-expanded", String(!isOpen));
+            });
+
+            // Mobile Menü schließen, wenn ein Anchor-Link geklickt wird
+            menu.querySelectorAll("[data-close-menu]").forEach(a => {
+                a.addEventListener("click", () => {
+                    menu.classList.add("hidden");
+                    btn.setAttribute("aria-expanded", "false");
+                });
             });
         }
 
