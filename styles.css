@@ -1,385 +1,191 @@
 /* =========================================================
-    Visual Struktur — Premium Theme (DE)
-    Fokus: Tokens → Header/Nav → Panels/Cards → Hero → Buttons
-   ========================================================= */
+  Visual Struktur — Premium Light (Lux)
+  - Split hero layout, anthrazit buttons, subtle motion
+========================================================= */
 
-/* =========================================================
-    1) FONTS
-   ========================================================= */
-/* Hinweis (wichtig): @import in CSS ist ok, aber für Performance besser:
-    <link rel="preconnect"> + <link href="..." rel="stylesheet"> im <head>.
-    (LCP/CLS wird oft stabiler) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-/* =========================================================
-    2) DESIGN TOKENS (globales Theme)
-   ========================================================= */
 :root {
-    /* Schriften */
-    --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-ui: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+    --font-display: 'Space Grotesk', system-ui, -apple-system, Segoe UI, sans-serif;
 
-    /* Base-Hintergründe (hell, premium) */
-    --bg: #f6f8fc;
-    --bg2: #ffffff;
+    --bg: #f6f8fb;
+    --surface: rgba(255, 255, 255, 0.72);
+    --stroke: rgba(15, 23, 42, 0.10);
 
-    /* Flächen / Panels (Glass / Matte) */
-    --panel: rgba(255, 255, 255, 0.92);
-    --panel-strong: rgba(255, 255, 255, 0.96);
-
-    /* Linien / Borders */
-    --line: rgba(15, 23, 42, 0.10);
-    --line2: rgba(15, 23, 42, 0.07);
-
-    /* Typografie */
     --text: #0f172a;
-    /* Haupttext */
     --muted: rgba(15, 23, 42, 0.72);
-    /* Sekundärtext */
-    --muted2: rgba(15, 23, 42, 0.62);
+    --muted2: rgba(15, 23, 42, 0.58);
 
-    /* Accent (Brand-Farbe) */
-    --accent: #2563eb;
-    /* blue-600 */
-    --accent-strong: #1d4ed8;
-    /* blue-700 */
+    /* Anthrazit */
+    --accent: #111827;
+    --accent-strong: #0b1220;
 
-    /* Schatten (Card-Depth) */
-    --shadow: 0 16px 44px rgba(15, 23, 42, 0.10);
-    --shadow2: 0 10px 26px rgba(15, 23, 42, 0.08);
+    --shadow1: 0 10px 28px rgba(15, 23, 42, 0.10);
+    --shadow2: 0 18px 50px rgba(15, 23, 42, 0.12);
 
-    /* Matte Header/Footer */
-    --matte-header: #ffffff;
-    --matte-footer: #0f172a;
+    --radius: 18px;
 }
 
-/* =========================================================
-    3) BASE / RESET
-   ========================================================= */
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100%;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-ui);
-
-    /* Rendering: sauberer Look */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.smooth-scroll {
+html {
     scroll-behavior: smooth;
 }
 
-/* Display-Font nur dort, wo "Brand/Headlines" */
-.font-display,
-.h-display,
+body {
+    font-family: var(--font-ui);
+    background: var(--bg);
+    color: var(--text);
+}
+
+.bg-app {
+    background:
+        radial-gradient(1200px 650px at 20% 0%, rgba(59, 130, 246, .08), rgba(255, 255, 255, 0) 60%),
+        radial-gradient(1100px 700px at 80% 0%, rgba(99, 102, 241, .07), rgba(255, 255, 255, 0) 60%),
+        linear-gradient(180deg, #f6f8fb 0%, #f3f6fb 50%, #f6f8fb 100%);
+}
+
 .brand-title {
     font-family: var(--font-display);
 }
 
-.h-display {
-    letter-spacing: -0.02em;
+.brand-gradient {
+    background: linear-gradient(135deg, #0f172a, #374151);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-/* Premium-Tech Feeling */
-.brand-title {
-    letter-spacing: -0.01em;
-    transition: font-size 220ms ease, letter-spacing 220ms ease;
+/* Optional better wrapping */
+.text-balance {
+    text-wrap: balance;
 }
 
-/* Zahlen optisch stabil (Preise, KPIs, Zeiten) */
-.num-tabular {
-    font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum" 1, "lnum" 1;
+/* Panels */
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--stroke);
+    border-radius: calc(var(--radius) + 6px);
+    box-shadow: var(--shadow1);
+    backdrop-filter: blur(12px);
 }
 
-/* =========================================================
-    4) BACKGROUND TEXTURE (Light Premium)
-   ========================================================= */
-.bg-grid {
-    /* Erklärung: 2–3 Radial-Glows + sanfter Verlauf.
-     Das macht "Premium", ohne laut zu wirken. */
-    background:
-        radial-gradient(900px 520px at 18% 12%, rgba(37, 99, 235, 0.10), transparent 55%),
-        radial-gradient(900px 540px at 86% 22%, rgba(14, 165, 233, 0.10), transparent 55%),
-        radial-gradient(900px 620px at 60% 92%, rgba(99, 102, 241, 0.08), transparent 58%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(246, 248, 252, 1));
+.card-premium {
+    box-shadow:
+        0 18px 55px rgba(15, 23, 42, 0.10),
+        0 1px 0 rgba(255, 255, 255, 0.70) inset;
 }
 
-/* =========================================================
-    5) HEADER / NAV (Matte + Shrink)
-   ========================================================= */
+/* NAV */
 .glass-header {
-    background: var(--matte-header);
-    border-bottom: 1px solid var(--line);
-
-    /* Matte-Style: kein blur, wirkt seriöser */
-    backdrop-filter: none;
-    box-shadow: none;
-
-    transition: padding 220ms ease, box-shadow 220ms ease, background 220ms ease;
+    background: rgba(255, 255, 255, 0.72);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(14px);
 }
 
 .nav-wrap {
-    padding-top: 14px;
-    padding-bottom: 14px;
-    transition: padding 220ms ease;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: padding .22s ease;
 }
 
-/* Wird per JS/Scroll gesetzt (class="nav-shrink") */
 .nav-shrink .nav-wrap {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 
-.nav-shrink .brand-title {
-    font-size: 1.35rem;
-}
-
-/* Optional: Schatten nur beim Scroll (class="nav-shadow") */
 .nav-shadow {
-    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.10);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.10);
 }
 
-/* =========================================================
-    6) PANELS / CARDS (Wiederverwendbar)
-   ========================================================= */
-.panel {
-    background: var(--panel);
-    border: 1px solid var(--line2);
-    box-shadow: var(--shadow2);
-}
-
-.panel-strong {
-    background: var(--panel-strong);
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow);
-}
-
-/* Einheitliche Medienhöhe für Karten (sauberer Grid) */
-.card-media {
-    height: 170px;
-    background: rgba(15, 23, 42, 0.04);
-    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
-}
-
-.card-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Kleine Icon-Badges (konsistente Formensprache) */
-.mini-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 12px;
-    color: rgba(15, 23, 42, 0.70);
-    background: rgba(37, 99, 235, 0.10);
-    border: 1px solid rgba(37, 99, 235, 0.18);
-}
-
-/* =========================================================
-    7) INTERACTIONS / ACCESSIBILITY
-   ========================================================= */
-.fade-in {
-    animation: fadeIn 0.85s ease-out both;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hover-lift {
-    transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease, border-color 0.25s ease;
-}
-
-.hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 52px rgba(15, 23, 42, 0.12);
-    border-color: rgba(15, 23, 42, 0.14);
-}
-
-/* Tastatur-Fokus (sehr wichtig für UX/Barrierefreiheit) */
-a:focus-visible,
-button:focus-visible {
-    outline: 2px solid rgba(37, 99, 235, 0.45);
-    outline-offset: 3px;
-    border-radius: 12px;
-}
-
-/* Reduced Motion respektieren */
-@media (prefers-reduced-motion: reduce) {
-    .fade-in {
-        animation: none !important;
-    }
-
-    .hover-lift {
-        transition: none !important;
-    }
-
-    .smooth-scroll {
-        scroll-behavior: auto;
-    }
-}
-
-/* =========================================================
-    8) HERO (Dark Image + Overlay)
-   ========================================================= */
+/* HERO (Light Lux, no image) */
 .hero-bg {
     position: relative;
     isolation: isolate;
-    min-height: 100vh;
+    overflow: hidden;
 
-    background-image: url("images/hero-new.webp");
-    background-size: cover;
-    background-position: right center;
-    background-repeat: no-repeat;
-
-    /* Wichtig: lokale Typo-Farben NUR für Hero überschreiben */
-    --text: #f9fafb;
-    --muted: rgba(249, 250, 251, 0.78);
-    --muted2: rgba(249, 250, 251, 0.66);
+    background:
+        radial-gradient(1000px 600px at 18% 15%, rgba(59, 130, 246, 0.10), rgba(255, 255, 255, 0) 60%),
+        radial-gradient(1100px 650px at 78% 22%, rgba(99, 102, 241, 0.10), rgba(255, 255, 255, 0) 62%),
+        radial-gradient(900px 700px at 60% 90%, rgba(56, 189, 248, 0.08), rgba(255, 255, 255, 0) 58%),
+        linear-gradient(180deg, #f8fafc 0%, #f3f6fb 45%, #eef2f7 100%);
 }
 
-/* Overlay: sorgt für Lesbarkeit + Premium Glow */
 .hero-bg::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
-
+    pointer-events: none;
     background:
-        radial-gradient(900px 520px at 78% 45%,
-            rgba(37, 99, 235, 0.18),
-            rgba(37, 99, 235, 0.00) 62%),
-
-        radial-gradient(1200px 900px at 40% 30%,
-            rgba(0, 0, 0, 0.08),
-            rgba(0, 0, 0, 0.55) 72%),
-
-        linear-gradient(90deg,
-            rgba(0, 0, 0, 0.72) 0%,
-            rgba(0, 0, 0, 0.56) 38%,
-            rgba(0, 0, 0, 0.34) 68%,
-            rgba(0, 0, 0, 0.18) 100%);
+        radial-gradient(1100px 700px at 50% 35%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0) 55%),
+        radial-gradient(1400px 900px at 50% 50%, rgba(0, 0, 0, 0) 42%, rgba(15, 23, 42, 0.10) 100%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0) 55%, rgba(15, 23, 42, 0.08) 100%);
 }
 
-/* Mobile: andere Bildposition + stärkeres Overlay */
-@media (max-width: 640px) {
-    .hero-bg {
-        background-position: 72% center;
-        min-height: 92vh;
-    }
-
-    .hero-bg::before {
-        background:
-            radial-gradient(700px 420px at 70% 35%,
-                rgba(37, 99, 235, 0.14),
-                rgba(37, 99, 235, 0.00) 65%),
-
-            radial-gradient(900px 800px at 50% 25%,
-                rgba(0, 0, 0, 0.10),
-                rgba(0, 0, 0, 0.62) 74%),
-
-            linear-gradient(90deg,
-                rgba(0, 0, 0, 0.76) 0%,
-                rgba(0, 0, 0, 0.60) 48%,
-                rgba(0, 0, 0, 0.36) 78%,
-                rgba(0, 0, 0, 0.22) 100%);
-    }
+.hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: repeating-linear-gradient(90deg,
+            rgba(15, 23, 42, 0.03) 0px,
+            rgba(15, 23, 42, 0.03) 1px,
+            rgba(15, 23, 42, 0.00) 12px,
+            rgba(15, 23, 42, 0.00) 24px);
+    opacity: 0.18;
+    mix-blend-mode: overlay;
 }
 
-/* Kleine UI-Elemente im Hero (Badge, Typo) */
+/* Badge */
 .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     padding: 8px 12px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.10);
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    color: rgba(255, 255, 255, 0.82);
-    font-size: 12.5px;
-    font-weight: 600;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+    color: rgba(15, 23, 42, 0.80);
+    font-size: 13px;
+    font-weight: 700;
 }
 
 .hero-badge-dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 999px;
-    background: rgba(99, 102, 241, 0.95);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18);
+    background: rgba(17, 24, 39, 0.70);
+    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.10);
 }
 
-.hero-h1 {
-    margin-top: 18px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.08;
-    font-size: 40px;
-}
-
-@media (min-width: 640px) {
-    .hero-h1 {
-        font-size: 52px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .hero-h1 {
-        font-size: 64px;
-    }
-}
-
-.hero-sub {
-    font-size: 16px;
-    line-height: 1.7;
-}
-
-@media (min-width: 640px) {
-    .hero-sub {
-        font-size: 18px;
-    }
-}
-
-.hero-li {
-    display: flex;
+/* Premium pills */
+.pill {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-}
-
-.hero-li-dot {
-    width: 6px;
-    height: 6px;
+    padding: 8px 12px;
     border-radius: 999px;
-    background: rgba(99, 102, 241, 0.95);
-    opacity: 0.95;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+    color: rgba(15, 23, 42, 0.78);
+    font-size: 13px;
+    font-weight: 800;
 }
 
-/* =========================================================
-    9) BUTTONS (einheitliches System)
-   ========================================================= */
+/* Logo */
+.hero-logo {
+    height: auto;
+    transform: translateZ(0);
+    filter: drop-shadow(0 22px 55px rgba(15, 23, 42, .22));
+}
+
+.hero-logo--split {
+    width: min(460px, 86vw);
+}
+
+/* Buttons (Anthrazit) */
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -387,17 +193,27 @@ button:focus-visible {
     border-radius: 16px;
     padding: 12px 20px;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
     color: #fff;
 
-    background: linear-gradient(135deg, var(--accent), #6366f1);
-    box-shadow: 0 18px 52px rgba(0, 0, 0, 0.25);
-    transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.00) 45%),
+        linear-gradient(135deg, var(--accent), var(--accent-strong));
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow:
+        0 18px 48px rgba(15, 23, 42, 0.18),
+        0 1px 0 rgba(255, 255, 255, 0.18) inset;
+
+    transition: transform .20s ease, box-shadow .20s ease, filter .20s ease;
 }
 
 .btn-primary:hover {
-    opacity: .96;
     transform: translateY(-1px);
+    filter: brightness(1.02);
+    box-shadow:
+        0 22px 60px rgba(15, 23, 42, 0.22),
+        0 1px 0 rgba(255, 255, 255, 0.18) inset;
 }
 
 .btn-ghost {
@@ -407,124 +223,122 @@ button:focus-visible {
     border-radius: 16px;
     padding: 12px 20px;
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--text);
 
-    background: rgba(255, 255, 255, 0.10);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    transition: transform .2s ease, background .2s ease, opacity .2s ease;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(15, 23, 42, 0.14);
+
+    box-shadow:
+        0 10px 26px rgba(15, 23, 42, 0.08),
+        0 1px 0 rgba(255, 255, 255, 0.70) inset;
+
+    transition: transform .20s ease, background .20s ease, box-shadow .20s ease, border-color .20s ease;
 }
 
 .btn-ghost:hover {
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.90);
+    border-color: rgba(15, 23, 42, 0.18);
     transform: translateY(-1px);
+    box-shadow:
+        0 14px 34px rgba(15, 23, 42, 0.10),
+        0 1px 0 rgba(255, 255, 255, 0.70) inset;
 }
 
-/* =========================================================
-    10) SECTION DIVIDER
-   ========================================================= */
-.section-sep {
-    height: 1px;
-    width: 100%;
-    background: linear-gradient(90deg,
-            transparent 0%,
-            rgba(37, 99, 235, 0.22) 18%,
-            rgba(15, 23, 42, 0.12) 50%,
-            rgba(99, 102, 241, 0.18) 82%,
-            transparent 100%);
+/* Focus (non-blue) */
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible,
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid rgba(15, 23, 42, 0.35);
+    outline-offset: 3px;
+    border-radius: 18px;
 }
 
-.sep-wrap {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+/* Premium hover lift */
+.hover-lift {
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 
-/* =========================================================
-    11) FOOTER
-   ========================================================= */
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 70px rgba(15, 23, 42, 0.14);
+    border-color: rgba(15, 23, 42, 0.14);
+}
+
+/* Reveal (SAFE): without JS visible, with JS animated */
+.reveal {
+    opacity: 1;
+    transform: none;
+}
+
+.js .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.js .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Small premium motion (logo only, very subtle) */
+@keyframes floaty {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@media (min-width: 768px) {
+    .hero-logo {
+        animation: floaty 8s ease-in-out infinite;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .hero-logo {
+        animation: none;
+    }
+
+    .hover-lift,
+    .btn-primary,
+    .btn-ghost {
+        transition: none;
+    }
+}
+
+/* Footer */
 .matte-footer {
-    background: var(--matte-footer);
-    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    background: linear-gradient(180deg, #0b1220 0%, #050913 100%);
 }
 
-/* Optional: View Transitions (wenn Browser unterstützt) */
-@view-transition {
-    navigation: auto;
-}
-
-/* =========================================================
-    12) LEISTUNGEN / MEDIA
-    Ziel: Premium-Look, aber Bild bleibt "original" (nicht aufgehellt)
-   ========================================================= */
-
-.media-premium {
-    position: relative;
+/* sr-only helper (если вдруг Tailwind CDN не подхватит) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
     overflow: hidden;
-    /* Schneidet Zoom/Overlays sauber ab */
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
-
-/* Overlay:
-    - KEIN weißer Glow (der macht Bilder optisch heller)
-   - nur dezente Vignette + minimaler kühler Akzent für "Tech-Premium" */
-.media-premium::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-
-    background:
-        /* Sehr subtile blaue Lichtkante (ohne Aufhellung) */
-        radial-gradient(900px 520px at 80% 30%,
-            rgba(37, 99, 235, 0.10),
-            rgba(37, 99, 235, 0.00) 62%),
-
-        /* Leichte Vignette für bessere Lesbarkeit/Depth */
-        radial-gradient(1200px 900px at 50% 15%,
-            rgba(15, 23, 42, 0.00),
-            rgba(15, 23, 42, 0.18) 70%),
-
-        /* Untere Kante minimal dunkler, wirkt hochwertig */
-        linear-gradient(180deg,
-            rgba(15, 23, 42, 0.00) 0%,
-            rgba(15, 23, 42, 0.10) 68%,
-            rgba(15, 23, 42, 0.16) 100%);
-}
-
-/* Saubere Trennlinie unter dem Bild (ruhig, premium) */
-.media-sep {
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-}
-
-/* Minimaler Zoom für "Lebendigkeit" beim Hover */
-.media-premium img {
-    transform: scale(1.01);
-    transition: transform 260ms ease;
-}
-
-.media-premium:hover img {
-    transform: scale(1.04);
-}
-
-/* Innere "Premium"-Kante:
-   sehr subtiler Inset-Rand, damit Cards teurer wirken */
-.panel.premium-card {
-    position: relative;
-}
-
-.panel.premium-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
-    opacity: 0.55;
-}
-/* Clean image: no overlay, no extra background */
-.b-media { background: none !important; }
-.b-media::after { content: none !important; }
-
-/* =========================================================
-    Ende styles.css
-   ========================================================= */
