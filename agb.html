@@ -5,86 +5,137 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>AGB — Visual Struktur</title>
+    <title>AGB | Visual Struktur</title>
     <meta name="description" content="Allgemeine Geschäftsbedingungen (AGB) von Visual Struktur." />
-    <meta name="robots" content="noindex,follow" />
+    <meta name="robots" content="noindex, follow" />
 
-    <!-- Tailwind (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Your CSS -->
-    <link rel="stylesheet" href="styles.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --muted: rgba(15, 23, 42, .72);
+            --muted2: rgba(15, 23, 42, .62);
+            --line: rgba(15, 23, 42, .10);
+
+            --brand1: #2563eb;
+            --brand2: #06b6d4;
+        }
+
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* ===== Header (Glass) ===== */
+        .glass-header {
+            background: rgba(255, 255, 255, .70);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .nav-wrap {
+            height: 76px;
+        }
+
+        .brand-title {
+            letter-spacing: -0.02em;
+        }
+
+        .brand-gradient {
+            background: linear-gradient(90deg, var(--brand1), var(--brand2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ===== Footer (Matte) ===== */
+        .matte-footer {
+            background:
+                radial-gradient(1200px 600px at 20% 0%,
+                    rgba(37, 99, 235, .16),
+                    rgba(2, 6, 23, 0) 55%),
+                radial-gradient(900px 520px at 85% 10%,
+                    rgba(6, 182, 212, .12),
+                    rgba(2, 6, 23, 0) 60%),
+                linear-gradient(180deg, #0b1220 0%, #070b14 100%);
+            border-top: 1px solid rgba(255, 255, 255, .10);
+        }
+
+        .footer-gradient {
+            background: linear-gradient(90deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .70));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
 </head>
 
-<body class="bg-grid smooth-scroll min-h-screen text-slate-900">
-    <a href="#content"
-        class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[999] focus:rounded-xl focus:bg-white focus:px-4 focus:py-2 focus:shadow-lg">
-        Zum Inhalt springen
-    </a>
+<body class="min-h-full bg-slate-50 text-slate-800">
 
-    <!-- NAV (same look) -->
-    <nav id="siteNav" class="glass-header sticky top-0 z-50">
-        <div class="nav-wrap mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between gap-4">
-                <a href="index.html#top" class="flex items-center gap-3" aria-label="Startseite">
-                    <div
-                        class="h-10 w-10 rounded-2xl bg-blue-600/10 border border-blue-600/15 flex items-center justify-center text-blue-700 font-semibold">
-                        VS
-                    </div>
+    <!-- =========================
+        NAV (wie index)
+    ========================= -->
+    <nav id="siteNav" class="w-full sticky top-0 z-50 glass-header">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
+            <div class="h-full flex items-center justify-between gap-6">
+
+                <!-- Brand -->
+                <a href="./index.html" class="flex items-center gap-3" aria-label="Startseite">
+                    <img src="images/logo-visual.png" alt="Visual Struktur Logo"
+                        class="h-12 md:h-14 lg:h-16 w-auto shrink-0" />
                     <div class="leading-tight">
-                        <div class="brand-title text-[1.5rem] sm:text-[1.65rem] font-semibold text-slate-900">
-                            Visual Struktur
+                        <div class="brand-title text-[1.25rem] md:text-2xl font-semibold text-[color:var(--text)]">
+                            <span class="brand-gradient">Visual</span> Struktur
                         </div>
-                        <div class="text-[12.5px] sm:text-[13px] text-slate-600">
+                        <div class="text-xs md:text-sm text-[color:var(--muted2)]">
                             Webdesign · Digitalisierung · SEO
                         </div>
                     </div>
                 </a>
 
-                <div class="hidden lg:flex items-center gap-6">
-                    <a class="text-[14px] font-medium text-slate-700 hover:text-slate-900"
-                        href="index.html#leistungen">Leistungen</a>
-                    <a class="text-[14px] font-medium text-slate-700 hover:text-slate-900"
-                        href="index.html#kontakt">Kontakt</a>
-                    <a href="index.html#kontakt" class="btn-primary"
-                        style="border-radius:14px;padding:10px 16px;font-size:14px;">
-                        Projekt anfragen
-                    </a>
+                <!-- Desktop Menu (minimal; при желании заменишь на точный как в index) -->
+                <div class="hidden md:flex items-center gap-6 text-sm text-[color:var(--muted)]">
+                    <a href="./leistungen.html" class="hover:text-[color:var(--text)]">Leistungen</a>
+                    <a href="./branchen.html" class="hover:text-[color:var(--text)]">Branchen</a>
+                    <a href="./cases.html" class="hover:text-[color:var(--text)]">Cases</a>
+                    <a href="./kontakt.html" class="hover:text-[color:var(--text)]">Kontakt</a>
                 </div>
 
-                <a href="index.html#kontakt"
-                    class="lg:hidden inline-flex items-center justify-center rounded-2xl px-3 py-2 border border-slate-200 bg-white/80 hover:bg-white transition">
-                    Kontakt
-                </a>
             </div>
         </div>
     </nav>
 
-    <!-- CONTENT -->
-    <main id="content" class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+    <!-- =========================
+        CONTENT
+    ========================= -->
+    <main class="max-w-4xl mx-auto px-6 py-12 md:py-16">
         <header class="mb-8">
-            <h1 class="h-display text-[32px] sm:text-[40px] tracking-[-0.02em] text-slate-900">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-[color:var(--text)]">
                 Allgemeine Geschäftsbedingungen (AGB)
             </h1>
-            <p class="mt-3 text-[14.5px] sm:text-[15.5px] leading-relaxed text-slate-600">
-                Stand: <span id="date2"></span>
+
+            <p class="mt-3 text-sm sm:text-base text-slate-600">
+                Stand: 23.12.2025
             </p>
 
-            <div class="mt-4 panel rounded-[22px] p-5">
-                <p class="text-[14px] leading-relaxed text-slate-600">
+            <div class="mt-4 rounded-2xl border border-slate-200 bg-white/70 p-5 shadow-sm">
+                <p class="text-sm leading-relaxed text-slate-600">
                     Hinweis: Diese Vorlage ist eine allgemeine Basis für Deutschland und ersetzt keine Rechtsberatung.
-                    Lass AGB/Impressum/Datenschutz idealerweise von einer Kanzlei prüfen, besonders wenn du B2C
-                    anbietest,
+                    Lass AGB/Impressum/Datenschutz idealerweise von einer Kanzlei prüfen, besonders wenn du B2C anbietest,
                     Hosting/Subscriptions verkaufst oder Online-Zahlungen nutzt.
                 </p>
             </div>
         </header>
 
-        <section class="grid gap-4">
-            <article class="panel-strong rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">1. Geltungsbereich
-                </h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+        <section class="space-y-6">
+
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">1. Geltungsbereich</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen <strong>Visual
                             Struktur</strong>
@@ -104,10 +155,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">2. Vertragsgegenstand
-                </h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">2. Vertragsgegenstand</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Vertragsgegenstand sind die im Angebot/Projektbriefing beschriebenen Leistungen. Der konkrete
                         Umfang ergibt
@@ -121,10 +171,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">3. Angebote, Preise,
-                    Zahlung</h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">3. Angebote, Preise, Zahlung</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Angebote sind – sofern nicht anders angegeben – 14 Tage gültig. Preise verstehen sich netto
                         zzgl. gesetzlicher
@@ -143,10 +192,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">4.
-                    Mitwirkungspflichten des Kunden</h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">4. Mitwirkungspflichten des Kunden</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Der Kunde stellt rechtzeitig alle für die Umsetzung erforderlichen Inhalte bereit (Texte,
                         Bilder, Logos,
@@ -161,10 +209,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">5. Änderungswünsche
-                    (Change Requests)</h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">5. Änderungswünsche (Change Requests)</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Änderungen, die über den vereinbarten Leistungsumfang hinausgehen (z. B. neue Seiten,
                         zusätzliche Funktionen,
@@ -176,9 +223,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">6. Abnahme</h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">6. Abnahme</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Sofern eine Abnahme vereinbart oder üblich ist, erfolgt diese nach Bereitstellung der Leistung
                         zur Prüfung.
@@ -192,10 +239,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">7. Gewährleistung
-                </h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">7. Gewährleistung</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Es gelten die gesetzlichen Gewährleistungsrechte, soweit nicht abweichend vereinbart. Der
                         Auftragnehmer
@@ -209,9 +255,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">8. Haftung</h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">8. Haftung</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Der Auftragnehmer haftet unbeschränkt bei Vorsatz und grober Fahrlässigkeit sowie bei Verletzung
                         von Leben,
@@ -230,10 +276,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">9. Nutzungsrechte /
-                    Urheberrecht</h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">9. Nutzungsrechte / Urheberrecht</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Der Auftragnehmer räumt dem Kunden nach vollständiger Zahlung die für den Vertragszweck
                         erforderlichen
@@ -254,10 +299,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">10.
-                    Drittanbieter-Leistungen</h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">10. Drittanbieter-Leistungen</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Sofern Services von Dritten genutzt werden (z. B. Hosting, Domains, E-Mail, Analytics,
                         Font-CDNs, Plugins),
@@ -268,10 +312,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">11. Vertraulichkeit
-                </h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">11. Vertraulichkeit</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Beide Parteien verpflichten sich, vertrauliche Informationen des jeweils anderen ausschließlich
                         zur
@@ -280,9 +323,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">12. Datenschutz</h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">12. Datenschutz</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Informationen zur Verarbeitung personenbezogener Daten finden Sie in der
                         <a class="text-blue-700 hover:underline" href="datenschutz.html">Datenschutzerklärung</a>.
@@ -290,10 +333,9 @@
                 </div>
             </article>
 
-            <article class="panel rounded-[26px] p-6 sm:p-8">
-                <h2 class="h-display text-[22px] sm:text-[24px] tracking-[-0.01em] text-slate-900">13.
-                    Schlussbestimmungen</h2>
-                <div class="mt-3 space-y-3 text-[14.5px] leading-relaxed text-slate-600">
+            <article class="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
+                <h2 class="text-xl sm:text-2xl font-semibold text-slate-900">13. Schlussbestimmungen</h2>
+                <div class="mt-3 space-y-3 text-sm sm:text-base leading-relaxed text-slate-600">
                     <p>
                         Es gilt deutsches Recht unter Ausschluss des UN-Kaufrechts. Gerichtsstand ist – soweit zulässig
                         –
@@ -306,54 +348,50 @@
                     </p>
                 </div>
             </article>
+
         </section>
 
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
-            <a href="index.html#kontakt" class="btn-primary">Kontakt</a>
-            <a href="index.html"
+        <div class="mt-10 flex flex-col sm:flex-row gap-3">
+            <a href="./index.html#kontakt"
+                class="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-[15px] font-semibold text-white bg-blue-700 hover:bg-blue-800 transition">
+                Kontakt
+            </a>
+            <a href="./index.html"
                 class="inline-flex items-center justify-center rounded-2xl px-5 py-3 text-[15px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition">
                 Zur Startseite
             </a>
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="matte-footer mt-16">
+    <!-- =========================
+        FOOTER (wie index)
+    ========================= -->
+    <footer class="matte-footer">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-[13px]">
-                <div class="text-white/70">
-                    © <span id="year"></span> Visual Struktur · Hameln
+            <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+
+                <div>
+                    <div class="brand-title text-2xl font-semibold text-white">
+                        <span class="footer-gradient">Visual</span> <span class="text-white">Struktur</span>
+                    </div>
+                    <p class="mt-2 text-sm text-white/70">
+                        Webdesign · Digitalisierung · SEO — Hameln
+                    </p>
                 </div>
-                <div class="flex flex-wrap gap-x-4 gap-y-2 text-white/65">
-                    <a class="hover:underline" href="impressum.html">Impressum</a>
-                    <a class="hover:underline" href="datenschutz.html">Datenschutz</a>
-                    <a class="hover:underline" href="agb.html">AGB</a>
-                </div>
+
+            </div>
+
+            <div class="mt-8 text-xs text-white/55">
+                © <span id="year"></span> Visual Struktur. Alle Rechte vorbehalten.
             </div>
         </div>
     </footer>
 
     <script>
-        // Shrink nav on scroll (optional)
-        const nav = document.getElementById('siteNav');
-        const onScroll = () => {
-            const y = window.scrollY || 0;
-            if (y > 14) nav.classList.add('nav-shrink', 'nav-shadow');
-            else nav.classList.remove('nav-shrink', 'nav-shadow');
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-
-        // Year + date
-        const yearEl = document.getElementById('year');
-        const dateEl = document.getElementById('date2');
-        const now = new Date();
-        if (yearEl) yearEl.textContent = String(now.getFullYear());
-        if (dateEl) {
-            const fmt = new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
-            dateEl.textContent = fmt.format(now);
-        }
+        // Footer Year
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
+
 </body>
 
 </html>
