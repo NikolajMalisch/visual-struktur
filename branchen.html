@@ -22,7 +22,7 @@
 
     <!-- =========================================================
     NAV (wie auf den anderen Seiten)
-  ========================================================= -->
+    ========================================================= -->
     <nav id="siteNav" class="w-full sticky top-0 z-50 glass-header">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
             <div class="flex items-center justify-between gap-6">
@@ -87,50 +87,37 @@
         </div>
     </nav>
 
-    <!-- =========================================================
-    HERO
-  ========================================================= -->
-    <header class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 pb-8">
-        <section
-            class="hero-bg rounded-[28px] border border-black/10 shadow-[0_10px_28px_rgba(15,23,42,0.10)] overflow-hidden">
-            <div class="p-6 md:p-10">
-                <div class="grid lg:grid-cols-12 gap-8 items-center">
+    
+<header class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8 md:pt-12 pb-8">
+  <section
+    class="hero-bg hero-bg--image rounded-[28px] border border-black/10 shadow-[0_10px_28px_rgba(15,23,42,0.10)] overflow-hidden"
+    style="--hero-image: url('images/hero-pages.webp');"
+  >
+    <div class="p-6 md:p-10">
+      <div class="max-w-3xl">
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="hero-badge"><span class="hero-badge-dot"></span>Branchen & Use-Cases</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span>Conversion-Fokus</span>
+          <span class="hero-badge"><span class="hero-badge-dot"></span>Local SEO</span>
+        </div>
 
-                    <!-- Text -->
-                    <div class="lg:col-span-7">
-                        <div class="flex flex-wrap items-center gap-3">
-                            <span class="hero-badge"><span class="hero-badge-dot"></span>Branchen & Use-Cases</span>
-                            <span class="hero-badge"><span class="hero-badge-dot"></span>Conversion-Fokus</span>
-                            <span class="hero-badge"><span class="hero-badge-dot"></span>Local SEO</span>
-                        </div>
+        <h1 class="mt-4 brand-title text-3xl md:text-5xl leading-tight text-[color:var(--text)]">
+          Websites, die Probleme lösen — je nach Branche
+        </h1>
 
-                        <h1 class="mt-4 brand-title text-3xl md:text-5xl leading-tight text-[color:var(--text)]">
-                            Websites, die Probleme lösen — je nach Branche
-                        </h1>
+        <p class="mt-3 text-base md:text-lg text-[color:var(--muted)] max-w-3xl">
+          Wir bauen klare, moderne Systeme: Struktur, Vertrauen, Kontaktlogik und lokale Sichtbarkeit.
+          Damit aus Besuchern echte Anfragen werden — ohne Chaos und ohne „Template-Feeling“.
+        </p>
 
-                        <p class="mt-3 text-base md:text-lg text-[color:var(--muted)] max-w-3xl">
-                            Wir bauen klare, moderne Systeme: Struktur, Vertrauen, Kontaktlogik und lokale Sichtbarkeit.
-                            Damit aus Besuchern echte Anfragen werden — ohne Chaos und ohne „Template-Feeling“.
-                        </p>
-
-                        <div class="mt-6 flex flex-col sm:flex-row gap-3">
-                            <a href="./kontakt.html" class="btn-primary">Projekt anfragen</a>
-                            <a href="#cards" class="btn-ghost">Branchen ansehen</a>
-                        </div>
-                    </div>
-
-                    <!-- Bild (optional) -->
-                    <div class="lg:col-span-5">
-                        <div class="panel card-premium overflow-hidden">
-                            <img src="images/bransche.webp" alt="Abstrakte Premium-Illustration (Platzhalter)"
-                                loading="eager" decoding="async" class="w-full h-auto block" />
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-    </header>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <a href="./kontakt.html" class="btn-primary">Projekt anfragen</a>
+          <a href="#cards" class="btn-ghost">Branchen ansehen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
 
     <main>
 

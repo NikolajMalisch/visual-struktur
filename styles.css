@@ -1,6 +1,6 @@
 /* =========================================================
   Visual Struktur — Premium Light (Lux)
-  - Anthrazit buttons, safe reveal, subtle premium UI
+  - Anthrazit Buttons, Premium UI, sichere Reveal-Animationen
 ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
@@ -59,7 +59,10 @@ body {
     text-wrap: balance;
 }
 
-/* Panels */
+/* =========================================================
+  Panels / Cards
+========================================================= */
+
 .panel {
     background: var(--surface);
     border: 1px solid var(--stroke);
@@ -74,7 +77,10 @@ body {
         0 1px 0 rgba(255, 255, 255, 0.70) inset;
 }
 
-/* NAV */
+/* =========================================================
+  NAV
+========================================================= */
+
 .glass-header {
     background: rgba(255, 255, 255, 0.72);
     border-bottom: 1px solid rgba(15, 23, 42, 0.08);
@@ -96,7 +102,11 @@ body {
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.10);
 }
 
-/* HERO (Lux light, no image) */
+/* =========================================================
+  HERO (Standard Lux Light, ohne Bild)
+  Hinweis: Für die Branchen-Seite gibt es unten .hero-branchen
+========================================================= */
+
 .hero-bg {
     position: relative;
     isolation: isolate;
@@ -135,6 +145,7 @@ body {
     opacity: 0.18;
     mix-blend-mode: overlay;
 }
+
 /* Badge */
 .hero-badge {
     display: inline-flex;
@@ -183,7 +194,10 @@ body {
     width: min(520px, 92vw);
 }
 
-/* Buttons (Anthrazit) */
+/* =========================================================
+  Buttons (Anthrazit)
+========================================================= */
+
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -264,7 +278,10 @@ button:focus-visible {
     border-color: rgba(15, 23, 42, 0.14);
 }
 
-/* Reveal (SAFE) */
+/* =========================================================
+  Reveal (SAFE)
+========================================================= */
+
 .reveal {
     opacity: 1;
     transform: none;
@@ -281,7 +298,10 @@ button:focus-visible {
     transform: translateY(0);
 }
 
-/* Form */
+/* =========================================================
+  Form
+========================================================= */
+
 .form-label {
     display: block;
     font-size: 13px;
@@ -307,7 +327,10 @@ button:focus-visible {
     box-shadow: 0 14px 34px rgba(15, 23, 42, 0.10);
 }
 
-/* Reduced motion */
+/* =========================================================
+  Reduced motion
+========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
@@ -326,7 +349,10 @@ button:focus-visible {
     }
 }
 
-/* Footer */
+/* =========================================================
+  Footer
+========================================================= */
+
 .matte-footer {
     background: linear-gradient(180deg, #0b1220 0%, #050913 100%);
 }
@@ -345,178 +371,92 @@ button:focus-visible {
 }
 
 /* =========================================================
-  BRANCHEN — Cards + Media
-  Ziel:
-  1) Neue Branchen-Karten (ohne Inline-CSS)
-  2) Fix für „zu helle“ Bilder (Overlay zu stark)
+  OPTIONAL: Karten-Bilder ohne Aufhell-Overlay
+  (Nur nutzen, wenn du wirklich eine ::after-Aufhellung hast)
+  - Falls dein Wrapper anders heißt: .branch-media -> deinen Klassennamen ersetzen
 ========================================================= */
-
-/* --- Kartencontainer --- */
-.branch-card {
-    border-radius: calc(var(--radius) + 6px);
-    overflow: hidden;
-    background: var(--surface);
-    border: 1px solid var(--stroke);
-    box-shadow: var(--shadow1);
-}
-
-/* Du hast bereits .hover-lift – passt perfekt */
-.branch-card.hover-lift:hover {
-    box-shadow: var(--shadow2);
-}
-
-/* --- Media / Bildbereich --- */
-.branch-media {
-    position: relative;
-    height: 190px;
-    overflow: hidden;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.06), rgba(15, 23, 42, 0.02));
-}
-
-.branch-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transform: scale(1.01);
-}
-
-/* Fix: Weniger Weiß im Overlay + leichte Vignette unten (kein „Milchglas“ auf dem Bild) */
-.branch-media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(700px 340px at 30% 20%, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0) 60%),
-        radial-gradient(900px 520px at 80% 22%, rgba(59, 130, 246, 0.14), rgba(59, 130, 246, 0) 64%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(15, 23, 42, 0.10) 78%, rgba(15, 23, 42, 0.16) 100%);
-}
-
-/* Tag/Chip auf dem Bild */
-.branch-tag {
-    position: absolute;
-    left: 14px;
-    top: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(15, 23, 42, 0.12);
-    background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: rgba(15, 23, 42, 0.76);
-    font-size: 12px;
-    font-weight: 700;
-    box-shadow: 0 14px 36px rgba(15, 23, 42, 0.10);
-}
-
-/* Textbereich */
-.branch-body {
-    padding: 18px 18px 20px;
-}
-
-.branch-title {
-    font-weight: 800;
-    color: rgba(15, 23, 42, 0.92);
-    letter-spacing: -0.01em;
-}
-
-.branch-desc {
-    margin-top: 6px;
-    color: rgba(15, 23, 42, 0.70);
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.branch-list {
-    margin-top: 14px;
-    display: grid;
-    gap: 9px;
-    color: rgba(15, 23, 42, 0.70);
-    font-size: 13.5px;
-    line-height: 1.45;
-}
-
-.branch-cta {
-    margin-top: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(15, 23, 42, 0.92);
-    font-weight: 800;
-    font-size: 13px;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-
-.branch-cta:hover {
-    opacity: 0.92;
-}
-
-/* Slim CTA Block */
-.cta-slim {
-    border-radius: 28px;
-    background:
-        radial-gradient(900px 520px at 20% 10%, rgba(59, 130, 246, 0.10), rgba(59, 130, 246, 0) 58%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.78) 100%);
-    border: 1px solid rgba(15, 23, 42, 0.10);
-    box-shadow: var(--shadow1);
-    position: relative;
-    overflow: hidden;
-}
-
-.check {
-    position: relative;
-    padding-left: 22px;
-    color: rgba(15, 23, 42, 0.72);
-    font-size: 14px;
-    font-weight: 650;
-}
-
-.check::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: rgba(15, 23, 42, 0.92);
-    font-weight: 900;
-}
-
-/* Footer Links (wenn noch nicht vorhanden) */
-.footer-gradient {
-    background: linear-gradient(135deg, rgba(96, 165, 250, 1), rgba(59, 130, 246, 1));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.footer-link-dark {
-    color: rgba(255, 255, 255, 0.78);
-    font-weight: 650;
-    transition: color .18s ease, opacity .18s ease;
-}
-
-.footer-link-dark:hover {
-    color: rgba(255, 255, 255, 0.92);
-    opacity: 0.98;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-/* Cards: Bild ohne Aufhell-Overlay */
+/*
 .branch-media::after {
     content: none !important;
 }
-
-/* OPTIONAL: Wenn du global .media-premium nutzt und Bilder dort „ausgewaschen“ wirken,
-   kannst du diesen Block aktivieren (falls die Klasse existiert). */
-/*
-.media-premium::after {
-  background:
-    radial-gradient(700px 380px at 30% 20%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 60%),
-    radial-gradient(900px 520px at 80% 30%, rgba(37, 99, 235, 0.14), rgba(37, 99, 235, 0) 62%),
-    linear-gradient(180deg, rgba(15, 23, 42, 0.00) 0%, rgba(15, 23, 42, 0.12) 74%, rgba(15, 23, 42, 0.18) 100%);
-}
 */
+
+/* =========================================================
+  HERO (nur Branchen-Seite)
+  - Bild über die ganze Karte
+  - Links dunkler (besser lesbar), rechts Bild sichtbar
+  - Text/Badges hell NUR im Branchen-Hero
+  WICHTIG: Nur auf der Branchen-Seite die Klasse .hero-branchen setzen
+========================================================= */
+
+.hero-branchen {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Inhalt immer über dem Bild/Overlay */
+.hero-branchen > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Bild als Hintergrund */
+.hero-branchen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: var(--hero-image);
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+    transform: scale(1.02);
+}
+
+/* Overlay: links dunkler für Text, rechts transparent fürs Bild */
+.hero-branchen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        rgba(2, 6, 23, 0.70) 0%,
+        rgba(2, 6, 23, 0.56) 40%,
+        rgba(2, 6, 23, 0.22) 65%,
+        rgba(2, 6, 23, 0.00) 82%
+    );
+}
+
+/* Text-Farben nur hier invertieren */
+.hero-branchen {
+    --text: #f8fafc;
+    --muted: rgba(248, 250, 252, 0.78);
+    --muted2: rgba(248, 250, 252, 0.62);
+}
+
+/* Badges im Branchen-Hero */
+.hero-branchen .hero-badge {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.hero-branchen .hero-badge-dot {
+    background: rgba(96, 165, 250, 0.95);
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.18);
+}
+
+/* Ghost Button im Branchen-Hero */
+.hero-branchen .btn-ghost {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.hero-branchen .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.22);
+}
