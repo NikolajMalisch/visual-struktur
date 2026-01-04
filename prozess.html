@@ -69,16 +69,38 @@
             background: rgba(37, 99, 235, 0.9);
             box-shadow: 0 10px 20px rgba(37, 99, 235, 0.22);
         }
+
+        /* Мини-ссылка "Skip" (опционально, но полезно) */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 10px;
+            z-index: 9999;
+            background: #fff;
+            color: #0f172a;
+            border: 1px solid rgba(15, 23, 42, 0.12);
+            padding: 10px 14px;
+            border-radius: 12px;
+            box-shadow: 0 16px 34px rgba(15, 23, 42, 0.10);
+        }
+
+        .skip-link:focus {
+            left: 12px;
+        }
     </style>
 </head>
 
-<body class="smooth-scroll bg-grid">
+<body id="top" class="smooth-scroll bg-grid">
 
-    <!-- NAV (оставь свой, тут минимально) -->
-    <nav class="w-full sticky top-0 z-50 glass-header">
+    <!-- Skip to content -->
+    <a class="skip-link" href="#content">Zum Inhalt springen</a>
+
+    <!-- =========================
+        NAV (как в index: Desktop + Mobile)
+    ========================= -->
+    <nav class="w-full sticky top-0 z-50 glass-header" aria-label="Hauptnavigation">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
             <div class="flex items-center justify-between gap-6">
-
 
                 <!-- Brand -->
                 <a href="./index.html" class="flex items-center gap-3" aria-label="Startseite">
@@ -94,22 +116,54 @@
                     </div>
                 </a>
 
-
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-2">
                     <a href="leistungen.html" class="nav-link">Leistungen</a>
+                    <a href="branchen.html" class="nav-link">Branchen</a>
                     <a href="vertrauen.html" class="nav-link is-active" aria-current="page">Vertrauen</a>
                     <a href="projekte.html" class="nav-link">Projekte</a>
                     <a href="kontakt.html" class="nav-link">Kontakt</a>
                 </div>
 
+                <!-- Desktop CTA -->
                 <div class="hidden md:flex">
                     <a href="kontakt.html" class="btn-primary">Projekt anfragen</a>
                 </div>
+
+                <!-- Mobile Button -->
+                <button id="mobileBtn" type="button"
+                    class="md:hidden inline-flex items-center justify-center rounded-xl px-3 py-2 border border-white/15 bg-white/10 text-[color:var(--text)]"
+                    aria-controls="mobileMenu" aria-expanded="false" aria-label="Menü öffnen">
+                    <!-- Burger Icon -->
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" />
+                    </svg>
+                </button>
             </div>
+
+            <!-- Mobile Menu Panel -->
+            <div id="mobileMenu" class="md:hidden hidden mt-3 pb-4" role="dialog" aria-label="Mobile Navigation">
+                <div class="rounded-2xl border border-white/12 bg-white/10 backdrop-blur p-3">
+                    <div class="grid gap-1">
+                        <a href="leistungen.html" class="nav-link">Leistungen</a>
+                        <a href="branchen.html" class="nav-link">Branchen</a>
+                        <a href="vertrauen.html" class="nav-link is-active" aria-current="page">Vertrauen</a>
+                        <a href="projekte.html" class="nav-link">Projekte</a>
+                        <a href="kontakt.html" class="nav-link">Kontakt</a>
+                    </div>
+                    <div class="mt-3">
+                        <a href="kontakt.html" class="btn-primary w-full text-center block">Projekt anfragen</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- =========================
+        HERO
+    ========================= -->
     <header class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 md:pt-14 pb-8">
         <div class="grid lg:grid-cols-12 gap-10 items-start">
             <div class="lg:col-span-7">
@@ -141,15 +195,15 @@
                         <img src="images/prozess.webp" alt="Prozess, Struktur und Klarheit – Premium Visual"
                             class="hero-media-img" width="1600" height="1000" loading="eager" decoding="async" />
                     </picture>
-
                 </figure>
             </div>
-
         </div>
     </header>
 
-    <main>
-        <!-- Prinzipien -->
+    <main id="content">
+        <!-- =========================
+            Prinzipien
+        ========================= -->
         <section id="prinzipien" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 md:py-14">
             <div class="flex items-end justify-between gap-6 flex-wrap">
                 <div>
@@ -286,7 +340,7 @@
                     </ul>
                 </article>
 
-                <!-- Extra card (optional) -->
+                <!-- 06 -->
                 <article class="vs-card p-6">
                     <div class="flex items-start justify-between gap-4">
                         <div class="icon-premium" aria-hidden="true">
@@ -313,7 +367,9 @@
             </div>
         </section>
 
-        <!-- Prozess -->
+        <!-- =========================
+            Prozess
+        ========================= -->
         <section id="prozess" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 md:pb-16">
             <div class="flex items-end justify-between gap-6 flex-wrap">
                 <div>
@@ -408,7 +464,9 @@
             </div>
         </section>
 
-        <!-- CTA -->
+        <!-- =========================
+            CTA
+        ========================= -->
         <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
             <div class="cta-panel rounded-3xl p-7 md:p-10">
                 <div class="grid md:grid-cols-12 gap-6 items-center">
@@ -428,7 +486,108 @@
                 </div>
             </div>
         </section>
-    </main>
+
+    <!-- =========================
+        FOOTER (wie in index: matte, brand, links, legal)
+    ========================= -->
+    <footer class="matte-footer">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+    
+            <div class="grid gap-8 md:grid-cols-12">
+    
+                <!-- Brand -->
+                <div class="md:col-span-5">
+                    <div class="brand-title text-2xl font-semibold text-white">
+                        <span class="footer-gradient">Visual</span> <span class="text-white">Struktur</span>
+                    </div>
+                    <p class="mt-2 text-sm text-white/70">Webdesign · Digitalisierung · SEO — Hameln</p>
+                    <p class="mt-4 text-sm text-white/65 max-w-md">
+                        Premium Websites & digitale Systeme, die Anfragen erzeugen und Prozesse vereinfachen.
+                    </p>
+                </div>
+    
+                <!-- Navigation -->
+                <div class="md:col-span-3">
+                    <h3 class="text-sm font-semibold text-white/90">Navigation</h3>
+                    <ul class="mt-3 grid gap-2 text-sm text-white/70">
+                        <li><a class="hover:text-white" href="leistungen.html">Leistungen</a></li>
+                        <li><a class="hover:text-white" href="branchen.html">Branchen</a></li>
+                        <li><a class="hover:text-white" href="vertrauen.html" aria-current="page">Vertrauen</a></li>
+                        <li><a class="hover:text-white" href="projekte.html">Projekte</a></li>
+                        <li><a class="hover:text-white" href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Fokus / Kontakt -->
+                <div class="md:col-span-4">
+                    <h3 class="text-sm font-semibold text-white/90">Kontakt</h3>
+                    <p class="mt-3 text-sm text-white/70">
+                        Hameln, Niedersachsen<br />
+                        <span class="text-white/60">Antwort i. d. R. innerhalb von 24–48h</span>
+                    </p>
+                </div>
+    
+            </div><!-- /grid -->
+    
+            <div
+                class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+                <div class="text-xs text-white/55">
+                    © <span id="year"></span> Visual Struktur. Alle Rechte vorbehalten.
+                </div>
+    
+                <div class="flex flex-wrap gap-4 text-xs text-white/60">
+                    <a class="hover:text-white" href="impressum.html">Impressum</a>
+                    <a class="hover:text-white" href="datenschutz.html">Datenschutz</a>
+                    <a class="hover:text-white" href="agb.html">AGB</a>
+                </div>
+            </div>
+    
+        </div><!-- /container -->
+    </footer>
+
+    <!-- =========================
+        JS: Mobile Menu + Year
+    ========================= -->
+    <script>
+        // Year
+        (function () {
+            const y = document.getElementById('year');
+            if (y) y.textContent = new Date().getFullYear();
+        })();
+
+        // Mobile menu toggle
+        (function () {
+            const btn = document.getElementById('mobileBtn');
+            const menu = document.getElementById('mobileMenu');
+            if (!btn || !menu) return;
+
+            const closeMenu = () => {
+                menu.classList.add('hidden');
+                btn.setAttribute('aria-expanded', 'false');
+            };
+
+            btn.addEventListener('click', () => {
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    menu.classList.remove('hidden');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+
+            // Закрывать по клику на ссылку
+            menu.addEventListener('click', (e) => {
+                const t = e.target;
+                if (t && t.tagName === 'A') closeMenu();
+            });
+
+            // ESC закрывает
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeMenu();
+            });
+        })();
+    </script>
 
 </body>
 
