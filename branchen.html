@@ -352,37 +352,63 @@
 
     </main>
 
-<!-- =========================================================
-    FOOTER (ohne Seiten-Duplikate)
-========================================================= -->
-<footer class="matte-footer">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
-
-        <div class="grid gap-8 md:grid-cols-12">
-            <!-- Brand -->
-            <div class="md:col-span-5">
-                <div class="brand-title text-2xl font-semibold text-white">
-                    <span class="footer-gradient">Visual</span> <span class="text-white">Struktur</span>
+    <!-- =========================
+        FOOTER (wie in index: matte, brand, links, legal)
+    ========================= -->
+    <footer class="matte-footer">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+    
+            <div class="grid gap-8 md:grid-cols-12">
+    
+                <!-- Brand -->
+                <div class="md:col-span-5">
+                    <div class="brand-title text-2xl font-semibold text-white">
+                        <span class="footer-gradient">Visual</span> <span class="text-white">Struktur</span>
+                    </div>
+                    <p class="mt-2 text-sm text-white/70">Webdesign · Digitalisierung · SEO — Hameln</p>
+                    <p class="mt-4 text-sm text-white/65 max-w-md">
+                        Premium Websites & digitale Systeme, die Anfragen erzeugen und Prozesse vereinfachen.
+                    </p>
                 </div>
-                <p class="mt-2 text-sm text-white/70">Webdesign · Digitalisierung · SEO — Hameln</p>
-                <p class="mt-4 text-sm text-white/65 max-w-md">
-                    Premium Websites & digitale Systeme, die Anfragen erzeugen und Prozesse vereinfachen.
-                </p>
+    
+                <!-- Navigation -->
+                <div class="md:col-span-3">
+                    <h3 class="text-sm font-semibold text-white/90">Navigation</h3>
+                    <ul class="mt-3 grid gap-2 text-sm text-white/70">
+                        <li><a class="hover:text-white" href="leistungen.html">Leistungen</a></li>
+                        <li><a class="hover:text-white" href="branchen.html">Branchen</a></li>
+                        <li><a class="hover:text-white" href="prozess.html" aria-current="page">Prozess</a></li>
+                        <li><a class="hover:text-white" href="projekte.html">Projekte</a></li>
+                        <li><a class="hover:text-white" href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Fokus / Kontakt -->
+                <div class="md:col-span-4">
+                    <h3 class="text-sm font-semibold text-white/90">Kontakt</h3>
+                    <p class="mt-3 text-sm text-white/70">
+                        Hameln, Niedersachsen<br />
+                        <span class="text-white/60">Antwort i. d. R. innerhalb von 24–48h</span>
+                    </p>
+                </div>
+    
+            </div><!-- /grid -->
+    
+            <div
+                class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+                <div class="text-xs text-white/55">
+                    © <span id="year"></span> Visual Struktur. Alle Rechte vorbehalten.
+                </div>
+    
+                <div class="flex flex-wrap gap-4 text-xs text-white/60">
+                    <a class="hover:text-white" href="impressum.html">Impressum</a>
+                    <a class="hover:text-white" href="datenschutz.html">Datenschutz</a>
+                    <a class="hover:text-white" href="agb.html">AGB</a>
+                </div>
             </div>
-        </div>
-
-        <div class="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-white/55">
-            <div>© <span id="year"></span> Visual Struktur. Alle Rechte vorbehalten.</div>
-            <div class="flex gap-4">
-                <a class="footer-link-dark" href="./impressum.html">Impressum</a>
-                <a class="footer-link-dark" href="./datenschutz.html">Datenschutz</a>
-                <a class="footer-link-dark" href="./agb.html">AGB</a>
-            </div>
-        </div>
-
-    </div>
-</footer>
-
+    
+        </div><!-- /container -->
+    </footer>
 
     <script>
         // Jahr im Footer
