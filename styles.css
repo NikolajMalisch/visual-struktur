@@ -765,13 +765,15 @@ button:focus-visible {
   - stabile Mindesthöhe, ohne "Ruckeln"
 ========================================================= */
 @media (max-width: 640px) {
-  .hero-panel{
-    height: auto !important;        /* FIX: statt clamp(...) */
-    min-height: 540px;              /* genug Platz für Text + Buttons */
-  }
+    .hero-panel {
+        height: auto !important;
+        /* FIX: statt clamp(...) */
+        min-height: 540px;
+        /* genug Platz für Text + Buttons */
+    }
 
-  /* Bild-Ausschnitt auf Mobile etwas sinnvoller */
-  .hero-panel__bg{
-    object-position: 72% 45%;
-  }
+    /* Bild-Ausschnitt auf Mobile etwas sinnvoller */
+    .hero-panel__bg {
+        object-position: 72% 45%;
+    }
 }
