@@ -322,6 +322,137 @@ body {
 }
 
 /* =========================================================
+  HERO CARD — Projekte (Bild oben / Content unten)
+  Premium layout: Bild oben, Content als "Plate" unten
+========================================================= */
+
+.hero-card {
+    position: relative;
+    border-radius: calc(var(--radius) + 18px);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 30px 90px rgba(15, 23, 42, 0.14);
+    overflow: hidden;
+    background: rgba(255, 255, 255, .18);
+}
+
+/* ===== TOP media ===== */
+.hero-card__media {
+    position: relative;
+    overflow: hidden;
+    background: #e9eef6;
+}
+
+.hero-card__img {
+    width: 100%;
+    display: block;
+    height: clamp(280px, 34vw, 460px);
+    object-fit: cover;
+
+    /* фокус под твою картинку (можешь двигать) */
+    object-position: 72% 70%;
+}
+
+/* лёгкая премиум-плёнка на фото (НЕ белесая, а мягкая) */
+.hero-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(900px 420px at 70% 40%, rgba(255, 255, 255, .18), rgba(255, 255, 255, 0) 60%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0) 55%, rgba(15, 23, 42, .10) 100%);
+    opacity: .55;
+}
+
+/* ===== BOTTOM content plate ===== */
+.hero-card__content {
+    position: relative;
+    background: rgba(255, 255, 255, .86);
+    backdrop-filter: blur(10px);
+
+    /* главное: визуально "отделить" от фото */
+    border-top: 1px solid rgba(15, 23, 42, .08);
+
+    padding: 44px 46px;
+}
+
+/* внутренний «контейнер» */
+.hero-card__grid {
+    display: grid;
+    grid-template-columns: 1.25fr .75fr;
+    gap: 48px;
+    align-items: start;
+}
+
+/* LEFT */
+.hero-card__left {
+    max-width: 740px;
+}
+
+/* RIGHT: компактнее, чтобы не выглядело пусто */
+.hero-card__right {
+    padding-top: 8px;
+}
+
+.hero-card__right .hero-kicker {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .02em;
+    color: var(--text);
+    text-transform: none;
+}
+
+/* pill справа */
+.hero-card__pill {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: calc(var(--radius) + 10px);
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: rgba(255, 255, 255, .92);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, .08);
+}
+
+/* лёгкий “премиум” фейд вниз, чтобы низ не был «жёстким» */
+.hero-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 90px;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+            rgba(246, 248, 251, 0) 0%,
+            rgba(246, 248, 251, .75) 70%,
+            rgba(246, 248, 251, 1) 100%);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1023.98px) {
+    .hero-card__img {
+        height: clamp(220px, 52vw, 340px);
+        object-position: 72% 50%;
+    }
+
+    .hero-card__content {
+        padding: 28px 22px;
+    }
+
+    .hero-card__grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .hero-card__right {
+        padding-top: 0;
+    }
+
+    .hero-card::after {
+        height: 60px;
+    }
+}
+
+/* =========================================================
   Buttons (Anthrazit)
 ========================================================= */
 

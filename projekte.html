@@ -32,7 +32,8 @@
                     <img src="images/logo-visual.png" alt="Visual Struktur Logo" class="h-10 md:h-11 w-auto shrink-0"
                         decoding="async" />
                     <div class="leading-tight">
-                        <div class="brand-title text-[1.15rem] md:text-[1.25rem] font-semibold text-[color:var(--text)]">
+                        <div
+                            class="brand-title text-[1.15rem] md:text-[1.25rem] font-semibold text-[color:var(--text)]">
                             <span class="brand-gradient">Visual</span> Struktur
                         </div>
                         <div class="text-xs md:text-sm text-[color:var(--muted2)]">
@@ -76,61 +77,95 @@
         </div>
     </nav>
 
-    <!-- =========================
-        HERO — wie index (Badge + Logo TOP)
-    ========================= -->
-    <header class="hero-bg">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="min-h-[66vh] sm:min-h-[64vh] lg:min-h-[68vh] flex items-center py-10 sm:py-14 lg:py-18">
-                <div class="w-full max-w-3xl">
+<!-- =========================
+    HERO – Projekte (Bild oben + Content unten)
+========================= -->
+<header class="hero-bg">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-16">
 
-                    <!-- Badge -->
-                    <div class="hero-badge">
-                        <span class="hero-badge-dot" aria-hidden="true"></span>
-                        Portfolio · Visual Struktur
-                    </div>
+        <section class="hero-card" aria-label="Portfolio Hero">
+            <!-- TOP: Visual -->
+            <div class="hero-card__media" aria-hidden="true">
+                <img src="images/projekte.webp" alt="" class="hero-card__img" loading="eager" decoding="async"
+                    fetchpriority="high" />
+            </div>
 
-                    <!-- Logo TOP -->
-                    <div class="mt-7 flex justify-start">
-                        <img src="images/logo-visual.png" alt="Visual Struktur" width="520" height="180" loading="eager"
-                            decoding="async" fetchpriority="high" class="hero-logo hero-logo--top" />
-                    </div>
+            <!-- BOTTOM: Content -->
+            <div class="hero-card__content">
+                <div class="hero-card__grid">
 
-                    <!-- Brand line -->
-                    <div class="mt-4 leading-tight">
-                        <div class="brand-title text-[1.6rem] sm:text-[1.95rem] font-semibold text-[color:var(--text)]">
-                            <span class="brand-gradient">Visual</span> Struktur
+                    <!-- LEFT -->
+                    <div class="hero-card__left">
+                        <div class="hero-badge">
+                            <span class="hero-badge-dot" aria-hidden="true"></span>
+                            Portfolio · Visual Struktur
                         </div>
-                        <div class="mt-1 text-sm text-[color:var(--muted2)]">
-                            Webdesign · Digitalisierung · SEO
+
+                        <h1
+                            class="mt-6 text-3xl sm:text-4xl lg:text-5xl font-semibold text-[color:var(--text)] text-balance">
+                            Projekte, die Wirkung zeigen.
+                        </h1>
+
+                        <p class="mt-4 text-[15px] sm:text-base text-[color:var(--muted)] leading-relaxed">
+                            Ausgewählte Arbeiten aus <strong>Webdesign</strong>, <strong>SEO</strong> und
+                            <strong>Automatisierung</strong>.
+                            Fokus: klare Struktur, schnelle Performance und saubere Umsetzung – für Vertrauen,
+                            Conversion und Sichtbarkeit.
+                        </p>
+
+                        <ul class="mt-6 grid gap-2 text-sm text-[color:var(--muted)]">
+                            <li class="flex gap-2">
+                                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--muted2)]"></span>
+                                Mobile-first, semantische Struktur, wartbarer Code
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--muted2)]"></span>
+                                SEO-Basis: klare Themenblöcke, Meta-Setup, interne Logik
+                            </li>
+                            <li class="flex gap-2">
+                                <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--muted2)]"></span>
+                                Systeme: Form-UX, Spam-Schutz, CRM-Ready
+                            </li>
+                        </ul>
+
+                        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                            <a href="#portfolio" class="btn-primary">Projekte ansehen</a>
+                            <a href="./kontakt.html" class="btn-ghost">Projekt anfragen</a>
                         </div>
+
+                        <p class="mt-4 text-[13px] text-[color:var(--muted2)]">
+                            Einige Projekte sind anonymisiert (Datenschutz / Kundenwunsch).
+                        </p>
                     </div>
 
-                    <!-- Headline -->
-                    <h1 class="mt-7 text-3xl sm:text-4xl font-semibold text-[color:var(--text)] text-balance">
-                        Projekte, die Wirkung zeigen.
-                    </h1>
+                    <!-- RIGHT -->
+                    <aside class="hero-card__right" aria-label="Hinweis">
+                        <div class="hero-kicker">Ideal für</div>
 
-                    <!-- Subline -->
-                    <p class="mt-4 text-[15px] sm:text-base text-[color:var(--muted)] leading-relaxed">
-                        Ausgewählte Arbeiten aus Webdesign, SEO und Automatisierung. Fokus: klare Struktur, schnelle
-                        Performance und saubere Umsetzung.
-                    </p>
+                        <p class="mt-4 text-sm leading-relaxed text-[color:var(--muted)]">
+                            Unternehmen, die nicht „irgendeine“ Website wollen — sondern einen klaren, seriösen
+                            Auftritt,
+                            der Anfragen generiert.
+                        </p>
 
-                    <!-- CTAs -->
-                    <div class="mt-8 flex flex-col sm:flex-row gap-3">
-                        <a href="./kontakt.html" class="btn-primary">Projekt anfragen</a>
-                        <a href="./leistungen.html" class="btn-ghost">Leistungen ansehen</a>
-                    </div>
-
-                    <p class="mt-4 text-[13px] text-[color:var(--muted2)]">
-                        Einige Projekte sind anonymisiert (Datenschutz / Kundenwunsch).
-                    </p>
+                        <div class="hero-card__pill">
+                            <p class="text-sm text-[color:var(--muted)]">
+                                <span class="font-semibold text-[color:var(--text)]">Bonus:</span>
+                                DSGVO-Basis je nach Setup, Performance-Fokus, saubere Struktur.
+                            </p>
+                        </div>
+                    </aside>
 
                 </div>
             </div>
-        </div>
-    </header>
+        </section>
+
+    </div>
+</header>
+
+<div id="portfolio" class="scroll-mt-28"></div>
+
+
 
     <!-- =========================
         FILTER
