@@ -323,7 +323,8 @@ body {
 
 /* =========================================================
   HERO CARD — Projekte (Bild oben / Content unten)
-  Premium layout: Bild oben, Content als "Plate" unten
+  Variante: EIN gemeinsamer transparenter Container (Glass)
+  für LEFT + RIGHT parallel nebeneinander
 ========================================================= */
 
 .hero-card {
@@ -332,7 +333,7 @@ body {
     border: 1px solid rgba(15, 23, 42, 0.08);
     box-shadow: 0 30px 90px rgba(15, 23, 42, 0.14);
     overflow: hidden;
-    background: rgba(255, 255, 255, .18);
+    background: rgba(255, 255, 255, 0.18);
 }
 
 /* ===== TOP media ===== */
@@ -347,40 +348,40 @@ body {
     display: block;
     height: clamp(280px, 34vw, 460px);
     object-fit: cover;
-
-    /* фокус под твою картинку (можешь двигать) */
-    object-position: 72% 70%;
+    object-position: 70% 70%;
 }
 
-/* лёгкая премиум-плёнка на фото (НЕ белесая, а мягкая) */
-.hero-card__media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(900px 420px at 70% 40%, rgba(255, 255, 255, .18), rgba(255, 255, 255, 0) 60%),
-        linear-gradient(180deg, rgba(15, 23, 42, 0) 55%, rgba(15, 23, 42, .10) 100%);
-    opacity: .55;
-}
-
-/* ===== BOTTOM content plate ===== */
+/* ===== BOTTOM content zone (без белой заливки) =====
+   ВАЖНО: фон/blur переносим в .hero-card__inner,
+   чтобы LEFT+RIGHT были внутри одного общего стекла
+*/
 .hero-card__content {
     position: relative;
-    background: rgba(255, 255, 255, .86);
-    backdrop-filter: blur(10px);
-
-    /* главное: визуально "отделить" от фото */
-    border-top: 1px solid rgba(15, 23, 42, .08);
-
-    padding: 44px 46px;
+    background: transparent;
+    /* было rgba(255,255,255,.86) */
+    backdrop-filter: none;
+    /* переносим blur внутрь */
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    padding: 30px 34px;
 }
 
-/* внутренний «контейнер» */
+/* NEW: общий стеклянный контейнер вокруг LEFT + RIGHT */
+.hero-card__inner {
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    box-shadow: 0 18px 55px rgba(15, 23, 42, 0.10);
+    border-radius: calc(var(--radius) + 16px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 38px 40px;
+}
+
+/* внутренний «контейнер»: LEFT + RIGHT параллельно */
 .hero-card__grid {
     display: grid;
-    grid-template-columns: 1.25fr .75fr;
-    gap: 48px;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 40px;
+    /* было 48px */
     align-items: start;
 }
 
@@ -389,7 +390,7 @@ body {
     max-width: 740px;
 }
 
-/* RIGHT: компактнее, чтобы не выглядело пусто */
+/* RIGHT */
 .hero-card__right {
     padding-top: 8px;
 }
@@ -397,22 +398,22 @@ body {
 .hero-card__right .hero-kicker {
     font-size: 13px;
     font-weight: 800;
-    letter-spacing: .02em;
+    letter-spacing: 0.02em;
     color: var(--text);
     text-transform: none;
 }
 
-/* pill справа */
+/* pill справа (чуть контрастнее на стекле) */
 .hero-card__pill {
     margin-top: 16px;
     padding: 14px 16px;
     border-radius: calc(var(--radius) + 10px);
-    border: 1px solid rgba(15, 23, 42, .10);
-    background: rgba(255, 255, 255, .92);
-    box-shadow: 0 12px 32px rgba(15, 23, 42, .08);
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
 }
 
-/* лёгкий “премиум” фейд вниз, чтобы низ не был «жёстким» */
+/* лёгкий “премиум” фейд вниз */
 .hero-card::after {
     content: "";
     position: absolute;
@@ -423,7 +424,7 @@ body {
     pointer-events: none;
     background: linear-gradient(180deg,
             rgba(246, 248, 251, 0) 0%,
-            rgba(246, 248, 251, .75) 70%,
+            rgba(246, 248, 251, 0.75) 70%,
             rgba(246, 248, 251, 1) 100%);
 }
 
@@ -435,7 +436,12 @@ body {
     }
 
     .hero-card__content {
-        padding: 28px 22px;
+        padding: 18px 14px;
+        /* чуть меньше на мобиле */
+    }
+
+    .hero-card__inner {
+        padding: 22px 18px;
     }
 
     .hero-card__grid {
@@ -451,7 +457,6 @@ body {
         height: 60px;
     }
 }
-
 /* =========================================================
   Buttons (Anthrazit)
 ========================================================= */
