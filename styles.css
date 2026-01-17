@@ -913,3 +913,109 @@ button:focus-visible {
         object-position: 72% 45%;
     }
 }
+/* =========================================================
+    GEO Layer (Lux)
+    - аккуратные FAQ/Details
+    - без CLS, без дерганья
+========================================================= */
+
+.geo-wrap {
+    max-width: 72rem;
+}
+
+.geo-kicker {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted2);
+}
+
+.geo-lead {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.geo-grid {
+    display: grid;
+    gap: 16px;
+}
+
+@media (min-width: 1024px) {
+    .geo-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.geo-divider {
+    height: 1px;
+    background: rgba(15, 23, 42, 0.08);
+    margin: 18px 0;
+}
+
+/* FAQ (Accordion über details/summary) */
+.faq {
+    display: grid;
+    gap: 12px;
+}
+
+.faq details {
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: calc(var(--radius) + 10px);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+    overflow: clip;
+}
+
+.faq summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    font-weight: 900;
+    color: var(--text);
+}
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq .faq-q {
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.faq .faq-icon {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(15, 23, 42, 0.14);
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+    transition: transform .18s ease;
+}
+
+.faq details[open] .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq .faq-a {
+    padding: 0 16px 16px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .faq .faq-icon {
+        transition: none;
+    }
+}
