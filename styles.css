@@ -1099,3 +1099,264 @@ button:focus-visible {
         transition: none;
     }
 }
+
+/* =========================================================
+   Visual Struktur — Premium Light (Lux) — FIX PACK
+   Что исправляет:
+   1) Единый фон (убирает “двухцветность” от hero-bg)
+   2) Premium светлая шапка с затемнением/глубиной
+   3) NAV: исправлен баг (text-decoration -> letter-spacing)
+   4) Точки/буллеты: контроль маркеров (опционально через .prose)
+   5) Акцентные “точки” в badge (hero-badge-dot)
+========================================================= */
+
+/* =========================
+   0) GLOBAL BACKGROUND — единый
+========================= */
+.bg-app {
+  background:
+    radial-gradient(1200px 650px at 18% -10%, rgba(59,130,246,.10), rgba(255,255,255,0) 60%),
+    radial-gradient(1100px 700px at 82% -12%, rgba(99,102,241,.09), rgba(255,255,255,0) 62%),
+    radial-gradient(900px 700px at 55% 105%, rgba(56,189,248,.08), rgba(255,255,255,0) 58%),
+    linear-gradient(180deg, #f7f9fd 0%, #f3f6fb 52%, #f7f9fd 100%);
+}
+
+/* Убираем второй “мир” у hero-bg (иначе фон выглядит 2-цветным) */
+.hero-bg{
+  background: transparent !important;
+}
+.hero-bg::before,
+.hero-bg::after{
+  display: none !important;
+}
+
+/* =========================
+   1) HEADER — Premium light + затемнение
+========================= */
+.glass-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.94) 0%,
+    rgba(255,255,255,0.82) 55%,
+    rgba(255,255,255,0.74) 100%
+  );
+
+  border-bottom: 1px solid rgba(15,23,42,0.10);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* мягкое премиум-затемнение сверху */
+.glass-header::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: linear-gradient(
+    180deg,
+    rgba(15,23,42,0.14) 0%,
+    rgba(15,23,42,0.06) 45%,
+    rgba(15,23,42,0.00) 85%
+  );
+  opacity: .55;
+}
+
+/* тонкая светлая кромка снизу */
+.glass-header::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height:1px;
+  pointer-events:none;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.75),
+    rgba(255,255,255,0)
+  );
+  opacity: .9;
+}
+
+/* контент поверх псевдоэлементов */
+.glass-header > *{ position: relative; z-index: 1; }
+
+/* padding shrink как у тебя, но оставим */
+.nav-wrap{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: padding .22s ease;
+}
+.nav-shrink .nav-wrap{
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* Mobile: не уменьшаем */
+@media (max-width: 640px){
+  .nav-wrap{ padding-top: 10px; padding-bottom: 10px; }
+  .nav-shrink .nav-wrap{ padding-top: 10px; padding-bottom: 10px; }
+}
+
+/* при скролле — глубже */
+.nav-shadow{
+  box-shadow: 0 18px 45px rgba(15,23,42,0.12);
+}
+
+/* =========================
+   2) NAV LINKS — FIX (без влияния на логотип)
+========================= */
+
+/* бренд/логотип (НЕ pill) — добавь class="brand-link" на ссылку логотипа */
+nav a.brand-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  text-decoration: none;
+}
+nav a.brand-link::after{ display:none; }
+
+/* пункты меню */
+nav a.nav-link{
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 12px;
+  border-radius: 999px;
+
+  color: rgba(15, 23, 42, 0.94);
+  font-weight: 600;
+  letter-spacing: 0.01em;      /* FIX: было ошибочно text-decoration */
+  text-decoration: none;       /* FIX */
+
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
+
+  transition: background .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease;
+}
+
+/* hover */
+nav a.nav-link:hover{
+  color: rgba(15, 23, 42, 0.98);
+  background-color: rgba(255, 255, 255, 0.78);
+  border-color: rgba(15, 23, 42, 0.10);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* active */
+nav a.nav-link[aria-current="page"]{
+  color: rgba(15, 23, 42, 0.98);
+  background-color: rgba(255, 255, 255, 0.94);
+  border-color: rgba(15, 23, 42, 0.16);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-weight: 700;
+}
+
+/* линия у active */
+nav a.nav-link[aria-current="page"]::after{
+  content:"";
+  position:absolute;
+  left:14px; right:14px; bottom:6px;
+  height:2px;
+  border-radius:999px;
+  background: linear-gradient(90deg,
+    rgba(17,24,39,0),
+    rgba(17,24,39,0.65),
+    rgba(17,24,39,0)
+  );
+  opacity:.95;
+  pointer-events:none;
+}
+
+/* mobile menu active (если там ссылки без .nav-link) */
+#mobileMenu a[aria-current="page"]{
+  background-color: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================
+   3) BADGE DOT — цвет “точки” (в hero-badge)
+========================= */
+.hero-badge-dot{
+  background: rgba(37,99,235,0.95);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.14);
+}
+
+/* =========================
+   4) BULLETS / LIST DOTS — где есть “точки перед текстом”
+   Использование:
+   - Оберни блок контента в <div class="prose">...</div>
+   - Или замени .prose на свой контейнер
+========================= */
+.prose ul{
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.prose ul li{
+  position: relative;
+  padding-left: 20px;
+}
+.prose ul li::before{
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgba(37,99,235,0.90);
+  font-weight: 900;
+}
+
+/* (опционально) если где-то включён list-disc через Tailwind — можно отключить в prose */
+.prose ul.list-disc{ list-style: none; padding-left: 0; }
+/* ===== Badge: Live (light green premium) ===== */
+.badge-live,
+.status-live,
+.pill-live,
+.tag-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+
+  color: #065f46; /* emerald-800 */
+  background: rgba(16, 185, 129, 0.14); /* emerald glow, light */
+  border: 1px solid rgba(16, 185, 129, 0.28);
+
+  box-shadow:
+    0 10px 26px rgba(16, 185, 129, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.75) inset;
+}
+
+/* маленькая зелёная точка слева */
+.badge-live::before,
+.status-live::before,
+.pill-live::before,
+.tag-live::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.95);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.18);
+}
