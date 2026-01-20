@@ -258,7 +258,7 @@ nav a.nav-link {
     /* важное: читаемо на стекле */
     color: rgba(15, 23, 42, 0.94);
     font-weight: 600;
-    text-decoration: none;
+    text-decoration: 0.01em;
 
     /* по умолчанию без плашки */
     background: transparent;
