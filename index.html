@@ -541,66 +541,6 @@
         </div><!-- /container -->
     </footer>
 
-    <!-- =========================
-        JS: Year + Mobile Menu + Shrink Nav + Reveal + FAQ (single open)
-    ========================= -->
-    <script>
-        // Footer year
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        // Mobile menu
-        const btn = document.getElementById("menuBtn");
-        const menu = document.getElementById("mobileMenu");
-        if (btn && menu) {
-            btn.addEventListener("click", () => {
-                const isOpen = !menu.classList.contains("hidden");
-                menu.classList.toggle("hidden");
-                btn.setAttribute("aria-expanded", String(!isOpen));
-            });
-        }
-
-        // Nav shrink
-        const nav = document.getElementById("siteNav");
-        const onScroll = () => {
-            const y = window.scrollY || 0;
-            if (y > 12) nav.classList.add("nav-shrink", "nav-shadow");
-            else nav.classList.remove("nav-shrink", "nav-shadow");
-        };
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-
-        // Reveal (safe)
-        const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const items = document.querySelectorAll(".reveal");
-        const showAll = () => items.forEach(el => el.classList.add("is-visible"));
-
-        if (prefersReduced || !("IntersectionObserver" in window)) {
-            showAll();
-        } else {
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add("is-visible");
-                        io.unobserve(e.target);
-                    }
-                });
-            }, { threshold: 0.12 });
-            items.forEach(el => io.observe(el));
-        }
-
-        // FAQ: open only one
-        const faqRoot = document.querySelector(".faq");
-        if (faqRoot) {
-            faqRoot.addEventListener("toggle", (e) => {
-                const t = e.target;
-                if (t.tagName === "DETAILS" && t.open) {
-                    faqRoot.querySelectorAll("details").forEach(d => {
-                        if (d !== t) d.open = false;
-                    });
-                }
-            }, true);
-        }
-    </script>
 
 </body>
 
