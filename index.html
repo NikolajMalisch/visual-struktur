@@ -75,82 +75,69 @@
 <body id="top" class="bg-app text-[color:var(--text)]">
 
     <!-- =========================================================
-  NAV (Index) — wie in prozess.html
-========================================================== -->
-<nav id="siteNav" class="w-full sticky top-0 z-50 glass-header" aria-label="Hauptnavigation">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
-    <div class="flex items-center justify-between gap-6">
+       NAV (Index) — wie in prozess.html
+    ========================================================== -->
+    <nav id="siteNav" class="w-full sticky top-0 z-50 glass-header" aria-label="Hauptnavigation">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
+            <div class="flex items-center justify-between gap-6">
 
-      <!-- Brand -->
-      <a href="./index.html" class="flex items-center gap-3" aria-label="Startseite">
-        <img
-          src="images/logo-visual.png"
-          alt="Visual Struktur Logo"
-          class="h-12 md:h-14 lg:h-16 w-auto shrink-0"
-        />
-        <div class="leading-tight">
-          <div class="brand-title text-[1.25rem] md:text-2xl font-semibold text-[color:var(--text)]">
-            <span class="brand-gradient">Visual</span> Struktur
-          </div>
-          <div class="text-xs md:text-sm text-[color:var(--muted2)]">
-            Webdesign · Digitalisierung · SEO + GEO
-          </div>
+                <!-- Brand -->
+                <a href="./index.html" class="flex items-center gap-3" aria-label="Startseite">
+                    <img src="images/logo-visual.png" alt="Visual Struktur Logo"
+                        class="h-12 md:h-14 lg:h-16 w-auto shrink-0" />
+                    <div class="leading-tight">
+                        <div class="brand-title text-[1.25rem] md:text-2xl font-semibold text-[color:var(--text)]">
+                            <span class="brand-gradient">Visual</span> Struktur
+                        </div>
+                        <div class="text-xs md:text-sm text-[color:var(--muted2)]">
+                            Webdesign · Digitalisierung · SEO + GEO
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-3 lg:gap-5">
+                    <a href="leistungen.html" class="nav-link px-3 py-2">Leistungen</a>
+                    <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
+                    <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
+                    <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
+                    <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
+                </div>
+
+                <!-- Desktop CTA -->
+                <div class="hidden md:flex">
+                    <a href="kontakt.html" class="btn-primary">Projekt anfragen</a>
+                </div>
+
+                <!-- Mobile Button -->
+                <button id="menuBtn" type="button"
+                    class="md:hidden inline-flex items-center justify-center rounded-xl px-3 py-2 border border-white/15 bg-white/10 text-[color:var(--text)]"
+                    aria-controls="mobileMenu" aria-expanded="false" aria-label="Menü öffnen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Panel -->
+            <div id="mobileMenu" class="md:hidden hidden mt-3 pb-4" role="dialog" aria-label="Mobile Navigation">
+                <div class="rounded-2xl border border-white/12 bg-white/10 backdrop-blur p-3">
+                    <div class="grid gap-1">
+                        <a href="leistungen.html" class="nav-link px-3 py-2">Leistungen</a>
+                        <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
+                        <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
+                        <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
+                        <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
+                    </div>
+
+                    <div class="mt-3">
+                        <a href="kontakt.html" class="btn-primary w-full text-center block">Projekt anfragen</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </a>
-
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center gap-3 lg:gap-5">
-        <a href="leistungen.html" class="nav-link px-3 py-2">Leistungen</a>
-        <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
-        <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
-        <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
-        <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
-      </div>
-
-      <!-- Desktop CTA -->
-      <div class="hidden md:flex">
-        <a href="kontakt.html" class="btn-primary">Projekt anfragen</a>
-      </div>
-
-      <!-- Mobile Button -->
-      <button
-        id="menuBtn"
-        type="button"
-        class="md:hidden inline-flex items-center justify-center rounded-xl px-3 py-2 border border-white/15 bg-white/10 text-[color:var(--text)]"
-        aria-controls="mobileMenu"
-        aria-expanded="false"
-        aria-label="Menü öffnen"
-      >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="M4 7h16M4 12h16M4 17h16"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-          />
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile Menu Panel -->
-    <div id="mobileMenu" class="md:hidden hidden mt-3 pb-4" role="dialog" aria-label="Mobile Navigation">
-      <div class="rounded-2xl border border-white/12 bg-white/10 backdrop-blur p-3">
-        <div class="grid gap-1">
-          <a href="leistungen.html" class="nav-link px-3 py-2">Leistungen</a>
-          <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
-          <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
-          <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
-          <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
-        </div>
-
-        <div class="mt-3">
-          <a href="kontakt.html" class="btn-primary w-full text-center block">Projekt anfragen</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav>
+    </nav>
 
     <!-- =========================
         HERO (Lux Light / Logo on top)

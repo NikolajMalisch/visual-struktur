@@ -75,12 +75,12 @@
 <body class="bg-app text-[color:var(--text)]">
 
     <!-- =========================================================
-        NAV (Branchen) — wie in prozess.html
+        NAV (Global) — ohne aria-current (setzt app.js automatisch)
     ========================================================== -->
     <nav id="siteNav" class="w-full sticky top-0 z-50 glass-header" aria-label="Hauptnavigation">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
             <div class="flex items-center justify-between gap-6">
-
+    
                 <!-- Brand -->
                 <a href="./index.html" class="flex items-center gap-3" aria-label="Startseite">
                     <img src="images/logo-visual.png" alt="Visual Struktur Logo"
@@ -94,21 +94,21 @@
                         </div>
                     </div>
                 </a>
-
+    
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-3 lg:gap-5">
                     <a href="leistungen.html" class="nav-link px-3 py-2">Leistungen</a>
-                    <a href="branchen.html" class="nav-link px-3 py-2" aria-current="page">Branchen</a>
+                    <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
                     <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
                     <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
                     <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
                 </div>
-
+    
                 <!-- Desktop CTA -->
                 <div class="hidden md:flex">
                     <a href="kontakt.html" class="btn-primary">Projekt anfragen</a>
                 </div>
-
+    
                 <!-- Mobile Button -->
                 <button id="menuBtn" type="button"
                     class="md:hidden inline-flex items-center justify-center rounded-xl px-3 py-2 border border-white/15 bg-white/10 text-[color:var(--text)]"
@@ -118,24 +118,24 @@
                     </svg>
                 </button>
             </div>
-
+    
             <!-- Mobile Menu Panel -->
             <div id="mobileMenu" class="md:hidden hidden mt-3 pb-4" role="dialog" aria-label="Mobile Navigation">
                 <div class="rounded-2xl border border-white/12 bg-white/10 backdrop-blur p-3">
                     <div class="grid gap-1">
                         <a href="leistungen.html" class="nav-link px-3 py-2">Leistungen</a>
-                        <a href="branchen.html" class="nav-link px-3 py-2" aria-current="page">Branchen</a>
+                        <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
                         <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
                         <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
                         <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
                     </div>
-
+    
                     <div class="mt-3">
                         <a href="kontakt.html" class="btn-primary w-full text-center block">Projekt anfragen</a>
                     </div>
                 </div>
             </div>
-
+    
         </div>
     </nav>
 
