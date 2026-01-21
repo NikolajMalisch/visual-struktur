@@ -17,6 +17,27 @@
     <link rel="stylesheet" href="./css/output.css">
     <link rel="stylesheet" href="./styles.css" />
 
+    <!-- Hard-fix layout nur für Kontakt (работает даже если Tailwind utilities не сгенерились) -->
+    <style>
+        .contact-layout {
+            display: grid;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        @media (min-width: 1024px) {
+            .contact-layout {
+                grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+            }
+        }
+
+        .contact-layout>*,
+        .contact-left,
+        .contact-right {
+            min-width: 0;
+        }
+    </style>
+
     <!-- App JS (Nav active, mobile menu, footer year, reveal, faq etc.) -->
     <script src="./js/app.js" defer></script>
 
@@ -40,7 +61,7 @@
 <body id="top" class="bg-app text-[color:var(--text)]">
 
     <!-- =========================================================
-        NAV — same as index
+       NAV — same as index
     ========================================================== -->
     <nav id="siteNav" class="w-full sticky top-0 z-50 glass-header" aria-label="Hauptnavigation">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
@@ -121,7 +142,8 @@
                     <p class="mt-4 text-[15px] sm:text-base text-[color:var(--muted)] leading-relaxed">
                         Sag mir, was du brauchst: Website, SEO/Local, digitale Formulare, Automatisierung.
                         Ich melde mich in der Regel innerhalb von 24–48 Stunden mit einer kurzen Rückfrage oder einem
-                        konkreten Rahmen.
+                        konkreten
+                        Rahmen.
                     </p>
 
                     <div class="mt-6 flex flex-wrap gap-2">
@@ -144,15 +166,15 @@
     </header>
 
     <!-- =========================
-        CONTACT GRID
-    ========================= -->
+      CONTACT GRID
+  ========================= -->
     <main class="pb-14 sm:pb-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-            <div class="grid gap-4 lg:grid-cols-12">
+            <div class="contact-layout">
 
                 <!-- LEFT: contact cards -->
-                <aside class="lg:col-span-5 grid gap-4">
+                <aside class="contact-left grid gap-4">
 
                     <div class="panel card-premium p-6 reveal">
                         <h2 class="text-lg font-semibold text-[color:var(--text)]">Direktkontakt</h2>
@@ -217,7 +239,7 @@
                 </aside>
 
                 <!-- RIGHT: form -->
-                <section class="lg:col-span-7">
+                <section class="contact-right">
                     <div class="panel card-premium p-6 sm:p-8 reveal">
                         <h2 class="text-xl font-semibold text-[color:var(--text)]">Anfrageformular</h2>
                         <p class="mt-2 text-sm text-[color:var(--muted)] leading-relaxed">
@@ -231,16 +253,16 @@
                                     <label for="name"
                                         class="text-sm font-semibold text-[color:var(--text)]">Name</label>
                                     <input id="name" name="name" type="text" autocomplete="name" required
-                                        class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm
-                                text-[color:var(--text)] placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20" placeholder="Max Mustermann" />
+                                        class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-[color:var(--text)] placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+                                        placeholder="Max Mustermann" />
                                 </div>
 
                                 <div>
                                     <label for="email"
                                         class="text-sm font-semibold text-[color:var(--text)]">E-Mail</label>
                                     <input id="email" name="email" type="email" autocomplete="email" required
-                                        class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm
-                                text-[color:var(--text)] placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20" placeholder="max@beispiel.de" />
+                                        class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-[color:var(--text)] placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+                                        placeholder="max@beispiel.de" />
                                 </div>
                             </div>
 
@@ -249,15 +271,15 @@
                                     <label for="phone" class="text-sm font-semibold text-[color:var(--text)]">Telefon
                                         (optional)</label>
                                     <input id="phone" name="phone" type="tel" autocomplete="tel"
-                                        class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm
-                                text-[color:var(--text)] placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20" placeholder="+49 ..." />
+                                        class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-[color:var(--text)] placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+                                        placeholder="+49 ..." />
                                 </div>
 
                                 <div>
                                     <label for="topic"
                                         class="text-sm font-semibold text-[color:var(--text)]">Thema</label>
-                                    <select id="topic" name="topic" required class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm
-                                text-[color:var(--text)] focus:outline-none focus:ring-2 focus:ring-white/20">
+                                    <select id="topic" name="topic" required
+                                        class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-[color:var(--text)] focus:outline-none focus:ring-2 focus:ring-white/20">
                                         <option value="" disabled selected>Bitte wählen…</option>
                                         <option>Website (One-Pager / Mehrseiten)</option>
                                         <option>SEO / Local (Google Sichtbarkeit)</option>
@@ -272,8 +294,7 @@
                                 <label for="message"
                                     class="text-sm font-semibold text-[color:var(--text)]">Nachricht</label>
                                 <textarea id="message" name="message" rows="6" required
-                                    class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm
-                                text-[color:var(--text)] placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+                                    class="mt-2 w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-[color:var(--text)] placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
                                     placeholder="Kurz: Branche, Ziel, vorhandene Website (Link), gewünschte Seiten, Deadline…"></textarea>
                             </div>
 
@@ -297,12 +318,8 @@
 
                             <!-- Buttons + status -->
                             <div class="mt-2 flex flex-col sm:flex-row gap-3 sm:items-center">
-                                <button type="submit" class="btn-primary">
-                                    Anfrage senden
-                                </button>
-                                <a href="leistungen.html" class="btn-ghost text-center">
-                                    Erst Leistungen ansehen
-                                </a>
+                                <button type="submit" class="btn-primary">Anfrage senden</button>
+                                <a href="leistungen.html" class="btn-ghost text-center">Erst Leistungen ansehen</a>
                                 <div id="formStatus" class="text-sm text-[color:var(--muted2)] sm:ml-auto"></div>
                             </div>
 
@@ -338,8 +355,8 @@
     </main>
 
     <!-- =========================
-       FOOTER — same as index
-    ========================= -->
+     FOOTER — same as index
+  ========================= -->
     <footer class="matte-footer">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
 
