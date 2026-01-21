@@ -530,7 +530,7 @@ nav a.nav-link[aria-current="page"]::after {
 }
 
 /* =========================================================
-   BUTTONS (Anthrazit)
+    BUTTONS (Anthrazit)
 ========================================================= */
 .btn-primary {
     display: inline-flex;
@@ -613,7 +613,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   HERO (nur Branchen-Seite) – Bild + dunkler Verlauf links
+    HERO (nur Branchen-Seite) – Bild + dunkler Verlauf links
 ========================================================= */
 .hero-branchen {
     position: relative;
@@ -679,7 +679,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   BRANCHEN CARDS
+    BRANCHEN CARDS
 ========================================================= */
 .branch-card {
     background: var(--surface);
@@ -774,7 +774,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   CTA (Slim)
+    CTA (Slim)
 ========================================================= */
 .cta-slim {
     border-radius: 24px;
@@ -802,7 +802,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   FOOTER
+    FOOTER
 ========================================================= */
 .matte-footer {
     background: linear-gradient(180deg, #0b1220 0%, #050913 100%);
@@ -828,7 +828,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   GEO Layer (Lux)
+    GEO Layer (Lux)
 ========================================================= */
 .geo-wrap {
     max-width: 72rem;
@@ -925,7 +925,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   LIST DOTS (optional): wrap content with .prose
+    LIST DOTS (optional): wrap content with .prose
 ========================================================= */
 .prose ul {
     list-style: none;
@@ -953,7 +953,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   BADGE LIVE (green)
+    BADGE LIVE (green)
 ========================================================= */
 .badge-live,
 .status-live,
@@ -990,7 +990,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   LEISTUNGEN: Media-Image Stabilisierung (kein CLS)
+    LEISTUNGEN: Media-Image Stabilisierung (kein CLS)
 ========================================================= */
 .leist-card {
     display: block !important;
@@ -1053,7 +1053,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   Reduced motion
+    Reduced motion
 ========================================================= */
 @media (prefers-reduced-motion: reduce) {
     html {
@@ -1072,7 +1072,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-   sr-only
+    sr-only
 ========================================================= */
 .sr-only {
     position: absolute;
@@ -1091,4 +1091,22 @@ header .panel.bg-\[\#0B0F16\]{
     background: #0B0F16 !important;
     border-color: rgba(255,255,255,.10) !important;
 }
+}
+
+/* Kontakt layout – hard fix (не зависит от tailwind utilities) */
+.contact-layout {
+    display: grid;
+    gap: 1rem;
+    align-items: start;
+}
+
+@media (min-width: 1024px) {
+    .contact-layout {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+}
+
+/* важно: чтобы контент не раздувал/не ломал колонки */
+.contact-layout>* {
+    min-width: 0;
 }
