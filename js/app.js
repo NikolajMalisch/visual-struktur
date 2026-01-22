@@ -65,43 +65,56 @@
         if (y) y.textContent = String(new Date().getFullYear());
     });
 
-    // =========================
-    // Active nav highlighting (GitHub Pages safe)
-    // =========================
-    const normalizePath = (p) => {
-        if (!p) return "";
-        // remove hash + query
-        p = p.split("#")[0].split("?")[0];
-
-        // if it's a full URL, take pathname
-        try { p = new URL(p, window.location.origin).pathname; } catch (e) { }
-
-        // remove leading slash
-        p = p.replace(/^\/+/, "");
-
-        // remove GitHub Pages repo prefix (e.g. "visual-struktur/")
-        const repo = window.location.pathname.split("/")[1]; // "visual-struktur"
-        if (repo && p.startsWith(repo + "/")) p = p.slice(repo.length + 1);
-
-        // treat root as index.html
-        if (p === "" || p.endsWith("/")) p += "index.html";
-
-        return p.toLowerCase();
-    };
-
+    /* =========================
+        Active nav highlighting (aria-current="page") — GitHub Pages safe
+        Works for:
+        - repo pages: /visual-struktur/...
+        - local/dev
+        - href like: "kontakt.html", "./kontakt.html", "/kontakt.html"
+    ========================= */
     (() => {
-        const current = normalizePath(window.location.pathname);
+        "use strict";
 
-        document.querySelectorAll('a.nav-link[href]').forEach((a) => {
-            const href = a.getAttribute("href");
-            const target = normalizePath(href);
+        const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+
+        const normalize = (input) => {
+            if (!input) return "";
+
+            // strip hash/query
+            let p = String(input).split("#")[0].split("?")[0];
+
+            // if full/relative URL -> pathname
+            try {
+                p = new URL(p, window.location.origin).pathname;
+            } catch (_) { }
+
+            // remove leading slashes
+            p = p.replace(/^\/+/, "");
+
+            // remove GitHub Pages repo prefix (first segment), e.g. "visual-struktur/"
+            const seg = window.location.pathname.split("/").filter(Boolean); // ["visual-struktur","kontakt.html"]
+            const repo = (seg.length ? seg[0] : "");
+            if (repo && p.toLowerCase().startsWith(repo.toLowerCase() + "/")) {
+                p = p.slice(repo.length + 1);
+            }
+
+            // root -> index.html
+            if (p === "" || p.endsWith("/")) p += "index.html";
+
+            return p.toLowerCase();
+        };
+
+        const current = normalize(window.location.pathname);
+
+        qsa('nav a.nav-link[href]').forEach((a) => {
+            const href = a.getAttribute("href") || "";
+            const target = normalize(href);
+
+            // clear first
+            a.removeAttribute("aria-current");
 
             if (target && target === current) {
-                a.classList.add("is-active");
                 a.setAttribute("aria-current", "page");
-            } else {
-                a.classList.remove("is-active");
-                a.removeAttribute("aria-current");
             }
         });
     })();
