@@ -1142,205 +1142,225 @@ html.js .reveal.is-visible {
     background: rgba(255, 255, 255, .62);
     border: 1px solid rgba(15, 23, 42, .12);
     border-radius: calc(var(--radius) + 10px);
-    box-shadow: 0 12px 32px rgba(15, 23, 42, .08);
-    overflow: clip;
-}
-
-.faq summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 16px 16px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 14px;
-    font-weight: 900;
-    color: var(--text);
-}
-
-.faq summary::-webkit-details-marker {
-    display: none;
-}
-
-.faq .faq-q {
-    font-size: 14px;
-    line-height: 1.35;
-}
-
-.faq .faq-icon {
-    flex: 0 0 auto;
-    width: 28px;
-    height: 28px;
-    border-radius: 999px;
-    display: grid;
-    place-items: center;
-    border: 1px solid rgba(15, 23, 42, .14);
-    background: rgba(255, 255, 255, .82);
-    box-shadow: 0 10px 26px rgba(15, 23, 42, .06);
-    transition: transform .18s ease;
-}
-
-.faq details[open] .faq-icon {
-    transform: rotate(45deg);
-}
-
-.faq .faq-a {
-    padding: 0 16px 16px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.65;
-}
-
-/* =========================================================
-  LIST DOTS (.prose)
-========================================================= */
-.prose ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-}
-
-.prose ul li {
-    position: relative;
-    padding-left: 20px;
-}
-
-.prose ul li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: rgba(37, 99, 235, .90);
-    font-weight: 900;
-}
-
-.prose ul.list-disc {
-    list-style: none;
-    padding-left: 0;
-}
-
-/* =========================================================
-  LEISTUNGEN: Media-Image Stabilisierung (kein CLS)
-========================================================= */
-.leist-card {
-    display: block !important;
-}
-
-.leist-card .media-raw {
-    width: 100%;
-    overflow: hidden;
-    aspect-ratio: 16 / 9;
-}
-
-.leist-card .media-raw>img {
-    width: 100% !important;
-    height: 100% !important;
-    display: block;
-    object-fit: cover;
-    object-position: 50% 50%;
-}
-
-@media (min-width: 1024px) {
-    .leist-card .media-raw {
-        aspect-ratio: 16 / 9;
-        max-height: 420px;
+        box-shadow: 0 12px 32px rgba(15, 23, 42, .08);
+        overflow: clip;
     }
 
-    .leist-card .media-raw>img {
-        object-position: 50% 55%;
-    }
-}
-
-@media (min-width: 640px) and (max-width: 1023.98px) {
-    .leist-card .media-raw {
-        aspect-ratio: 16 / 9;
-    }
-
-    .leist-card .media-raw>img {
-        object-position: 50% 45%;
-    }
-}
-
-@media (max-width: 639.98px) {
-    .leist-card .media-raw {
-        aspect-ratio: 4 / 3;
+    .faq summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 16px 16px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 14px;
+        font-weight: 900;
+        color: var(--text);
     }
 
-    .leist-card .media-raw>img {
-        object-position: 50% 50%;
-    }
-}
-
-.leist-card>.p-7 {
-    width: 100%;
-}
-
-/* =========================================================
-  FOOTER
-========================================================= */
-.matte-footer {
-    background: linear-gradient(180deg, #0b1220 0%, #050913 100%);
-}
-
-.footer-gradient {
-    background: linear-gradient(135deg, rgba(255, 255, 255, .95), rgba(147, 197, 253, .95));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.footer-link-dark {
-    color: rgba(255, 255, 255, .70);
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.footer-link-dark:hover {
-    color: rgba(255, 255, 255, .92);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-
-/* =========================================================
-  FIXES / SPECIALS
-========================================================= */
-/* MOBILE: Prozess-Hero bleibt anthrazit trotz .panel */
-@media (max-width: 1023.98px) {
-    header .panel.bg-\[\#0B0F16\] {
-        background: #0B0F16 !important;
-        border-color: rgba(255, 255, 255, .10) !important;
-    }
-}
-
-/* =========================================================
-  ACCESSIBILITY / UTILITIES
-========================================================= */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
+    .faq summary::-webkit-details-marker {
+        display: none;
     }
 
-    html.js .reveal {
-        transition: none;
+    .faq .faq-q {
+        font-size: 14px;
+        line-height: 1.35;
     }
 
-    .hover-lift,
-    .btn-primary,
-    .btn-ghost,
     .faq .faq-icon {
-        transition: none;
+        flex: 0 0 auto;
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(15, 23, 42, .14);
+        background: rgba(255, 255, 255, .82);
+        box-shadow: 0 10px 26px rgba(15, 23, 42, .06);
+        transition: transform .18s ease;
     }
+
+    .faq details[open] .faq-icon {
+        transform: rotate(45deg);
+    }
+
+    .faq .faq-a {
+        padding: 0 16px 16px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+    /* =========================================================
+          LIST DOTS (.prose)
+    ========================================================= */
+    .prose ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .prose ul li {
+        position: relative;
+        padding-left: 20px;
+    }
+
+    .prose ul li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: rgba(37, 99, 235, .90);
+        font-weight: 900;
+    }
+
+    .prose ul.list-disc {
+        list-style: none;
+        padding-left: 0;
+    }
+
+/* =========================================================
+   [VS-FIX] PAGE-SCOPE: LEISTUNGEN — HERO (единственный источник правды)
+   Задача:
+   - Leistungen: тёмная hero-панель как на референсе
+   - Убрать светлую маску .hero-panel--lightleft
+   - Не влиять на index и другие страницы
+   - На мобиле: hero выше (4/3), чтобы не ломалась композиция
+========================================================= */
+
+/* ---------- 1) Основа панели (тёмная) ---------- */
+.page-leistungen .hero-panel {
+  background: #070A10 !important;
+  border-color: rgba(255, 255, 255, .10) !important;
+
+  box-shadow:
+    0 40px 140px rgba(2, 6, 23, .55),
+    0 1px 0 rgba(255, 255, 255, .06) inset !important;
+
+  /* Если хочешь "стекло" — оставь blur, если нет — поставь none */
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* ---------- 2) Отключаем светлую область слева (lightleft) ---------- */
+.page-leistungen .hero-panel--lightleft::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* ---------- 3) Акцентный glow / vignette (вместо светлого spotlight) ---------- */
+.page-leistungen .hero-panel::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  z-index: 1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(640px 460px at 22% 35%, rgba(59, 130, 246, .22), transparent 62%),
+    radial-gradient(820px 520px at 78% 28%, rgba(99, 102, 241, .14), transparent 68%),
+    radial-gradient(1200px 700px at 50% 50%, rgba(255, 255, 255, .05), transparent 55%),
+    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.35) 100%);
+}
+
+/* ---------- 4) Контент всегда поверх ---------- */
+.page-leistungen .hero-panel__content {
+  position: relative;
+  z-index: 3;
+  color: rgba(255, 255, 255, .92);
+  background: transparent !important;
+}
+
+/* Текстовые элементы (если без Tailwind классов) */
+.page-leistungen .hero-panel__content h1,
+.page-leistungen .hero-panel__content h2 {
+  color: rgba(255, 255, 255, .96) !important;
+}
+
+.page-leistungen .hero-panel__content p {
+  color: rgba(255, 255, 255, .70) !important;
+}
+
+/* ---------- 5) Badge в hero (тёмный) ---------- */
+.page-leistungen .hero-panel__content .hero-badge {
+  background: rgba(255, 255, 255, .10) !important;
+  border-color: rgba(255, 255, 255, .16) !important;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, .22) !important;
+  color: rgba(255, 255, 255, .88) !important;
+}
+
+.page-leistungen .hero-panel__content .hero-badge-dot {
+  background: rgba(96, 165, 250, .95) !important;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, .18) !important;
+}
+
+/* ---------- 6) Кнопки в hero (тёмный вариант ghost) ---------- */
+.page-leistungen .hero-panel__content .btn-ghost {
+  background: rgba(255, 255, 255, .10) !important;
+  border-color: rgba(255, 255, 255, .18) !important;
+  color: rgba(255, 255, 255, .92) !important;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .22) !important;
+}
+
+.page-leistungen .hero-panel__content .btn-ghost:hover {
+  background: rgba(255, 255, 255, .14) !important;
+  border-color: rgba(255, 255, 255, .22) !important;
+}
+
+/* ---------- 7) Mobile fix: hero выше, чтобы не "ломалось" ---------- */
+@media (max-width: 640px) {
+  /* В твоей базе стоит aspect-ratio: 16/9 — на leistungen меняем на 4/3 */
+  .page-leistungen .hero-panel {
+    aspect-ratio: 4 / 3 !important;
+  }
+
+  /* Чуть компактнее контент */
+  .page-leistungen .hero-panel__content {
+    padding: 22px 18px !important; /* если у тебя padding задаётся через .hero-panel__content */
+  }
+
+  /* Если заголовок слишком большой — подожмём */
+  .page-leistungen .hero-panel__content h1 {
+    font-size: clamp(30px, 9vw, 44px);
+    line-height: 1.05;
+  }
+}
+/* =========================================================
+   LEISTUNGEN — Mobile hero layout fix (без правки HTML)
+   Цель: чтобы на телефоне текст не конфликтовал с визуалом справа
+========================================================= */
+@media (max-width: 640px) {
+
+  /* 1) Убираем фикс-кадр. Пусть высота определяется контентом */
+  .page-leistungen .hero-panel {
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: 560px; /* [TUNE] 520–640 */
+  }
+
+  /* 2) Подкадрируем картинку так, чтобы иконки справа были "выше/правее" */
+  .page-leistungen .hero-panel__bg {
+    object-fit: cover !important;
+    object-position: 72% 32% !important; /* [TUNE] 68–80% / 25–40% */
+    transform: scale(1.06);             /* [TUNE] 1.02–1.10 */
+  }
+
+  /* 3) Контент: ограничиваем ширину и даём справа место под иконки */
+  .page-leistungen .hero-panel__content {
+    padding: 22px 16px !important;
+    max-width: 22rem;          /* чтобы строки были короче и читались */
+    padding-right: 96px !important; /* место под визуал справа */
+  }
+
+  /* 4) Типографика компактнее */
+  .page-leistungen .hero-panel__content h1 {
+    font-size: clamp(28px, 9vw, 40px);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+  }
+
+  .page-leistungen .hero-panel__content p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
 }

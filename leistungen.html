@@ -33,127 +33,187 @@
     "description":"Webdesign, Digitalisierung, SEO/Local und AI-SEO (GEO) für KMU – strukturiert, wartbar, performance-orientiert."
     }
     </script>
-    </head>
+</head>
 
-    <body id="top" class="bg-app text-[color:var(--text)]">
+<body id="top" class="bg-app text-[color:var(--text)] page-leistungen">
 
-   <!-- =========================================================
-  NAV (Leistungen) — wie in prozess.html
-========================================================== -->
-<nav id="siteNav" class="w-full sticky top-0 z-50 glass-header" aria-label="Hauptnavigation">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
-    <div class="flex items-center justify-between gap-6">
+    <!-- =========================================================
+            NAV (Leistungen) — wie in prozess.html
+    ========================================================== -->
+    <nav id="siteNav" class="w-full sticky top-0 z-50 glass-header" aria-label="Hauptnavigation">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
+            <div class="flex items-center justify-between gap-6">
 
-      <!-- Brand -->
-      <a href="./index.html" class="flex items-center gap-3" aria-label="Startseite">
-        <img
-          src="images/logo-visual.png"
-          alt="Visual Struktur Logo"
-          class="h-12 md:h-14 lg:h-16 w-auto shrink-0"
-        />
-        <div class="leading-tight">
-          <div class="brand-title text-[1.25rem] md:text-2xl font-semibold text-[color:var(--text)]">
-            <span class="brand-gradient">Visual</span> Struktur
-          </div>
-          <div class="text-xs md:text-sm text-[color:var(--muted2)]">
-            Webdesign · Digitalisierung · SEO + GEO
-          </div>
-        </div>
-      </a>
-
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center gap-3 lg:gap-5">
-        <a href="leistungen.html" class="nav-link px-3 py-2" aria-current="page">Leistungen</a>
-        <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
-        <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
-        <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
-        <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
-      </div>
-
-      <!-- Desktop CTA -->
-      <div class="hidden md:flex">
-        <a href="kontakt.html" class="btn-primary">Projekt anfragen</a>
-      </div>
-
-      <!-- Mobile Button -->
-      <button
-        id="menuBtn"
-        type="button"
-        class="md:hidden inline-flex items-center justify-center rounded-xl px-3 py-2 border border-white/15 bg-white/10 text-[color:var(--text)]"
-        aria-controls="mobileMenu"
-        aria-expanded="false"
-        aria-label="Menü öffnen"
-      >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path
-            d="M4 7h16M4 12h16M4 17h16"
-            stroke="currentColor"
-            stroke-width="1.8"
-            stroke-linecap="round"
-          />
-        </svg>
-      </button>
-    </div>
-
-    <!-- Mobile Menu Panel -->
-    <div id="mobileMenu" class="md:hidden hidden mt-3 pb-4" role="dialog" aria-label="Mobile Navigation">
-      <div class="rounded-2xl border border-white/12 bg-white/10 backdrop-blur p-3">
-        <div class="grid gap-1">
-          <a href="leistungen.html" class="nav-link px-3 py-2" aria-current="page">Leistungen</a>
-          <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
-          <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
-          <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
-          <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
-        </div>
-
-        <div class="mt-3">
-          <a href="kontakt.html" class="btn-primary w-full text-center block">Projekt anfragen</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</nav>
-
-
-    <!-- =========================
-        HERO (Panel: image original + light text area left)
-    ========================= -->
-    <header class="py-14 sm:py-16">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-            <section id="leistungenHeroPanel" class="hero-panel hero-panel--lightleft">
-                <!-- Background image (original) -->
-                <img src="./images/hero-pages.webp" alt="" aria-hidden="true" class="hero-panel__bg" loading="eager"
-                    fetchpriority="high" decoding="async" />
-
-                <!-- Content -->
-                <div class="hero-panel__content">
-                    <div class="max-w-3xl reveal">
-                        <div class="hero-badge">
-                            <span class="hero-badge-dot"></span>
-                            Leistungen
+                <!-- Brand -->
+                <a href="./index.html" class="flex items-center gap-3" aria-label="Startseite">
+                    <img src="images/logo-visual.png" alt="Visual Struktur Logo"
+                        class="h-12 md:h-14 lg:h-16 w-auto shrink-0" />
+                    <div class="leading-tight">
+                        <div class="brand-title text-[1.25rem] md:text-2xl font-semibold text-[color:var(--text)]">
+                            <span class="brand-gradient">Visual</span> Struktur
                         </div>
-
-                        <h1 class="h-display mt-4 text-4xl sm:text-5xl font-semibold tracking-tight text-balance">
-                            Struktur, Design, Technik — als System.
-                        </h1>
-
-                        <p class="mt-4 leading-relaxed text-[color:var(--muted)]">
-                            Premium Websites, digitale Prozesse und Sichtbarkeit. Klar aufgebaut, sauber umgesetzt,
-                            <br />damit Besucher verstehen, vertrauen und anfragen.
-                        </p>
-
-                        <div class="mt-7 flex flex-wrap gap-3">
-                            <a href="#pakete" class="btn-primary">Pakete ansehen</a>
-                            <a href="./kontakt.html" class="btn-ghost">Projekt anfragen</a>
+                        <div class="text-xs md:text-sm text-[color:var(--muted2)]">
+                            Webdesign · Digitalisierung · SEO + GEO
                         </div>
                     </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-3 lg:gap-5">
+                    <a href="leistungen.html" class="nav-link px-3 py-2" aria-current="page">Leistungen</a>
+                    <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
+                    <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
+                    <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
+                    <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
                 </div>
-            </section>
+
+                <!-- Desktop CTA -->
+                <div class="hidden md:flex">
+                    <a href="kontakt.html" class="btn-primary">Projekt anfragen</a>
+                </div>
+
+                <!-- Mobile Button -->
+                <button id="menuBtn" type="button"
+                    class="md:hidden inline-flex items-center justify-center rounded-xl px-3 py-2 border border-white/15 bg-white/10 text-[color:var(--text)]"
+                    aria-controls="mobileMenu" aria-expanded="false" aria-label="Menü öffnen">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Panel -->
+            <div id="mobileMenu" class="md:hidden hidden mt-3 pb-4" role="dialog" aria-label="Mobile Navigation">
+                <div class="rounded-2xl border border-white/12 bg-white/10 backdrop-blur p-3">
+                    <div class="grid gap-1">
+                        <a href="leistungen.html" class="nav-link px-3 py-2" aria-current="page">Leistungen</a>
+                        <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
+                        <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
+                        <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
+                        <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
+                    </div>
+
+                    <div class="mt-3">
+                        <a href="kontakt.html" class="btn-primary w-full text-center block">Projekt anfragen</a>
+                    </div>
+                </div>
+            </div>
 
         </div>
-    </header>
+    </nav>
+
+
+<!-- =========================================================
+HERO – Leistungen
+Mobile: Bild oben + Content unten (anthrazit)
+Desktop: Full-Card Background + Visual right
+========================================================== -->
+<header class="py-10 sm:py-14">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        <section class="panel rounded-3xl overflow-hidden reveal relative bg-[#0B0F16] lg:bg-transparent">
+
+            <!-- ======================
+                    MOBILE TOP IMAGE
+            ====================== -->
+            <div class="relative lg:hidden">
+                <img src="images/hero-pages.webp" alt="Leistungen – Struktur, Design, Technik"
+                    class="w-full h-[260px] sm:h-[320px] object-cover object-[72%_32%]" loading="eager"
+                    decoding="async" />
+                <!-- overlays only for image (sehr dezent) -->
+                <div class="absolute inset-0 bg-gradient-to-r from-black/10 via-black/5 to-black/0 pointer-events-none">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-black/0 to-black/0 pointer-events-none">
+                </div>
+                <div class="absolute inset-0 ring-1 ring-white/10 pointer-events-none"></div>
+
+                <!-- smooth transition into anthracite content -->
+                <div
+                    class="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-b from-black/0 to-[#0B0F16] pointer-events-none">
+                </div>
+            </div>
+
+            <!-- ======================
+                DESKTOP FULL BG
+            ====================== -->
+            <div class="hidden lg:block absolute inset-0 overflow-hidden">
+                <img src="images/hero-pages.webp" alt="Leistungen – Struktur, Design, Technik"
+                    class="absolute inset-0 w-full h-full object-cover object-[72%_35%]"
+                    style="transform: scale(1.06); transform-origin: center;" loading="eager" decoding="async" />
+            </div>
+
+            <!-- overlays for DESKTOP only (dezent, damit original bild bleibt) -->
+            <div
+                class="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/18 via-black/0 to-black/0 pointer-events-none">
+            </div>
+            <div
+                class="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/22 via-black/0 to-black/0 pointer-events-none">
+            </div>
+            <div class="hidden lg:block absolute inset-0 ring-1 ring-white/10 pointer-events-none"></div>
+
+            <!-- ======================
+                CONTENT
+            ====================== -->
+            <div class="relative z-10 p-7 sm:p-9 lg:p-12
+                lg:min-h-[620px] xl:min-h-[700px]
+                flex items-start lg:items-center
+                bg-transparent">
+                <div class="max-w-[560px] lg:max-w-[600px] lg:pr-10">
+
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-white/15
+                    px-4 py-2 text-[13px] font-semibold text-white/90 backdrop-blur">
+                        <span
+                            class="h-2 w-2 rounded-full bg-blue-400/90 shadow-[0_0_0_4px_rgba(59,130,246,.14)]"></span>
+                        Leistungen
+                    </div>
+
+                    <h1 class="mt-5 h-display text-4xl sm:text-5xl font-semibold leading-[1.05] text-white">
+                        Struktur, Design,<br class="hidden sm:block" />
+                        Technik — als System.
+                    </h1>
+
+                    <p class="mt-5 text-white/80 leading-relaxed max-w-xl">
+                        Premium Websites, digitale Prozesse und Sichtbarkeit. Klar aufgebaut, sauber umgesetzt,
+                        damit Besucher verstehen, vertrauen und anfragen.
+                    </p>
+
+                    <div class="mt-7 flex flex-col sm:flex-row gap-3">
+                        <a href="#pakete" class="btn-primary">Pakete ansehen</a>
+                        <a href="kontakt.html" class="btn-ghost">Projekt anfragen</a>
+                    </div>
+
+                    <!-- ===== MOBILE INFO (optional, wie на Prozess) ===== -->
+                    <div class="mt-6 lg:hidden">
+                        <div
+                            class="rounded-2xl bg-[#0A0D14] ring-1 ring-white/10 px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,.35)]">
+                            <p class="text-[13px] sm:text-sm text-white/70 leading-relaxed">
+                                Webdesign, Digitalisierung, SEO + GEO: klare Inhalte, saubere Technik und eine Struktur,
+                                die aus Besuchern Anfragen macht.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ===== DESKTOP INFO (optional) ===== -->
+            <div class="hidden lg:block absolute right-8 bottom-8 z-20 max-w-[420px]">
+                <div class="rounded-2xl bg-black/35 backdrop-blur-md ring-1 ring-white/10 px-4 py-3
+                    shadow-[0_18px_60px_rgba(0,0,0,.35)]">
+                    <p class="text-sm text-white/75 leading-relaxed">
+                        Visual Struktur liefert Webdesign, Digitalisierung sowie SEO + GEO (AI-SEO) als System:
+                        klar, technisch sauber und anfragenorientiert.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</header>
+
 
     <!-- =========================================================
         01) Webdesign  (1–3–2)
