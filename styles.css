@@ -1,10 +1,63 @@
 /* =========================================================
-  Visual Struktur — Premium Light (Lux) — FULL CSS (CLEAN)
-  - без дублей
-  - hero-panel: один источник правды (desktop contain, mobile full-card)
-  - nav: активная ссылка aria-current="page"
-  - global background через .bg-app
+  Visual Struktur — Premium Light (Lux) — FULL CSS (COMPLETE)
+  single-file, production-ready, no duplicates
 ========================================================= */
+
+/* =========================================================
+  PART 1/2
+========================================================= */
+
+/* =========================================================
+  BASE RESET / SAFETY
+========================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: var(--font-ui);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+::selection {
+    background: rgba(37, 99, 235, .18);
+}
 
 /* =========================================================
   TOKENS / ROOT
@@ -14,31 +67,20 @@
     --font-display: 'Space Grotesk', system-ui, -apple-system, Segoe UI, sans-serif;
 
     --bg: #f6f8fb;
-    --surface: rgba(255, 255, 255, 0.72);
-    --stroke: rgba(15, 23, 42, 0.10);
+    --surface: rgba(255, 255, 255, .72);
+    --stroke: rgba(15, 23, 42, .10);
 
     --text: #0f172a;
-    --muted: rgba(15, 23, 42, 0.72);
-    --muted2: rgba(15, 23, 42, 0.58);
+    --muted: rgba(15, 23, 42, .72);
+    --muted2: rgba(15, 23, 42, .58);
 
-    /* Anthrazit */
     --accent: #111827;
     --accent-strong: #0b1220;
 
-    --shadow1: 0 10px 28px rgba(15, 23, 42, 0.10);
-    --shadow2: 0 18px 50px rgba(15, 23, 42, 0.12);
+    --shadow1: 0 10px 28px rgba(15, 23, 42, .10);
+    --shadow2: 0 18px 50px rgba(15, 23, 42, .12);
 
     --radius: 18px;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: var(--font-ui);
-    background: var(--bg);
-    color: var(--text);
 }
 
 /* =========================================================
@@ -68,7 +110,38 @@ body {
 }
 
 /* =========================================================
-  PANELS
+  TYPOGRAPHY HELPERS (чтобы не пропадали стили)
+========================================================= */
+.h-display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+}
+
+.h-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+}
+
+.p-muted {
+    color: var(--muted);
+}
+
+.p-muted2 {
+    color: var(--muted2);
+}
+
+.hr-soft {
+    border: 0;
+    height: 1px;
+    background: rgba(15, 23, 42, .08);
+}
+
+/* =========================================================
+  PANELS / CARDS (glass)
 ========================================================= */
 .panel {
     background: var(--surface);
@@ -81,210 +154,8 @@ body {
 
 .card-premium {
     box-shadow:
-        0 18px 55px rgba(15, 23, 42, 0.10),
-        0 1px 0 rgba(255, 255, 255, 0.70) inset;
-}
-
-/* =========================================================
-  HERO PANEL — FINAL CLEAN (один блок)
-  HTML (рекомендуется):
-  <div class="hero-wrap">
-    <section class="hero-panel hero-panel--full">
-      <img class="hero-panel__bg" ...>
-    </section>
-  </div>
-
-  Desktop/Tablet: contain (картинка целиком, без обрезки)
-  Mobile: cover (на всю карточку) + aspect-ratio 16/9
-========================================================= */
-
-/* wrapper (если используешь в HTML) */
-.hero-wrap {
-    padding-top: 18px;
-    padding-bottom: 28px;
-}
-
-/* hero card */
-.hero-panel {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-
-    border-radius: 34px;
-    border: 1px solid rgba(15, 23, 42, .10);
-
-    /* glass */
-    background: rgba(255, 255, 255, .55);
-    box-shadow:
-        0 34px 120px rgba(2, 6, 23, .14),
+        0 18px 55px rgba(15, 23, 42, .10),
         0 1px 0 rgba(255, 255, 255, .70) inset;
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    /* desktop/tablet hero height */
-    height: clamp(620px, 72vh, 880px);
-}
-
-/* spotlight */
-.hero-panel::after {
-    content: "";
-    position: absolute;
-    inset: -20%;
-    z-index: 1;
-    pointer-events: none;
-    background:
-        radial-gradient(620px 420px at 20% 35%, rgba(59, 130, 246, .10), transparent 65%),
-        radial-gradient(700px 420px at 80% 25%, rgba(0, 0, 0, .04), transparent 70%);
-}
-
-/* base image */
-.hero-panel__bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    pointer-events: none;
-}
-
-/* Desktop/Tablet: показать картинку целиком */
-.hero-panel--full .hero-panel__bg {
-    object-fit: contain;
-    object-position: 50% 55%;
-    padding: clamp(26px, 3vw, 54px);
-}
-
-/* Mobile: “только карточка”, картинка на всю карточку */
-@media (max-width: 640px) {
-    .hero-wrap {
-        padding-top: 10px;
-        padding-bottom: 18px;
-    }
-
-    .hero-panel {
-        height: auto;
-        aspect-ratio: 16 / 9;
-        border-radius: 26px;
-    }
-
-    .hero-panel::after {
-        inset: -10%;
-    }
-
-    .hero-panel--full .hero-panel__bg {
-        object-fit: cover;
-        padding: 0;
-        object-position: 54% 42%;
-        transform: scale(1.06);
-    }
-}
-
-/* =========================================================
-  NAV — Active Link Highlight (aria-current="page")
-========================================================= */
-
-/* Brand / Logo (не pill) */
-nav a.brand-link {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 12px;
-    padding: 0;
-    border-radius: 0;
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    text-decoration: none;
-}
-
-nav a.brand-link::after {
-    display: none;
-}
-
-/* Nav links */
-nav a.nav-link {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    padding: 10px 12px;
-    border-radius: 999px;
-
-    color: rgba(15, 23, 42, .94);
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    text-decoration: none;
-
-    background: transparent;
-    border: 1px solid transparent;
-    box-shadow: none;
-
-    transition: background .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease;
-}
-
-nav a.nav-link:hover {
-    color: rgba(15, 23, 42, .98);
-    background-color: rgba(255, 255, 255, .78);
-    border-color: rgba(15, 23, 42, .10);
-    box-shadow: 0 10px 26px rgba(15, 23, 42, .06);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-nav a.nav-link[aria-current="page"] {
-    color: rgba(15, 23, 42, .98);
-    background-color: rgba(255, 255, 255, .94);
-    border-color: rgba(15, 23, 42, .16);
-    box-shadow: 0 14px 34px rgba(15, 23, 42, .10);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    font-weight: 700;
-}
-
-nav a.nav-link[aria-current="page"]::after {
-    content: "";
-    position: absolute;
-    left: 14px;
-    right: 14px;
-    bottom: 6px;
-    height: 2px;
-    border-radius: 999px;
-    background: linear-gradient(90deg,
-            rgba(17, 24, 39, 0),
-            rgba(17, 24, 39, .65),
-            rgba(17, 24, 39, 0));
-    opacity: .95;
-    pointer-events: none;
-}
-
-/* mobile menu active (если без .nav-link) */
-#mobileMenu a[aria-current="page"] {
-    background-color: rgba(255, 255, 255, .94);
-    border: 1px solid rgba(15, 23, 42, .16);
-    box-shadow: 0 10px 26px rgba(15, 23, 42, .08);
-}
-
-/* Nav wrap */
-.nav-wrap {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    transition: padding .22s ease;
-}
-
-.nav-shrink .nav-wrap {
-    padding-top: 6px;
-    padding-bottom: 6px;
-}
-
-@media (max-width: 640px) {
-
-    .nav-wrap,
-    .nav-shrink .nav-wrap {
-        padding-top: 10px;
-        padding-bottom: 10px;
-    }
 }
 
 /* =========================================================
@@ -294,12 +165,10 @@ nav a.nav-link[aria-current="page"]::after {
     position: sticky;
     top: 0;
     z-index: 50;
-
     background: linear-gradient(180deg,
             rgba(255, 255, 255, .94) 0%,
             rgba(255, 255, 255, .82) 55%,
             rgba(255, 255, 255, .74) 100%);
-
     border-bottom: 1px solid rgba(15, 23, 42, .10);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -341,158 +210,143 @@ nav a.nav-link[aria-current="page"]::after {
     box-shadow: 0 18px 45px rgba(15, 23, 42, .12);
 }
 
+/* Nav spacing shrink */
+.nav-wrap {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: padding .22s ease;
+}
+
+.nav-shrink .nav-wrap {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+@media (max-width: 640px) {
+
+    .nav-wrap,
+    .nav-shrink .nav-wrap {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+
 /* =========================================================
-  HERO (Standard Lux Light) — прозрачный
+  NAV LINKS (desktop) + active aria-current
 ========================================================= */
-.hero-bg {
-    background: transparent !important;
+nav a.brand-link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    text-decoration: none;
+}
+
+nav a.brand-link::after {
+    display: none;
+}
+
+nav a.nav-link {
     position: relative;
-    isolation: isolate;
-    overflow: hidden;
-}
-
-.hero-bg::before,
-.hero-bg::after {
-    display: none !important;
-}
-
-/* Badge (Standard / hell) */
-.hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 12px;
+    gap: 8px;
+    padding: 10px 12px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, .72);
-    border: 1px solid rgba(15, 23, 42, .10);
-    box-shadow: 0 10px 28px rgba(15, 23, 42, .08);
-    color: rgba(15, 23, 42, .80);
-    font-size: 13px;
+
+    color: rgba(15, 23, 42, .94);
+    font-weight: 600;
+    letter-spacing: .01em;
+
+    background: transparent;
+    border: 1px solid transparent;
+
+    transition: background .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease;
+}
+
+nav a.nav-link:hover {
+    color: rgba(15, 23, 42, .98);
+    background-color: rgba(255, 255, 255, .78);
+    border-color: rgba(15, 23, 42, .10);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, .06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+nav a.nav-link[aria-current="page"] {
+    color: rgba(15, 23, 42, .98);
+    background-color: rgba(255, 255, 255, .94);
+    border-color: rgba(15, 23, 42, .16);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, .10);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     font-weight: 700;
 }
 
-.hero-badge-dot {
-    width: 10px;
-    height: 10px;
+nav a.nav-link[aria-current="page"]::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 6px;
+    height: 2px;
     border-radius: 999px;
-    background: rgba(37, 99, 235, .95);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, .14);
+    background: linear-gradient(90deg,
+            rgba(17, 24, 39, 0),
+            rgba(17, 24, 39, .65),
+            rgba(17, 24, 39, 0));
+    opacity: .95;
+    pointer-events: none;
+}
+
+/* Mobile menu active (если без .nav-link) */
+#mobileMenu a[aria-current="page"] {
+    background-color: rgba(255, 255, 255, .94);
+    border: 1px solid rgba(15, 23, 42, .16);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, .08);
 }
 
 /* =========================================================
-  HERO PANEL — FINAL (FULL-BLEED on ALL)
-  HTML:
-  <div class="hero-wrap">
-    <section class="hero-panel hero-panel--full has-hairline">
-      <img class="hero-panel__bg" src="..." alt="..." />
-    </section>
-  </div>
+  MOBILE MENU (если используешь #mobileMenu + кнопка)
 ========================================================= */
-
-.hero-wrap{
-  padding-top: 18px;
-  padding-bottom: 28px;
+#mobileMenu {
+    border-radius: 20px;
+    border: 1px solid rgba(15, 23, 42, .10);
+    background: rgba(255, 255, 255, .82);
+    box-shadow: 0 18px 55px rgba(15, 23, 42, .12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    overflow: hidden;
 }
 
-.hero-panel{
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
+#mobileMenu a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
 
-  border-radius: 34px;
-  border: 1px solid rgba(15,23,42,.10);
+    padding: 12px 14px;
+    border-radius: 14px;
 
-  /* glass */
-  background: rgba(255,255,255,.55);
-  box-shadow:
-    0 34px 120px rgba(2,6,23,.14),
-    0 1px 0 rgba(255,255,255,.70) inset;
+    color: rgba(15, 23, 42, .92);
+    font-weight: 700;
+    border: 1px solid transparent;
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  /* hero height desktop/tablet */
-  height: clamp(620px, 72vh, 880px);
+    transition: background .16s ease, border-color .16s ease, box-shadow .16s ease;
 }
 
-/* spotlight */
-.hero-panel::after{
-  content:"";
-  position:absolute;
-  inset:-20%;
-  z-index: 1;
-  pointer-events:none;
-  background:
-    radial-gradient(620px 420px at 20% 35%, rgba(59,130,246,.10), transparent 65%),
-    radial-gradient(700px 420px at 80% 25%, rgba(0,0,0,.04), transparent 70%);
+#mobileMenu a:hover {
+    background: rgba(255, 255, 255, .92);
+    border-color: rgba(15, 23, 42, .10);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, .06);
 }
-
-/* image */
-.hero-panel__bg{
-  position:absolute;
-  inset:0;
-  z-index:0;
-
-  width:100%;
-  height:100%;
-  display:block;
-  pointer-events:none;
-}
-
-/* FULL-BLEED (на всю карточку) */
-.hero-panel--full .hero-panel__bg{
-  object-fit: cover;
-  padding: 0;
-  /* под твою композицию: чтобы логотип слева и иконки справа жили */
-  object-position: 58% 45%;
-}
-
-/* тонкая внутренняя рамка (опционально) */
-.hero-panel.has-hairline::before{
-  content:"";
-  position:absolute;
-  inset: 10px;
-  border-radius: calc(34px - 10px);
-  pointer-events:none;
-  z-index: 2;
-  border: 1px solid rgba(255,255,255,.55);
-  opacity: .55;
-}
-
-/* MOBILE: “только карточка” (не плакат), 16:9 */
-@media (max-width: 640px){
-  .hero-wrap{
-    padding-top: 10px;
-    padding-bottom: 18px;
-  }
-
-  .hero-panel{
-    height: auto;
-    aspect-ratio: 16 / 9;
-    border-radius: 26px;
-  }
-
-  .hero-panel::after{
-    inset: -10%;
-  }
-
-  .hero-panel--full .hero-panel__bg{
-    object-fit: cover;
-    padding: 0;
-    /* обычно на мобиле нужно чуть ниже/центр — подстрой */
-    object-position: 54% 42%;
-    transform: scale(1.04);
-  }
-
-  .hero-panel.has-hairline::before{
-    inset: 8px;
-    border-radius: calc(26px - 8px);
-  }
-}
-
 
 /* =========================================================
-  BUTTONS (Anthrazit)
+  BUTTONS
 ========================================================= */
 .btn-primary {
     display: inline-flex;
@@ -575,13 +429,448 @@ button:focus-visible {
 }
 
 /* =========================================================
-  HERO (nur Branchen-Seite) – Bild + dunkler Verlauf links
+  BADGES
+========================================================= */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .72);
+    border: 1px solid rgba(15, 23, 42, .10);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, .08);
+    color: rgba(15, 23, 42, .80);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.hero-badge-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, .95);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .14);
+}
+
+/* Live green */
+.badge-live,
+.status-live,
+.pill-live,
+.tag-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .01em;
+
+    color: #065f46;
+    background: rgba(16, 185, 129, .14);
+    border: 1px solid rgba(16, 185, 129, .28);
+
+    box-shadow:
+        0 10px 26px rgba(16, 185, 129, .12),
+        0 1px 0 rgba(255, 255, 255, .75) inset;
+}
+
+.badge-live::before,
+.status-live::before,
+.pill-live::before,
+.tag-live::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(16, 185, 129, .95);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, .18);
+}
+
+/* =========================================================
+  REVEAL ON SCROLL (для .reveal + js класс .js)
+========================================================= */
+html.js .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .55s ease, transform .55s ease;
+}
+
+html.js .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+  HERO HELPERS (прозрачный)
+========================================================= */
+.hero-bg {
+    background: transparent !important;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.hero-bg::before,
+.hero-bg::after {
+    display: none !important;
+}
+
+/* =========================================================
+  PART 2/2
+========================================================= */
+
+/* =========================================================
+  HERO PANEL — BASE + VARIANTS
+========================================================= */
+.hero-wrap {
+    padding-top: 18px;
+    padding-bottom: 28px;
+}
+
+.hero-panel {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    border-radius: 34px;
+    border: 1px solid rgba(15, 23, 42, .10);
+
+    background: rgba(255, 255, 255, .55);
+    box-shadow:
+        0 34px 120px rgba(2, 6, 23, .14),
+        0 1px 0 rgba(255, 255, 255, .70) inset;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    height: clamp(620px, 72vh, 880px);
+}
+
+/* spotlight */
+.hero-panel::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(620px 420px at 20% 35%, rgba(59, 130, 246, .10), transparent 65%),
+        radial-gradient(700px 420px at 80% 25%, rgba(0, 0, 0, .04), transparent 70%);
+}
+
+/* base image */
+.hero-panel__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+/* optional inner hairline */
+.hero-panel.has-hairline::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: calc(34px - 10px);
+    pointer-events: none;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, .55);
+    opacity: .55;
+}
+
+/* =========================================================
+  START HERO (hero-panel--full)
+  Desktop/Tablet: contain (картинка целиком)
+  Mobile: cover (16:9)
+========================================================= */
+.hero-panel--full .hero-panel__bg {
+    object-fit: contain;
+    object-position: 50% 55%;
+    padding: clamp(26px, 3vw, 54px);
+}
+
+/* Mobile tuning */
+@media (max-width: 640px) {
+    .hero-wrap {
+        padding-top: 10px;
+        padding-bottom: 18px;
+    }
+
+    .hero-panel {
+        height: auto;
+        aspect-ratio: 16 / 9;
+        border-radius: 26px;
+    }
+
+    .hero-panel::after {
+        inset: -10%;
+    }
+
+    .hero-panel--full .hero-panel__bg {
+        object-fit: cover;
+        padding: 0;
+        object-position: 54% 42%;
+        transform: scale(1.06);
+    }
+
+    .hero-panel.has-hairline::before {
+        inset: 8px;
+        border-radius: calc(26px - 8px);
+    }
+}
+
+/* Optional: mobile hero taller */
+@media (max-width: 640px) {
+    .hero-panel.hero-panel--tall {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+/* =========================================================
+  PAGE HERO (Leistungen) hero-panel--lightleft
+  cover + light overlay area (left)
+========================================================= */
+.hero-panel--lightleft .hero-panel__bg {
+    object-fit: cover;
+    padding: 0;
+    object-position: 60% 45%;
+}
+
+.hero-panel__content {
+    position: relative;
+    z-index: 3;
+    padding: 56px 44px;
+}
+
+/* light area left */
+.hero-panel--lightleft::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+
+    width: clamp(520px, 60%, 860px);
+    background: linear-gradient(90deg,
+            rgba(246, 248, 251, .96) 0%,
+            rgba(246, 248, 251, .88) 42%,
+            rgba(246, 248, 251, .55) 70%,
+            rgba(246, 248, 251, 0) 100%);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+@media (max-width: 640px) {
+    .hero-panel__content {
+        padding: 22px 18px;
+    }
+
+    .hero-panel--lightleft::before {
+        width: 100%;
+        background: linear-gradient(180deg,
+                rgba(246, 248, 251, .92) 0%,
+                rgba(246, 248, 251, .72) 55%,
+                rgba(246, 248, 251, 0) 100%);
+    }
+}
+
+/* =========================================================
+  HERO INTRO CARD (твоя “Premium Webdesign …” карточка)
+========================================================= */
+.hero-intro {
+    margin-top: 28px;
+}
+
+.hero-intro__card {
+    max-width: 980px;
+    padding: 28px 28px;
+    border-radius: 28px;
+
+    background: rgba(255, 255, 255, .62);
+    border: 1px solid rgba(15, 23, 42, .10);
+
+    box-shadow:
+        0 26px 80px rgba(2, 6, 23, .10),
+        0 1px 0 rgba(255, 255, 255, .75) inset;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.hero-intro__title {
+    margin: 0;
+    font-size: clamp(34px, 3.2vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 900;
+    color: rgba(15, 23, 42, .98);
+}
+
+.hero-intro__lead {
+    margin: 14px 0 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(15, 23, 42, .72);
+}
+
+.hero-intro__text {
+    margin: 14px 0 0;
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(15, 23, 42, .62);
+}
+
+.hero-intro__cta {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hero-intro__meta {
+    margin-top: 12px;
+    font-size: 13px;
+    color: rgba(15, 23, 42, .55);
+}
+
+@media (max-width: 640px) {
+    .hero-intro {
+        margin-top: 18px;
+    }
+
+    .hero-intro__card {
+        padding: 18px 16px;
+        border-radius: 22px;
+    }
+
+    .hero-intro__lead {
+        font-size: 16px;
+    }
+}
+
+/* =========================================================
+  HERO CARD — Projekte (Bild oben / Content unten)
+========================================================= */
+.hero-card {
+    position: relative;
+    border-radius: calc(var(--radius) + 18px);
+    border: 1px solid rgba(15, 23, 42, .08);
+    box-shadow: 0 30px 90px rgba(15, 23, 42, .14);
+    overflow: hidden;
+    background: rgba(255, 255, 255, .18);
+}
+
+.hero-card__media {
+    position: relative;
+    overflow: hidden;
+    background: #e9eef6;
+}
+
+.hero-card__img {
+    width: 100%;
+    display: block;
+    height: clamp(280px, 34vw, 460px);
+    object-fit: cover;
+    object-position: 70% 70%;
+}
+
+.hero-card__content {
+    position: relative;
+    background: transparent;
+    border-top: 1px solid rgba(15, 23, 42, .08);
+    padding: 30px 34px;
+}
+
+.hero-card__inner {
+    background: rgba(255, 255, 255, .22);
+    border: 1px solid rgba(15, 23, 42, .10);
+    box-shadow: 0 18px 55px rgba(15, 23, 42, .10);
+    border-radius: calc(var(--radius) + 16px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 38px 40px;
+}
+
+.hero-card__grid {
+    display: grid;
+    grid-template-columns: 1.25fr .75fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.hero-card__left {
+    max-width: 740px;
+}
+
+.hero-card__right {
+    padding-top: 8px;
+}
+
+.hero-card__pill {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: calc(var(--radius) + 10px);
+    border: 1px solid rgba(15, 23, 42, .12);
+    background: rgba(255, 255, 255, .78);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, .08);
+}
+
+/* fade bottom */
+.hero-card::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 90px;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+            rgba(246, 248, 251, 0) 0%,
+            rgba(246, 248, 251, .75) 70%,
+            rgba(246, 248, 251, 1) 100%);
+}
+
+@media (max-width: 1023.98px) {
+    .hero-card__img {
+        height: clamp(220px, 52vw, 340px);
+        object-position: 72% 50%;
+    }
+
+    .hero-card__content {
+        padding: 18px 14px;
+    }
+
+    .hero-card__inner {
+        padding: 22px 18px;
+    }
+
+    .hero-card__grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .hero-card__right {
+        padding-top: 0;
+    }
+
+    .hero-card::after {
+        height: 60px;
+    }
+}
+
+/* =========================================================
+  BRANCHEN HERO (nur Branchen-Seite)
 ========================================================= */
 .hero-branchen {
     position: relative;
     overflow: hidden;
 
-    /* текст в этом hero белый */
     --text: #f8fafc;
     --muted: rgba(248, 250, 252, .78);
     --muted2: rgba(248, 250, 252, .62);
@@ -727,7 +1016,6 @@ button:focus-visible {
     margin-top: 12px;
     font-weight: 800;
     color: rgba(37, 99, 235, .95);
-    text-decoration: none;
 }
 
 .branch-cta:hover {
@@ -736,7 +1024,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-  CTA (Slim)
+  CTA Slim
 ========================================================= */
 .cta-slim {
     border-radius: 24px;
@@ -764,33 +1052,50 @@ button:focus-visible {
 }
 
 /* =========================================================
-  FOOTER
+  FORMS (контакт)
 ========================================================= */
-.matte-footer {
-    background: linear-gradient(180deg, #0b1220 0%, #050913 100%);
+.form-field {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, .12);
+    background: rgba(255, 255, 255, .82);
+    padding: 12px 14px;
+    color: rgba(15, 23, 42, .94);
+    box-shadow: 0 10px 26px rgba(15, 23, 42, .06);
 }
 
-.footer-gradient {
-    background: linear-gradient(135deg, rgba(255, 255, 255, .95), rgba(147, 197, 253, .95));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+.form-field:focus {
+    outline: 2px solid rgba(37, 99, 235, .28);
+    outline-offset: 2px;
 }
 
-.footer-link-dark {
-    color: rgba(255, 255, 255, .70);
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.footer-link-dark:hover {
-    color: rgba(255, 255, 255, .92);
-    text-decoration: underline;
-    text-underline-offset: 4px;
+.form-hint {
+    font-size: 13px;
+    color: var(--muted2);
+    line-height: 1.5;
 }
 
 /* =========================================================
-  GEO Layer (Lux)
+  CONTACT layout hard fix
+========================================================= */
+.contact-layout {
+    display: grid;
+    gap: 1rem;
+    align-items: start;
+}
+
+@media (min-width: 1024px) {
+    .contact-layout {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    }
+}
+
+.contact-layout>* {
+    min-width: 0;
+}
+
+/* =========================================================
+  GEO Layer
 ========================================================= */
 .geo-wrap {
     max-width: 72rem;
@@ -887,7 +1192,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-  LIST DOTS (optional): wrap content with .prose
+  LIST DOTS (.prose)
 ========================================================= */
 .prose ul {
     list-style: none;
@@ -915,57 +1220,18 @@ button:focus-visible {
 }
 
 /* =========================================================
-  BADGE LIVE (green)
-========================================================= */
-.badge-live,
-.status-live,
-.pill-live,
-.tag-live {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: .01em;
-
-    color: #065f46;
-    background: rgba(16, 185, 129, .14);
-    border: 1px solid rgba(16, 185, 129, .28);
-
-    box-shadow:
-        0 10px 26px rgba(16, 185, 129, .12),
-        0 1px 0 rgba(255, 255, 255, .75) inset;
-}
-
-.badge-live::before,
-.status-live::before,
-.pill-live::before,
-.tag-live::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: rgba(16, 185, 129, .95);
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, .18);
-}
-
-/* =========================================================
   LEISTUNGEN: Media-Image Stabilisierung (kein CLS)
 ========================================================= */
 .leist-card {
     display: block !important;
 }
 
-/* Container reserviert Platz */
 .leist-card .media-raw {
     width: 100%;
     overflow: hidden;
     aspect-ratio: 16 / 9;
 }
 
-/* Bild füllt den Container */
 .leist-card .media-raw>img {
     width: 100% !important;
     height: 100% !important;
@@ -974,7 +1240,6 @@ button:focus-visible {
     object-position: 50% 50%;
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
     .leist-card .media-raw {
         aspect-ratio: 16 / 9;
@@ -986,7 +1251,6 @@ button:focus-visible {
     }
 }
 
-/* Tablet */
 @media (min-width: 640px) and (max-width: 1023.98px) {
     .leist-card .media-raw {
         aspect-ratio: 16 / 9;
@@ -997,7 +1261,6 @@ button:focus-visible {
     }
 }
 
-/* Mobile */
 @media (max-width: 639.98px) {
     .leist-card .media-raw {
         aspect-ratio: 4 / 3;
@@ -1008,32 +1271,49 @@ button:focus-visible {
     }
 }
 
-/* Inhalt-Block unter dem Bild */
 .leist-card>.p-7 {
     width: 100%;
 }
 
 /* =========================================================
-  Reduced motion
+  FOOTER
 ========================================================= */
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
+.matte-footer {
+    background: linear-gradient(180deg, #0b1220 0%, #050913 100%);
+}
 
-    .hover-lift,
-    .btn-primary,
-    .btn-ghost {
-        transition: none;
-    }
+.footer-gradient {
+    background: linear-gradient(135deg, rgba(255, 255, 255, .95), rgba(147, 197, 253, .95));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
 
-    .faq .faq-icon {
-        transition: none;
+.footer-link-dark {
+    color: rgba(255, 255, 255, .70);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.footer-link-dark:hover {
+    color: rgba(255, 255, 255, .92);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* =========================================================
+  FIXES / SPECIALS
+========================================================= */
+/* MOBILE: Prozess-Hero bleibt anthrazit trotz .panel */
+@media (max-width: 1023.98px) {
+    header .panel.bg-\[\#0B0F16\] {
+        background: #0B0F16 !important;
+        border-color: rgba(255, 255, 255, .10) !important;
     }
 }
 
 /* =========================================================
-  sr-only
+  ACCESSIBILITY / UTILITIES
 ========================================================= */
 .sr-only {
     position: absolute;
@@ -1047,140 +1327,20 @@ button:focus-visible {
     border: 0;
 }
 
-/* =========================================================
-  FIXES / Specials
-========================================================= */
-
-/* MOBILE: Prozess-Hero bleibt anthrazit trotz .panel */
-@media (max-width: 1023.98px) {
-    header .panel.bg-\[\#0B0F16\] {
-        background: #0B0F16 !important;
-        border-color: rgba(255, 255, 255, .10) !important;
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
-}
 
-/* Kontakt layout – hard fix */
-.contact-layout {
-    display: grid;
-    gap: 1rem;
-    align-items: start;
-}
-
-@media (min-width: 1024px) {
-    .contact-layout {
-        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    html.js .reveal {
+        transition: none;
     }
-}
 
-.contact-layout>* {
-    min-width: 0;
-}
-
-/* OPTIONAL: Mobile hero чуть выше (4:3) — добавь class="hero-panel hero-panel--full hero-panel--tall" */
-@media (max-width: 640px) {
-    .hero-panel.hero-panel--tall {
-        aspect-ratio: 4 / 3;
+    .hover-lift,
+    .btn-primary,
+    .btn-ghost,
+    .faq .faq-icon {
+        transition: none;
     }
-}
-
-/* OPTIONAL: тонкая внутренняя рамка — добавь class="hero-panel ... has-hairline" */
-.hero-panel.has-hairline::before {
-    content: "";
-    position: absolute;
-    inset: 10px;
-    border-radius: calc(34px - 10px);
-    pointer-events: none;
-    border: 1px solid rgba(255, 255, 255, .55);
-    opacity: .55;
-    z-index: 2;
-}
-
-@media (max-width: 640px) {
-    .hero-panel.has-hairline::before {
-        inset: 8px;
-        border-radius: calc(26px - 8px);
-    }
-}
-
-/* SAFETY: box sizing */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-/* =========================================================
-  HERO INTRO CARD (Premium glass card)
-========================================================= */
-
-.hero-intro{
-  margin-top: 28px;
-}
-
-.hero-intro__card{
-  max-width: 980px;
-
-  padding: 28px 28px;
-  border-radius: 28px;
-
-  background: rgba(255,255,255,.62);
-  border: 1px solid rgba(15,23,42,.10);
-
-  box-shadow:
-    0 26px 80px rgba(2,6,23,.10),
-    0 1px 0 rgba(255,255,255,.75) inset;
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.hero-intro__title{
-  margin: 0;
-  font-size: clamp(34px, 3.2vw, 52px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  font-weight: 900;
-  color: rgba(15,23,42,.98);
-}
-
-.hero-intro__lead{
-  margin: 14px 0 0;
-  font-size: 18px;
-  line-height: 1.55;
-  color: rgba(15,23,42,.72);
-}
-
-.hero-intro__text{
-  margin: 14px 0 0;
-  font-size: 15px;
-  line-height: 1.75;
-  color: rgba(15,23,42,.62);
-}
-
-.hero-intro__cta{
-  margin-top: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.hero-intro__meta{
-  margin-top: 12px;
-  font-size: 13px;
-  color: rgba(15,23,42,.55);
-}
-
-/* Mobile tuning */
-@media (max-width: 640px){
-  .hero-intro{
-    margin-top: 18px;
-  }
-
-  .hero-intro__card{
-    padding: 18px 16px;
-    border-radius: 22px;
-  }
-
-  .hero-intro__lead{
-    font-size: 16px;
-  }
 }
