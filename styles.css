@@ -1364,3 +1364,13 @@ html.js .reveal.is-visible {
     line-height: 1.55;
   }
 }
+/* =========================================================
+   HOME (index): Hero full-bleed image (fill panel)
+   hero-panel--full uses contain + padding by default
+========================================================= */
+.page-home .hero-panel--full .hero-panel__bg {
+  object-fit: cover !important;   /* было contain */
+  padding: 0 !important;          /* убрать поля */
+  transform: scale(1.04);         /* легкий премиум-zoom */
+  object-position: 50% 50%;
+}
