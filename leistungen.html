@@ -112,16 +112,19 @@ Desktop: Full-Card Background + Visual right
 <header class="py-10 sm:py-14">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        <section class="panel rounded-3xl overflow-hidden reveal relative bg-[#0B0F16] lg:bg-transparent">
+        <!-- HERO PANEL (dark, no light glass panel) -->
+        <section class="rounded-3xl overflow-hidden reveal relative bg-[#0B0F16]
+                    border border-white/10 shadow-[0_40px_140px_rgba(2,6,23,.55)]">
 
             <!-- ======================
-                    MOBILE TOP IMAGE
-            ====================== -->
+           MOBILE TOP IMAGE
+      ====================== -->
             <div class="relative lg:hidden">
                 <img src="images/hero-pages.webp" alt="Leistungen – Struktur, Design, Technik"
                     class="w-full h-[260px] sm:h-[320px] object-cover object-[72%_32%]" loading="eager"
                     decoding="async" />
-                <!-- overlays only for image (sehr dezent) -->
+
+                <!-- overlays only for image (dezent) -->
                 <div class="absolute inset-0 bg-gradient-to-r from-black/10 via-black/5 to-black/0 pointer-events-none">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-black/0 to-black/0 pointer-events-none">
@@ -135,8 +138,8 @@ Desktop: Full-Card Background + Visual right
             </div>
 
             <!-- ======================
-                DESKTOP FULL BG
-            ====================== -->
+           DESKTOP FULL BG
+      ====================== -->
             <div class="hidden lg:block absolute inset-0 overflow-hidden">
                 <img src="images/hero-pages.webp" alt="Leistungen – Struktur, Design, Technik"
                     class="absolute inset-0 w-full h-full object-cover object-[72%_35%]"
@@ -154,11 +157,13 @@ Desktop: Full-Card Background + Visual right
 
             <!-- ======================
                 CONTENT
+                Mobile: anthrazit plate (bg-[#0B0F16])
+                Desktop: transparent over image (lg:bg-transparent)
             ====================== -->
             <div class="relative z-10 p-7 sm:p-9 lg:p-12
                 lg:min-h-[620px] xl:min-h-[700px]
                 flex items-start lg:items-center
-                bg-transparent">
+                bg-[#0B0F16] lg:bg-transparent">
                 <div class="max-w-[560px] lg:max-w-[600px] lg:pr-10">
 
                     <!-- Badge -->
@@ -169,11 +174,11 @@ Desktop: Full-Card Background + Visual right
                         Leistungen
                     </div>
 
-                <h1 class="mt-5 h-display text-4xl sm:text-5xl font-medium leading-[1.05] text-white">
-                    <span>Struktur, Design,</span>
-                    <span class="block">Technik — als System.</span>
-                </h1>
-
+                    <!-- Headline (Technik — als System always on next line) -->
+                    <h1 class="mt-5 h-display text-4xl sm:text-5xl font-medium leading-[1.05] text-white">
+                        <span>Struktur, Design,</span>
+                        <span class="block">Technik — als System.</span>
+                    </h1>
 
                     <p class="mt-5 text-white/80 leading-relaxed max-w-xl">
                         Premium Websites, digitale Prozesse und Sichtbarkeit. Klar aufgebaut, sauber umgesetzt,
@@ -185,7 +190,7 @@ Desktop: Full-Card Background + Visual right
                         <a href="kontakt.html" class="btn-ghost">Projekt anfragen</a>
                     </div>
 
-                    <!-- ===== MOBILE INFO (optional, wie на Prozess) ===== -->
+                    <!-- ===== MOBILE INFO (optional) ===== -->
                     <div class="mt-6 lg:hidden">
                         <div
                             class="rounded-2xl bg-[#0A0D14] ring-1 ring-white/10 px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,.35)]">
@@ -214,6 +219,7 @@ Desktop: Full-Card Background + Visual right
 
     </div>
 </header>
+
 
 
     <!-- =========================================================
