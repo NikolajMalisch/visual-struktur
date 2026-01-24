@@ -157,7 +157,7 @@
     </style>
 </head>
 
-<body id="top" class="bg-app text-[color:var(--text)]">
+<body id="top" class="page-prozess bg-app text-[color:var(--text)]">
 
     <!-- Skip -->
     <a class="skip-link" href="#content">Zum Inhalt springen</a>
@@ -235,32 +235,29 @@ Desktop: Full-Card Background + Bio bottom-right
 <header class="py-10 sm:py-14">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        <section class="panel rounded-3xl overflow-hidden reveal relative bg-[#0B0F16] lg:bg-transparent">
+        <section class="panel rounded-3xl overflow-hidden reveal relative vs-prozess-hero">
 
             <!-- ======================
-                MOBILE TOP IMAGE
-            ====================== -->
+           MOBILE TOP IMAGE
+      ====================== -->
             <div class="relative lg:hidden">
                 <img src="images/prozess.webp" alt="Prozess und Struktur"
-                    class="w-full h-[260px] sm:h-[320px] object-cover object-[78%_48%]" loading="eager"
-                    decoding="async" />
-                <!-- overlays only for image -->
-                <div
-                    class="absolute inset-0 bg-gradient-to-r from-black/5 via-black/5 to-black/0 pointer-events-none">
+                    class="w-full h-[260px] sm:h-[320px] object-cover" loading="eager" decoding="async" />
+
+                <!-- overlays only for image (dezent) -->
+                <div class="absolute inset-0 bg-gradient-to-r from-black/5 via-black/5 to-black/0 pointer-events-none">
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-t from-black/5 via-black/0 to-black/0 pointer-events-none">
                 </div>
                 <div class="absolute inset-0 ring-1 ring-white/10 pointer-events-none"></div>
 
                 <!-- smooth transition into anthracite content -->
-                <div
-                    class="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-b from-black/0 to-[#0B0F16] pointer-events-none">
-                </div>
+                <div class="absolute inset-x-0 bottom-0 h-14 vs-prozess-fade pointer-events-none"></div>
             </div>
 
             <!-- ======================
-                DESKTOP FULL BG
-            ====================== -->
+           DESKTOP FULL BG
+      ====================== -->
             <div class="hidden lg:block absolute inset-0 overflow-hidden">
                 <img src="images/prozess.webp" alt="Prozess und Struktur"
                     class="absolute inset-0 w-full h-full object-cover object-[78%_46%]"
@@ -277,12 +274,10 @@ Desktop: Full-Card Background + Bio bottom-right
             <div class="hidden lg:block absolute inset-0 ring-1 ring-white/10 pointer-events-none"></div>
 
             <!-- ======================
-                CONTENT
-            ====================== -->
-            <div class="relative z-10 p-7 sm:p-9 lg:p-12
-                lg:min-h-[620px] xl:min-h-[700px]
-                flex items-start lg:items-center
-                bg-transparent">
+           CONTENT
+      ====================== -->
+            <div
+                class="relative z-10 p-7 sm:p-9 lg:p-12 lg:min-h-[620px] xl:min-h-[700px] flex items-start lg:items-center vs-prozess-content">
                 <div class="max-w-[520px] lg:max-w-[560px] lg:pr-10">
 
                     <div class="text-sm text-white/70">
@@ -304,10 +299,10 @@ Desktop: Full-Card Background + Bio bottom-right
                         <a href="#faq" class="btn-ghost">FAQ</a>
                     </div>
 
-                    <!-- ===== MOBILE BIO (compact, anthracite plate) ===== -->
+                    <!-- ===== MOBILE BIO ===== -->
                     <div class="mt-6 lg:hidden">
                         <div
-                            class="rounded-2xl bg-[#0A0D14] ring-1 ring-white/10 px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,.35)]">
+                            class="rounded-2xl bg-black/35 ring-1 ring-white/10 px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,.35)]">
                             <p class="text-[13px] sm:text-sm text-white/70 leading-relaxed">
                                 Visual Struktur liefert Webdesign, Digitalisierung sowie SEO + GEO (AI-SEO) als System:
                                 klare Inhalte, saubere Technik und strukturierte Antworten — damit aus Besuchern
@@ -319,10 +314,10 @@ Desktop: Full-Card Background + Bio bottom-right
                 </div>
             </div>
 
-            <!-- ===== DESKTOP BIO (bottom-right) ===== -->
+            <!-- ===== DESKTOP BIO ===== -->
             <div class="hidden lg:block absolute right-8 bottom-8 z-20 max-w-[420px]">
-                <div class="rounded-2xl bg-black/35 backdrop-blur-md ring-1 ring-white/10 px-4 py-3
-                    shadow-[0_18px_60px_rgba(0,0,0,.35)]">
+                <div
+                    class="rounded-2xl bg-black/35 backdrop-blur-md ring-1 ring-white/10 px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,.35)]">
                     <p class="text-sm text-white/75 leading-relaxed">
                         Visual Struktur liefert Webdesign, Digitalisierung sowie SEO + GEO (AI-SEO) als System:
                         klare Inhalte, saubere Technik und strukturierte Antworten — damit aus Besuchern Anfragen
@@ -337,6 +332,8 @@ Desktop: Full-Card Background + Bio bottom-right
 </header>
 
 <main id="content">
+
+
 
         <!-- =========================================================
     01) Prinzipien

@@ -1410,3 +1410,87 @@ html.js .reveal.is-visible {
 .matte-footer * {
     opacity: 1;
 }
+/* =========================================================
+   [VS-FIX] PROZESS — Mobile hero must be anthrazit (no Tailwind hex utils)
+   Reason: .panel is light glass; Tailwind bg-[#...] may be purged from output.css
+========================================================= */
+
+.page-prozess header .panel {
+  background: #0B0F16 !important;
+  border-color: rgba(255,255,255,.10) !important;
+  box-shadow: 0 34px 120px rgba(2,6,23,.22) !important;
+}
+
+/* Desktop: panel can stay transparent because you have full-bg image */
+@media (min-width: 1024px) {
+  .page-prozess header .panel {
+    background: transparent !important;
+  }
+}
+
+/* Fix the “fade to anthrazit” strip under the mobile image
+   (Tailwind class to-[#0B0F16] may not exist in output.css) */
+.page-prozess .vs-hero-fade {
+  background: linear-gradient(to bottom, rgba(0,0,0,0), #0B0F16) !important;
+}
+/* =========================================================
+   PROZESS HERO — hard safe colors (no Tailwind hex utils)
+========================================================= */
+
+/* сама панель: на мобиле тёмная, на lg — прозрачная (как у тебя) */
+.vs-prozess-hero {
+  background: #0B0F16 !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+
+@media (min-width: 1024px) {
+  .vs-prozess-hero {
+    background: transparent !important;
+  }
+}
+
+/* контентный блок: на мобиле тёмная подложка, на lg — прозрачный */
+.vs-prozess-content {
+  background: #0B0F16;
+}
+@media (min-width: 1024px) {
+  .vs-prozess-content {
+    background: transparent;
+  }
+}
+
+/* fade-полоска под картинкой на мобиле */
+.vs-prozess-fade {
+  background: linear-gradient(to bottom, rgba(0,0,0,0), #0B0F16);
+}
+
+/* био-плашка на мобиле */
+.vs-prozess-bio {
+  background: #0A0D14;
+}
+/* =========================================================
+   PROZESS — FIX (Tailwind-arbitrary safe)
+   Делает мобилу тёмной независимо от Tailwind билда
+========================================================= */
+
+.page-prozess .vs-prozess-hero.panel{
+  background: #0B0F16 !important;              /* перекрываем .panel светлый glass */
+  border-color: rgba(255,255,255,.10) !important;
+}
+
+/* Контент-область на мобиле должна быть тёмной “плитой” */
+.page-prozess .vs-prozess-content{
+  background: #0B0F16 !important;
+}
+
+/* На десктопе контент поверх картинки — прозрачный */
+@media (min-width: 1024px){
+  .page-prozess .vs-prozess-content{
+    background: transparent !important;
+  }
+}
+
+/* Плавный переход снизу картинки в тёмную плиту */
+.page-prozess .vs-prozess-fade{
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, #0B0F16 100%) !important;
+}
