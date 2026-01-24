@@ -65,6 +65,8 @@ a:hover {
 :root {
     --font-ui: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
     --font-display: 'Space Grotesk', system-ui, -apple-system, Segoe UI, sans-serif;
+    --font-brand: "Cormorant SC", ui-serif, Georgia, serif;
+
 
     --bg: #f6f8fb;
     --surface: rgba(255, 255, 255, .72);
@@ -94,15 +96,53 @@ a:hover {
     background-attachment: fixed;
 }
 
-.brand-title {
-    font-family: var(--font-display);
+/* =========================================================
+    BRAND (Header) — logo-like typography
+    (REPLACES old .brand-title { font-family: var(--font-display); })
+========================================================= */
+.brand-title{
+    font-family: var(--font-brand);
+    font-weight: 600;
+    letter-spacing: .08em;
+    line-height: 1.05;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
 }
 
+.brand-title .brand-gradient{
+    letter-spacing: .10em;
+}
+
+.brand-title .brand-plain{
+    font-weight: 500;
+    letter-spacing: .08em;
+}
+
+/* keep your gradient style (used inside brand-title too) */
 .brand-gradient {
     background: linear-gradient(135deg, #0f172a, #374151);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+}
+
+/* subtitle under brand title */
+.brand-subtitle {
+    font-family: var(--font-brand);
+    font-weight: 600;
+     /* было 500 */
+    color: rgba(15, 23, 42, .66);
+     /* чуть контрастнее, чем muted2 */
+    letter-spacing: .12em;
+     /* чуть меньше, чтобы читалось */
+    line-height: 1.15;
+    text-transform: none;
+    white-space: nowrap;
+}
+
+@media (max-width: 360px){
+    .brand-subtitle{ white-space: normal; }
 }
 
 .text-balance {
@@ -139,6 +179,7 @@ a:hover {
     height: 1px;
     background: rgba(15, 23, 42, .08);
 }
+
 
 /* =========================================================
     PANELS / CARDS (glass)
