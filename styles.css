@@ -1,10 +1,9 @@
 /* =========================================================
-    Visual Struktur — Premium Light (Lux) — FULL CSS (COMPLETE)
-    single-file, production-ready, no duplicates
-========================================================= */
-
-/* =========================================================
-    PART 1/2
+    Visual Struktur — Premium Light (Lux) — FULL CSS (CLEAN)
+    single-file, production-ready, NO DUPLICATES
+    - Fonts: headings => Cormorant SC (единый стиль)
+    - UI/Text => Inter
+    - Сохранены все твои визуальные решения, но конфликты/дубли убраны
 ========================================================= */
 
 /* =========================================================
@@ -64,9 +63,9 @@ a:hover {
 ========================================================= */
 :root {
     --font-ui: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
-    --font-display: 'Space Grotesk', system-ui, -apple-system, Segoe UI, sans-serif;
-    --font-brand: "Cormorant SC", ui-serif, Georgia, serif;
 
+    /* ЕДИНЫЙ ШРИФТ ДЛЯ ЗАГОЛОВКОВ */
+    --font-display: "Cormorant SC", ui-serif, Georgia, serif;
 
     --bg: #f6f8fb;
     --surface: rgba(255, 255, 255, .72);
@@ -97,11 +96,24 @@ a:hover {
 }
 
 /* =========================================================
+    GLOBAL HEADINGS (везде один стиль)
+========================================================= */
+h1,
+h2,
+h3,
+h4,
+.h-display,
+.h-title,
+.hero-intro__title,
+.branch-title {
+    font-family: var(--font-display);
+}
+
+/* =========================================================
     BRAND (Header) — logo-like typography
-    (REPLACES old .brand-title { font-family: var(--font-display); })
 ========================================================= */
 .brand-title {
-    font-family: var(--font-brand);
+    font-family: var(--font-display);
     font-weight: 600;
     letter-spacing: .08em;
     line-height: 1.05;
@@ -119,7 +131,7 @@ a:hover {
     letter-spacing: .08em;
 }
 
-/* keep your gradient style (used inside brand-title too) */
+/* gradient text helper */
 .brand-gradient {
     background: linear-gradient(135deg, #0f172a, #374151);
     -webkit-background-clip: text;
@@ -129,13 +141,10 @@ a:hover {
 
 /* subtitle under brand title */
 .brand-subtitle {
-    font-family: var(--font-brand);
+    font-family: var(--font-display);
     font-weight: 500;
-    /* было 500 */
     color: rgba(15, 23, 42, .66);
-    /* чуть контрастнее, чем muted2 */
     letter-spacing: .12em;
-    /* чуть меньше, чтобы читалось */
     line-height: 1.15;
     text-transform: none;
     white-space: nowrap;
@@ -152,19 +161,17 @@ a:hover {
 }
 
 /* =========================================================
-    TYPOGRAPHY HELPERS (чтобы не пропадали стили)
+    TYPOGRAPHY HELPERS
 ========================================================= */
 .h-display {
-    font-family: var(--font-display);
-    font-weight: 900;
-    letter-spacing: -0.02em;
+    font-weight: 700;
+    letter-spacing: 0.01em;
     line-height: 1.05;
 }
 
 .h-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    letter-spacing: -0.015em;
+    font-weight: 600;
+    letter-spacing: 0.005em;
     line-height: 1.15;
 }
 
@@ -181,7 +188,6 @@ a:hover {
     height: 1px;
     background: rgba(15, 23, 42, .08);
 }
-
 
 /* =========================================================
     PANELS / CARDS (glass)
@@ -346,7 +352,7 @@ nav a.nav-link[aria-current="page"]::after {
     pointer-events: none;
 }
 
-/* Mobile menu active (если без .nav-link) */
+/* Mobile menu active */
 #mobileMenu a[aria-current="page"] {
     background-color: rgba(255, 255, 255, .94);
     border: 1px solid rgba(15, 23, 42, .16);
@@ -354,7 +360,7 @@ nav a.nav-link[aria-current="page"]::after {
 }
 
 /* =========================================================
-    MOBILE MENU (если используешь #mobileMenu + кнопка)
+    MOBILE MENU
 ========================================================= */
 #mobileMenu {
     border-radius: 20px;
@@ -532,7 +538,7 @@ button:focus-visible {
 }
 
 /* =========================================================
-    REVEAL ON SCROLL (для .reveal + js класс .js)
+    REVEAL ON SCROLL
 ========================================================= */
 html.js .reveal {
     opacity: 0;
@@ -559,10 +565,6 @@ html.js .reveal.is-visible {
 .hero-bg::after {
     display: none !important;
 }
-
-/* =========================================================
-    PART 2/2
-========================================================= */
 
 /* =========================================================
     HERO PANEL — BASE + VARIANTS
@@ -629,7 +631,7 @@ html.js .reveal.is-visible {
 /* =========================================================
     START HERO (hero-panel--full)
     Desktop/Tablet: contain (картинка целиком)
-    Mobile: cover (16:9)
+    Mobile: cover
 ========================================================= */
 .hero-panel--full .hero-panel__bg {
     object-fit: contain;
@@ -637,7 +639,7 @@ html.js .reveal.is-visible {
     padding: clamp(26px, 3vw, 54px);
 }
 
-/* Mobile tuning */
+/* Mobile base */
 @media (max-width: 640px) {
     .hero-wrap {
         padding-top: 10px;
@@ -674,29 +676,8 @@ html.js .reveal.is-visible {
     }
 }
 
-/* Mobile: zoom hero image inside the visual card */
-@media (max-width: 640px) {
-    .hero-panel {
-        overflow: hidden;
-        /* важно, чтобы zoom не вылезал за края */
-    }
-
-    .hero-panel__bg {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-
-        /* приближение */
-        transform: scale(1.18) translateY(6%);
-        transform-origin: 50% 50%;
-        will-change: transform;
-    }
-}
-
-
 /* =========================================================
-  PAGE HERO (Leistungen) hero-panel--lightleft
-  cover + light overlay area (left)
+    PAGE HERO (Leistungen) hero-panel--lightleft
 ========================================================= */
 .hero-panel--lightleft .hero-panel__bg {
     object-fit: cover;
@@ -744,7 +725,7 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-  HERO INTRO CARD (твоя “Premium Webdesign …” карточка)
+    HERO INTRO CARD
 ========================================================= */
 .hero-intro {
     margin-top: 28px;
@@ -770,8 +751,8 @@ html.js .reveal.is-visible {
     margin: 0;
     font-size: clamp(34px, 3.2vw, 52px);
     line-height: 1.05;
-    letter-spacing: -0.02em;
-    font-weight: 900;
+    letter-spacing: 0.01em;
+    font-weight: 700;
     color: rgba(15, 23, 42, .98);
 }
 
@@ -818,7 +799,7 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-  HERO CARD — Projekte (Bild oben / Content unten)
+    HERO CARD — Projekte (Bild oben / Content unten)
 ========================================================= */
 .hero-card {
     position: relative;
@@ -928,7 +909,7 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-  BRANCHEN HERO (nur Branchen-Seite)
+    BRANCHEN HERO
 ========================================================= */
 .hero-branchen {
     position: relative;
@@ -993,7 +974,7 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-  BRANCHEN CARDS
+    BRANCHEN CARDS
 ========================================================= */
 .branch-card {
     background: var(--surface);
@@ -1051,8 +1032,7 @@ html.js .reveal.is-visible {
 }
 
 .branch-title {
-    font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--text);
 }
 
@@ -1087,7 +1067,7 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-  CTA Slim
+    CTA Slim
 ========================================================= */
 .cta-slim {
     border-radius: 24px;
@@ -1115,7 +1095,7 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-  FORMS (контакт)
+    FORMS (контакт)
 ========================================================= */
 .form-field {
     width: 100%;
@@ -1139,7 +1119,7 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-  CONTACT layout hard fix
+    CONTACT layout hard fix
 ========================================================= */
 .contact-layout {
     display: grid;
@@ -1158,7 +1138,7 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-  GEO Layer
+    GEO Layer
 ========================================================= */
 .geo-wrap {
     max-width: 72rem;
@@ -1195,7 +1175,9 @@ html.js .reveal.is-visible {
     margin: 18px 0;
 }
 
-/* FAQ */
+/* =========================================================
+    FAQ
+========================================================= */
 .faq {
     display: grid;
     gap: 12px;
@@ -1255,8 +1237,8 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-          LIST DOTS (.prose)
-    ========================================================= */
+    LIST DOTS (.prose)
+========================================================= */
 .prose ul {
     list-style: none;
     padding-left: 0;
@@ -1283,42 +1265,33 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-   [VS-FIX] PAGE-SCOPE: LEISTUNGEN — HERO (единственный источник правды)
-   Задача:
-   - Leistungen: тёмная hero-панель как на референсе
-   - Убрать светлую маску .hero-panel--lightleft
-   - Не влиять на index и другие страницы
-   - На мобиле: hero выше (4/3), чтобы не ломалась композиция
+    [PAGE FIX] LEISTUNGEN — Dark hero only on Leistungen
+    - Убрана светлая маска .hero-panel--lightleft::before
+    - Не влияет на другие страницы
 ========================================================= */
-
-/* ---------- 1) Основа панели (тёмная) ---------- */
 .page-leistungen .hero-panel {
     background: #070A10 !important;
     border-color: rgba(255, 255, 255, .10) !important;
-
     box-shadow:
         0 40px 140px rgba(2, 6, 23, .55),
         0 1px 0 rgba(255, 255, 255, .06) inset !important;
-
-    /* Если хочешь "стекло" — оставь blur, если нет — поставь none */
     backdrop-filter: blur(10px) !important;
     -webkit-backdrop-filter: blur(10px) !important;
 }
 
-/* ---------- 2) Отключаем светлую область слева (lightleft) ---------- */
+/* Отключаем светлую область слева */
 .page-leistungen .hero-panel--lightleft::before {
     content: none !important;
     display: none !important;
 }
 
-/* ---------- 3) Акцентный glow / vignette (вместо светлого spotlight) ---------- */
+/* Glow/vignette для тёмной панели */
 .page-leistungen .hero-panel::after {
     content: "";
     position: absolute;
     inset: -20%;
     z-index: 1;
     pointer-events: none;
-
     background:
         radial-gradient(640px 460px at 22% 35%, rgba(59, 130, 246, .22), transparent 62%),
         radial-gradient(820px 520px at 78% 28%, rgba(99, 102, 241, .14), transparent 68%),
@@ -1326,7 +1299,7 @@ html.js .reveal.is-visible {
         linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .35) 100%);
 }
 
-/* ---------- 4) Контент всегда поверх ---------- */
+/* Контент поверх + цвета */
 .page-leistungen .hero-panel__content {
     position: relative;
     z-index: 3;
@@ -1334,7 +1307,6 @@ html.js .reveal.is-visible {
     background: transparent !important;
 }
 
-/* Текстовые элементы (если без Tailwind классов) */
 .page-leistungen .hero-panel__content h1,
 .page-leistungen .hero-panel__content h2 {
     color: rgba(255, 255, 255, .96) !important;
@@ -1344,7 +1316,7 @@ html.js .reveal.is-visible {
     color: rgba(255, 255, 255, .70) !important;
 }
 
-/* ---------- 5) Badge в hero (тёмный) ---------- */
+/* Badge в hero */
 .page-leistungen .hero-panel__content .hero-badge {
     background: rgba(255, 255, 255, .10) !important;
     border-color: rgba(255, 255, 255, .16) !important;
@@ -1357,7 +1329,7 @@ html.js .reveal.is-visible {
     box-shadow: 0 0 0 3px rgba(96, 165, 250, .18) !important;
 }
 
-/* ---------- 6) Кнопки в hero (тёмный вариант ghost) ---------- */
+/* Кнопки ghost в hero */
 .page-leistungen .hero-panel__content .btn-ghost {
     background: rgba(255, 255, 255, .10) !important;
     border-color: rgba(255, 255, 255, .18) !important;
@@ -1370,64 +1342,32 @@ html.js .reveal.is-visible {
     border-color: rgba(255, 255, 255, .22) !important;
 }
 
-/* ---------- 7) Mobile fix: hero выше, чтобы не "ломалось" ---------- */
+/* Leistungen — Mobile layout fix (единый, без дублей) */
 @media (max-width: 640px) {
-
-    /* В твоей базе стоит aspect-ratio: 16/9 — на leistungen меняем на 4/3 */
-    .page-leistungen .hero-panel {
-        aspect-ratio: 4 / 3 !important;
-    }
-
-    /* Чуть компактнее контент */
-    .page-leistungen .hero-panel__content {
-        padding: 22px 18px !important;
-        /* если у тебя padding задаётся через .hero-panel__content */
-    }
-
-    /* Если заголовок слишком большой — подожмём */
-    .page-leistungen .hero-panel__content h1 {
-        font-size: clamp(30px, 9vw, 44px);
-        line-height: 1.05;
-    }
-}
-
-/* =========================================================
-   LEISTUNGEN — Mobile hero layout fix (без правки HTML)
-   Цель: чтобы на телефоне текст не конфликтовал с визуалом справа
-========================================================= */
-@media (max-width: 640px) {
-
-    /* 1) Убираем фикс-кадр. Пусть высота определяется контентом */
     .page-leistungen .hero-panel {
         aspect-ratio: auto !important;
         height: auto !important;
         min-height: 560px;
-        /* [TUNE] 520–640 */
+        /* tune 520–640 */
     }
 
-    /* 2) Подкадрируем картинку так, чтобы иконки справа были "выше/правее" */
     .page-leistungen .hero-panel__bg {
         object-fit: cover !important;
         object-position: 72% 32% !important;
-        /* [TUNE] 68–80% / 25–40% */
+        /* tune */
         transform: scale(1.06);
-        /* [TUNE] 1.02–1.10 */
     }
 
-    /* 3) Контент: ограничиваем ширину и даём справа место под иконки */
     .page-leistungen .hero-panel__content {
         padding: 22px 16px !important;
         max-width: 22rem;
-        /* чтобы строки были короче и читались */
         padding-right: 96px !important;
-        /* место под визуал справа */
     }
 
-    /* 4) Типографика компактнее */
     .page-leistungen .hero-panel__content h1 {
-        font-size: clamp(28px, 9vw, 40px);
-        line-height: 1.04;
-        letter-spacing: -0.02em;
+        font-size: clamp(28px, 9vw, 44px);
+        line-height: 1.05;
+        letter-spacing: 0.01em;
     }
 
     .page-leistungen .hero-panel__content p {
@@ -1437,22 +1377,17 @@ html.js .reveal.is-visible {
 }
 
 /* =========================================================
-   HOME (index): Hero full-bleed image (fill panel)
-   hero-panel--full uses contain + padding by default
+    HOME (index): Hero full-bleed image (fill panel)
 ========================================================= */
 .page-home .hero-panel--full .hero-panel__bg {
     object-fit: cover !important;
-    /* было contain */
     padding: 0 !important;
-    /* убрать поля */
     transform: scale(1.04);
-    /* легкий премиум-zoom */
     object-position: 50% 50%;
 }
 
 /* =========================================================
-   FOOTER HARD FIX (visibility + theme lock)
-   Fix: footer looks "missing" because text becomes too light/transparent
+    FOOTER HARD FIX (visibility + theme lock)
 ========================================================= */
 .matte-footer {
     background: linear-gradient(180deg, #0b1220 0%, #050913 100%);
@@ -1469,96 +1404,51 @@ html.js .reveal.is-visible {
     text-underline-offset: 4px;
 }
 
-/* Если где-то глобально задаётся opacity для текста/ссылок */
 .matte-footer * {
     opacity: 1;
 }
 
 /* =========================================================
-   [VS-FIX] PROZESS — Mobile hero must be anthrazit (no Tailwind hex utils)
-   Reason: .panel is light glass; Tailwind bg-[#...] may be purged from output.css
+    PROZESS — hard safe colors (без Tailwind-arbitrary зависимости)
+    (объединено: убраны все повторы)
 ========================================================= */
-
-.page-prozess header .panel {
+/* Мобильно: панель тёмная (перебивает .panel glass) */
+.page-prozess header .panel,
+.page-prozess .vs-prozess-hero.panel {
     background: #0B0F16 !important;
     border-color: rgba(255, 255, 255, .10) !important;
     box-shadow: 0 34px 120px rgba(2, 6, 23, .22) !important;
 }
 
-/* Desktop: panel can stay transparent because you have full-bg image */
+/* Desktop: панель может быть прозрачной (под full-bg) */
 @media (min-width: 1024px) {
-    .page-prozess header .panel {
+
+    .page-prozess header .panel,
+    .page-prozess .vs-prozess-hero.panel {
         background: transparent !important;
+        box-shadow: none !important;
+        border-color: rgba(15, 23, 42, .10) !important;
     }
 }
 
-/* Fix the “fade to anthrazit” strip under the mobile image
-   (Tailwind class to-[#0B0F16] may not exist in output.css) */
-.page-prozess .vs-hero-fade {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #0B0F16) !important;
-}
-
-/* =========================================================
-   PROZESS HERO — hard safe colors (no Tailwind hex utils)
-========================================================= */
-
-/* сама панель: на мобиле тёмная, на lg — прозрачная (как у тебя) */
-.vs-prozess-hero {
-    background: #0B0F16 !important;
-    border-color: rgba(255, 255, 255, .10) !important;
-}
-
-@media (min-width: 1024px) {
-    .vs-prozess-hero {
-        background: transparent !important;
-    }
-}
-
-/* контентный блок: на мобиле тёмная подложка, на lg — прозрачный */
-.vs-prozess-content {
-    background: #0B0F16;
-}
-
-@media (min-width: 1024px) {
-    .vs-prozess-content {
-        background: transparent;
-    }
-}
-
-/* fade-полоска под картинкой на мобиле */
-.vs-prozess-fade {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #0B0F16);
-}
-
-/* био-плашка на мобиле */
-.vs-prozess-bio {
-    background: #0A0D14;
-}
-
-/* =========================================================
-   PROZESS — FIX (Tailwind-arbitrary safe)
-   Делает мобилу тёмной независимо от Tailwind билда
-========================================================= */
-
-.page-prozess .vs-prozess-hero.panel {
-    background: #0B0F16 !important;
-    /* перекрываем .panel светлый glass */
-    border-color: rgba(255, 255, 255, .10) !important;
-}
-
-/* Контент-область на мобиле должна быть тёмной “плитой” */
+/* Контентная “плита” на мобиле */
 .page-prozess .vs-prozess-content {
     background: #0B0F16 !important;
 }
 
-/* На десктопе контент поверх картинки — прозрачный */
 @media (min-width: 1024px) {
     .page-prozess .vs-prozess-content {
         background: transparent !important;
     }
 }
 
-/* Плавный переход снизу картинки в тёмную плиту */
-.page-prozess .vs-prozess-fade {
+/* Fade-переход под картинкой */
+.page-prozess .vs-prozess-fade,
+.page-prozess .vs-hero-fade {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #0B0F16 100%) !important;
+}
+
+/* Био-плашка на мобиле (если используется) */
+.page-prozess .vs-prozess-bio {
+    background: #0A0D14;
 }
