@@ -16,21 +16,22 @@
     <!-- Fonts: Brand (logo-like) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    <!-- Tailwind CDN + Custom CSS -->
+    <!-- Tailwind + Custom CSS -->
     <link rel="stylesheet" href="./css/output.css">
     <link rel="stylesheet" href="./styles.css" />
+
+    <!-- Global JS (defer) -->
+    <script src="./js/app.js" defer></script>
 </head>
-
-<script src="./js/app.js" defer></script>
-
 
 <body id="top" class="bg-app text-[color:var(--text)]">
 
     <!-- =========================================================
-        NAV (Index) — wie in prozess.html
-    ========================================================== -->
+      NAV
+  ========================================================== -->
     <nav id="siteNav" class="w-full sticky top-0 z-50 glass-header" aria-label="Hauptnavigation">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 nav-wrap">
             <div class="flex items-center justify-between gap-6">
@@ -54,7 +55,7 @@
                     <a href="leistungen.html" class="nav-link px-3 py-2">Leistungen</a>
                     <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
                     <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
-                    <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
+                    <a href="projekte.html" class="nav-link px-3 py-2" aria-current="page">Projekte</a>
                     <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
                 </div>
 
@@ -68,7 +69,8 @@
                     class="md:hidden inline-flex items-center justify-center rounded-xl px-3 py-2 border border-white/15 bg-white/10 text-[color:var(--text)]"
                     aria-controls="mobileMenu" aria-expanded="false" aria-label="Menü öffnen">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" />
                     </svg>
                 </button>
             </div>
@@ -80,7 +82,7 @@
                         <a href="leistungen.html" class="nav-link px-3 py-2">Leistungen</a>
                         <a href="branchen.html" class="nav-link px-3 py-2">Branchen</a>
                         <a href="prozess.html" class="nav-link px-3 py-2">Prozess</a>
-                        <a href="projekte.html" class="nav-link px-3 py-2">Projekte</a>
+                        <a href="projekte.html" class="nav-link px-3 py-2" aria-current="page">Projekte</a>
                         <a href="kontakt.html" class="nav-link px-3 py-2">Kontakt</a>
                     </div>
 
@@ -93,102 +95,98 @@
         </div>
     </nav>
 
+    <!-- =========================
+      HERO – Projekte
+  ========================= -->
+    <header class="hero-bg">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-16">
+            <section class="hero-card" aria-label="Portfolio Hero">
 
-<!-- =========================
-    HERO – Projekte (Bild oben + Content unten)
-========================= -->
-<header class="hero-bg">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-16">
+                <!-- TOP: Visual -->
+                <div class="hero-card__media" aria-hidden="true">
+                    <img src="images/projekte2.webp" alt="" class="hero-card__img" loading="eager" decoding="async"
+                        fetchpriority="high" />
+                </div>
 
-        <section class="hero-card" aria-label="Portfolio Hero">
-            <!-- TOP: Visual -->
-            <div class="hero-card__media" aria-hidden="true">
-                <img src="images/projekte2.webp" alt="" class="hero-card__img" loading="eager" decoding="async"
-                    fetchpriority="high" />
-            </div>
+                <!-- BOTTOM: Content -->
+                <div class="hero-card__content">
+                    <div class="hero-card__inner panel-glass">
+                        <div class="hero-card__grid">
 
-           <!-- BOTTOM: Content -->
-<div class="hero-card__content">
-  <!-- NEW: общий прозрачный контейнер вокруг LEFT + RIGHT -->
-  <div class="hero-card__inner panel-glass">
-    <div class="hero-card__grid">
+                            <!-- LEFT -->
+                            <div class="hero-card__left">
+                                <div class="hero-badge">
+                                    <span class="hero-badge-dot" aria-hidden="true"></span>
+                                    Portfolio · Visual Struktur
+                                </div>
 
-      <!-- LEFT -->
-      <div class="hero-card__left">
-        <div class="hero-badge">
-          <span class="hero-badge-dot" aria-hidden="true"></span>
-          Portfolio · Visual Struktur
+                                <h1
+                                    class="mt-6 text-3xl sm:text-4xl lg:text-5xl font-semibold text-[color:var(--text)] text-balance">
+                                    Projekte, die Wirkung zeigen.
+                                </h1>
+
+                                <p class="mt-4 text-[15px] sm:text-base text-[color:var(--muted)] leading-relaxed">
+                                    Ausgewählte Arbeiten aus <strong>Webdesign</strong>, <strong>SEO</strong> und
+                                    <strong>Automatisierung</strong>. Fokus: klare Struktur, schnelle Performance und
+                                    saubere Umsetzung –
+                                    für Vertrauen, Conversion und Sichtbarkeit.
+                                </p>
+
+                                <ul class="mt-6 grid gap-2 text-sm text-[color:var(--muted)]">
+                                    <li class="flex gap-2">
+                                        <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--muted2)]"></span>
+                                        Mobile-first, semantische Struktur, wartbarer Code
+                                    </li>
+                                    <li class="flex gap-2">
+                                        <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--muted2)]"></span>
+                                        SEO-Basis: klare Themenblöcke, Meta-Setup, interne Logik
+                                    </li>
+                                    <li class="flex gap-2">
+                                        <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--muted2)]"></span>
+                                        Systeme: Form-UX, Spam-Schutz, CRM-Ready
+                                    </li>
+                                </ul>
+
+                                <div class="mt-8 flex flex-col sm:flex-row gap-3">
+                                    <a href="#portfolio" class="btn-primary">Projekte ansehen</a>
+                                    <a href="./kontakt.html" class="btn-ghost">Projekt anfragen</a>
+                                </div>
+
+                                <p class="mt-4 text-[13px] text-[color:var(--muted2)]">
+                                    Einige Projekte sind anonymisiert (Datenschutz / Kundenwunsch).
+                                </p>
+                            </div>
+
+                            <!-- RIGHT -->
+                            <aside class="hero-card__right" aria-label="Hinweis">
+                                <div class="hero-kicker">Ideal für</div>
+
+                                <p class="mt-4 text-sm leading-relaxed text-[color:var(--muted)]">
+                                    Unternehmen, die nicht „irgendeine“ Website wollen — sondern einen klaren, seriösen
+                                    Auftritt, der Anfragen generiert.
+                                </p>
+
+                                <div class="hero-card__pill">
+                                    <p class="text-sm text-[color:var(--muted)]">
+                                        <span class="font-semibold text-[color:var(--text)]">Bonus:</span>
+                                        DSGVO-Basis je nach Setup, Performance-Fokus, saubere Struktur.
+                                    </p>
+                                </div>
+                            </aside>
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
         </div>
+    </header>
 
-        <h1 class="mt-6 text-3xl sm:text-4xl lg:text-5xl font-semibold text-[color:var(--text)] text-balance">
-          Projekte, die Wirkung zeigen.
-        </h1>
-
-        <p class="mt-4 text-[15px] sm:text-base text-[color:var(--muted)] leading-relaxed">
-          Ausgewählte Arbeiten aus <strong>Webdesign</strong>, <strong>SEO</strong> und
-          <strong>Automatisierung</strong>.
-          Fokus: klare Struktur, schnelle Performance und saubere Umsetzung – für Vertrauen,
-          Conversion und Sichtbarkeit.
-        </p>
-
-        <ul class="mt-6 grid gap-2 text-sm text-[color:var(--muted)]">
-          <li class="flex gap-2">
-            <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--muted2)]"></span>
-            Mobile-first, semantische Struktur, wartbarer Code
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--muted2)]"></span>
-            SEO-Basis: klare Themenblöcke, Meta-Setup, interne Logik
-          </li>
-          <li class="flex gap-2">
-            <span class="mt-2 h-1.5 w-1.5 rounded-full bg-[color:var(--muted2)]"></span>
-            Systeme: Form-UX, Spam-Schutz, CRM-Ready
-          </li>
-        </ul>
-
-        <div class="mt-8 flex flex-col sm:flex-row gap-3">
-          <a href="#portfolio" class="btn-primary">Projekte ansehen</a>
-          <a href="./kontakt.html" class="btn-ghost">Projekt anfragen</a>
-        </div>
-
-        <p class="mt-4 text-[13px] text-[color:var(--muted2)]">
-          Einige Projekte sind anonymisiert (Datenschutz / Kundenwunsch).
-        </p>
-      </div>
-
-      <!-- RIGHT -->
-      <aside class="hero-card__right" aria-label="Hinweis">
-        <div class="hero-kicker">Ideal für</div>
-
-        <p class="mt-4 text-sm leading-relaxed text-[color:var(--muted)]">
-          Unternehmen, die nicht „irgendeine“ Website wollen — sondern einen klaren, seriösen
-          Auftritt, der Anfragen generiert.
-        </p>
-
-        <div class="hero-card__pill">
-          <p class="text-sm text-[color:var(--muted)]">
-            <span class="font-semibold text-[color:var(--text)]">Bonus:</span>
-            DSGVO-Basis je nach Setup, Performance-Fokus, saubere Struktur.
-          </p>
-        </div>
-      </aside>
-
-    </div>
-  </div>
-</div>
-
-        </section>
-
-    </div>
-</header>
-
-<div id="portfolio" class="scroll-mt-28"></div>
-
-
+    <div id="portfolio" class="scroll-mt-28"></div>
 
     <!-- =========================
-        FILTER
-    ========================= -->
+      FILTER
+  ========================= -->
     <section class="scroll-mt-28">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-14">
 
@@ -208,8 +206,7 @@
                         type="button">Alle</button>
                     <button class="proj-filter btn-ghost px-4 py-2 text-sm" data-filter="website"
                         type="button">Website</button>
-                    <button class="proj-filter btn-ghost px-4 py-2 text-sm" data-filter="seo"
-                        type="button">SEO</button>
+                    <button class="proj-filter btn-ghost px-4 py-2 text-sm" data-filter="seo" type="button">SEO</button>
                     <button class="proj-filter btn-ghost px-4 py-2 text-sm" data-filter="automation"
                         type="button">Automatisierung</button>
                     <button class="proj-filter btn-ghost px-4 py-2 text-sm" data-filter="branding"
@@ -221,30 +218,27 @@
     </section>
 
     <!-- =========================
-        PROJECT GRID (mit Mini-Metrics)
-    ========================= -->
+      PROJECT GRID (mit Mini-Metrics)
+  ========================= -->
     <section>
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-14 sm:pb-16">
-
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
                 <!-- 1) Vilana -->
                 <article class="proj-card panel card-premium hover-lift overflow-hidden reveal"
                     data-cats="website seo branding">
                     <img src="images/skrin-vilana.webp" alt="Vilana Event & Catering"
-                        class="block w-full h-50 object-cover" loading="lazy" decoding="async" />
+                        class="block w-full h-48 object-cover" loading="lazy" decoding="async" />
                     <div class="p-5">
                         <div class="flex items-start justify-between gap-3">
                             <div class="text-sm font-semibold text-[color:var(--text)]">Vilana Event & Catering</div>
                             <span class="badge-live">Live</span>
-
                         </div>
 
                         <p class="mt-2 text-sm text-[color:var(--muted)] leading-relaxed">
                             Premium Website + klare Angebotsstruktur + SEO-Basis. Fokus: Vertrauen und Conversion.
                         </p>
 
-                        <!-- Mini-Metrics (ohne Fake-Zahlen) -->
                         <div class="mt-4 grid grid-cols-3 gap-2 text-xs text-[color:var(--muted2)]">
                             <div class="panel rounded-xl px-3 py-2 text-center">Performance-Setup</div>
                             <div class="panel rounded-xl px-3 py-2 text-center">SEO-Ready</div>
@@ -252,8 +246,7 @@
                         </div>
 
                         <div class="mt-5 flex items-center gap-3">
-                            <button type="button" class="btn-ghost px-4 py-2 text-sm proj-open"
-                                data-project="vilana">
+                            <button type="button" class="btn-ghost px-4 py-2 text-sm proj-open" data-project="vilana">
                                 Details
                             </button>
                             <a href="https://www.vilana-event.de" target="_blank" rel="noopener"
@@ -286,8 +279,7 @@
                         </div>
 
                         <div class="mt-5">
-                            <button type="button" class="btn-ghost px-4 py-2 text-sm proj-open"
-                                data-project="med1">
+                            <button type="button" class="btn-ghost px-4 py-2 text-sm proj-open" data-project="med1">
                                 Details
                             </button>
                         </div>
@@ -316,49 +308,54 @@
                         </div>
 
                         <div class="mt-5">
-                            <button type="button" class="btn-ghost px-4 py-2 text-sm proj-open"
-                                data-project="med2">
+                            <button type="button" class="btn-ghost px-4 py-2 text-sm proj-open" data-project="med2">
                                 Details
                             </button>
                         </div>
                     </div>
                 </article>
 
-                <!-- 4) Coming soon -->
+                <!-- 4) Auto Atelier (Demo) -->
                 <article class="proj-card panel card-premium hover-lift overflow-hidden reveal"
-                    data-cats="seo automation branding">
-                    <img src="images/projekt-coming.webp" alt="Weitere Projekte folgen"
-                        class="block w-full h-48 object-cover" loading="lazy" decoding="async" />
+                    data-cats="website seo branding">
+                    <a href="https://visual-struktur.github.io/vs-demo-auto-atelier/" target="_blank" rel="noopener"
+                        class="block">
+                        <img src="images/projekt-auto-atelier.webp" alt="Auto Atelier – Demo Website"
+                            class="block w-full h-48 object-cover" loading="lazy" decoding="async" />
+                    </a>
+
                     <div class="p-5">
                         <div class="flex items-start justify-between gap-3">
-                            <div class="text-sm font-semibold text-[color:var(--text)]">Weitere Projekte</div>
-                            <span class="panel rounded-full px-3 py-1 text-xs text-[color:var(--muted2)]">Soon</span>
+                            <div class="text-sm font-semibold text-[color:var(--text)]">Auto Atelier – Demo</div>
+                            <span class="badge-live">Live</span>
                         </div>
 
                         <p class="mt-2 text-sm text-[color:var(--muted)] leading-relaxed">
-                            Neue Cases (Branchen-Landings, SEO-Optimierung, Automatisierung) folgen in Kürze.
+                            Branchen-Demo für Kfz/Autohaus: klare Struktur, schnelle Performance, CTA &amp; lokale
+                            SEO-Basis.
                         </p>
 
                         <div class="mt-4 grid grid-cols-3 gap-2 text-xs text-[color:var(--muted2)]">
-                            <div class="panel rounded-xl px-3 py-2 text-center">Branchen</div>
+                            <div class="panel rounded-xl px-3 py-2 text-center">Landing</div>
                             <div class="panel rounded-xl px-3 py-2 text-center">SEO</div>
-                            <div class="panel rounded-xl px-3 py-2 text-center">Systeme</div>
+                            <div class="panel rounded-xl px-3 py-2 text-center">UI System</div>
                         </div>
 
-                        <div class="mt-5">
-                            <a href="./kontakt.html" class="btn-primary px-4 py-2 text-sm">Anfrage senden</a>
+                        <div class="mt-5 flex flex-wrap gap-2">
+                            <a href="https://visual-struktur.github.io/vs-demo-auto-atelier/" target="_blank"
+                                rel="noopener" class="btn-primary px-4 py-2 text-sm">Projekt ansehen</a>
+                            <a href="./kontakt.html" class="btn-ghost px-4 py-2 text-sm">Ähnliches anfragen</a>
                         </div>
                     </div>
                 </article>
 
-            </div>
-
-        </div>
-    </section>
+            </div><!-- /grid -->
+        </div><!-- /container -->
+    </section><!-- /PROJECT GRID -->
 
     <!-- =========================
-      CTA
-    ========================= -->
+     CTA
+  ========================= -->
     <section>
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20">
             <div class="panel rounded-3xl p-6 sm:p-8 reveal">
@@ -371,11 +368,13 @@
                         </h2>
                         <p class="mt-3 text-[15px] text-[color:var(--muted)] leading-relaxed">
                             Kurz sagen, was du anbietest und wen du erreichen willst – ich gebe dir eine klare
-                            Empfehlung (Struktur, Umfang, nächster Schritt).
+                            Empfehlung
+                            (Struktur, Umfang, nächster Schritt).
                         </p>
                     </div>
                     <div class="lg:col-span-4 lg:flex lg:justify-end">
-                        <a href="./kontakt.html" class="btn-primary w-full lg:w-auto text-center">Erstgespräch anfragen</a>
+                        <a href="./kontakt.html" class="btn-primary w-full lg:w-auto text-center">Erstgespräch
+                            anfragen</a>
                     </div>
                 </div>
             </div>
@@ -383,16 +382,15 @@
     </section>
 
     <!-- =========================
-        CASE DRAWER (Slide-over)
-    ========================= -->
+      CASE DRAWER (Slide-over)
+  ========================= -->
     <div id="caseOverlay" class="fixed inset-0 z-[60] hidden" aria-hidden="true">
         <!-- Backdrop -->
         <button id="caseBackdrop" class="absolute inset-0 w-full h-full bg-black/50" aria-label="Schließen"></button>
 
         <!-- Panel -->
-        <aside id="casePanel" role="dialog" aria-modal="true" aria-labelledby="caseTitle"
-            class="absolute right-0 top-0 h-full w-full sm:w-[520px] bg-[color:var(--bg)] panel border-l border-white/10
-                translate-x-full transition-transform duration-300 ease-out">
+        <aside id="casePanel" role="dialog" aria-modal="true" aria-labelledby="caseTitle" class="absolute right-0 top-0 h-full w-full sm:w-[520px] bg-[color:var(--bg)] panel border-l border-white/10
+                  translate-x-full transition-transform duration-300 ease-out">
             <div class="h-full flex flex-col">
 
                 <div class="p-5 sm:p-6 border-b border-white/10 flex items-start justify-between gap-4">
@@ -401,12 +399,9 @@
                             class="text-xs font-semibold tracking-wide text-[color:var(--muted2)] uppercase">
                             Case Study
                         </div>
-                        <h3 id="caseTitle" class="mt-2 text-xl sm:text-2xl font-semibold text-[color:var(--text)]">
-                            —
+                        <h3 id="caseTitle" class="mt-2 text-xl sm:text-2xl font-semibold text-[color:var(--text)]">—
                         </h3>
-                        <p id="caseSub" class="mt-2 text-sm text-[color:var(--muted)] leading-relaxed">
-                            —
-                        </p>
+                        <p id="caseSub" class="mt-2 text-sm text-[color:var(--muted)] leading-relaxed">—</p>
                     </div>
 
                     <button id="caseClose" class="btn-ghost px-4 py-2 text-sm shrink-0" aria-label="Schließen">
@@ -426,15 +421,12 @@
 
                         <div class="panel card-premium p-5">
                             <div class="text-sm font-semibold text-[color:var(--text)]">Umsetzung</div>
-                            <ul id="caseBullets" class="mt-2 grid gap-2 text-sm text-[color:var(--muted)]">
-                                <!-- filled by JS -->
-                            </ul>
+                            <ul id="caseBullets" class="mt-2 grid gap-2 text-sm text-[color:var(--muted)]"></ul>
                         </div>
 
                         <div class="panel card-premium p-5">
                             <div class="text-sm font-semibold text-[color:var(--text)]">Stack / Setup</div>
                             <div id="caseStack" class="mt-2 flex flex-wrap gap-2 text-xs text-[color:var(--muted2)]">
-                                <!-- filled by JS -->
                             </div>
                         </div>
 
@@ -454,8 +446,8 @@
     </div>
 
     <!-- =========================
-        FOOTER — wie index.html
-    ========================= -->
+      FOOTER
+  ========================= -->
     <footer class="matte-footer">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
 
@@ -484,7 +476,7 @@
                     </ul>
                 </div>
 
-                <!-- Fokus / Kontakt -->
+                <!-- Kontakt -->
                 <div class="md:col-span-4">
                     <h3 class="text-sm font-semibold text-white/90">Kontakt</h3>
                     <p class="mt-3 text-sm text-white/70">
@@ -493,7 +485,7 @@
                     </p>
                 </div>
 
-            </div><!-- /grid -->
+            </div>
 
             <div
                 class="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
@@ -508,20 +500,26 @@
                 </div>
             </div>
 
-        </div><!-- /container -->
+        </div>
     </footer>
 
     <!-- =========================
-       JS: Year + Mobile Menu + Shrink Nav + Reveal + Filter + Drawer
-    ========================= -->
+     JS: Year + Reveal + Filter + Drawer
+  ========================= -->
     <script>
+        // ---------------------------------------------------------
+        // Year
+        // ---------------------------------------------------------
+        const y = document.getElementById("year");
+        if (y) y.textContent = new Date().getFullYear();
+
         // ---------------------------------------------------------
         // Nav shrink
         // ---------------------------------------------------------
         const nav = document.getElementById("siteNav");
         const onScroll = () => {
-            const y = window.scrollY || 0;
-            if (y > 12) nav.classList.add("nav-shrink", "nav-shadow");
+            const yy = window.scrollY || 0;
+            if (yy > 12) nav.classList.add("nav-shrink", "nav-shadow");
             else nav.classList.remove("nav-shrink", "nav-shadow");
         };
         onScroll();
@@ -595,7 +593,6 @@
 
         let lastFocused = null;
 
-        // Editiere hier Inhalte nach Bedarf (keine Fake-Zahlen, nur klare Aussagen)
         const PROJECTS = {
             vilana: {
                 kicker: "Case Study · Live",
@@ -628,7 +625,7 @@
                     "Performance: optimierte Darstellung & Layout-Stabilität"
                 ],
                 stack: ["HTML", "Tailwind", "Semantik", "Local SEO"],
-                link: "", // leer = kein öffentlicher Link
+                link: "",
                 linkLabel: ""
             },
             med2: {
@@ -656,13 +653,11 @@
 
             lastFocused = document.activeElement;
 
-            // Fill content
             caseKicker.textContent = data.kicker || "Case Study";
             caseTitle.textContent = data.title || "—";
             caseSub.textContent = data.sub || "—";
             caseGoal.textContent = data.goal || "—";
 
-            // Image
             if (data.img) {
                 caseImg.src = data.img;
                 caseImg.alt = data.imgAlt || data.title || "Case Visual";
@@ -673,7 +668,6 @@
                 caseImg.alt = "";
             }
 
-            // Bullets
             caseBullets.innerHTML = "";
             (data.bullets || []).forEach(txt => {
                 const li = document.createElement("li");
@@ -681,7 +675,6 @@
                 caseBullets.appendChild(li);
             });
 
-            // Stack tags
             caseStack.innerHTML = "";
             (data.stack || []).forEach(tag => {
                 const span = document.createElement("span");
@@ -690,7 +683,6 @@
                 caseStack.appendChild(span);
             });
 
-            // Link
             if (data.link) {
                 caseLink.href = data.link;
                 caseLink.textContent = data.linkLabel || "Website ansehen";
@@ -701,12 +693,10 @@
                 caseLink.textContent = "";
             }
 
-            // Show overlay + slide in
             overlay.classList.remove("hidden");
             overlay.setAttribute("aria-hidden", "false");
             document.body.classList.add("overflow-hidden");
 
-            // animate
             requestAnimationFrame(() => {
                 panel.classList.remove("translate-x-full");
                 closeBtn.focus();
@@ -718,7 +708,6 @@
             overlay.setAttribute("aria-hidden", "true");
             document.body.classList.remove("overflow-hidden");
 
-            // wait for transition end then hide
             const done = () => {
                 overlay.classList.add("hidden");
                 panel.removeEventListener("transitionend", done);
