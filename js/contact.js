@@ -20,14 +20,28 @@
       "'": "&#039;"
     }[m]));
 
-  const servicesValue = () =>
-    qsa('input[name="service"]:checked').map(i => i.value).join(", ") || "—";
+  const servicesChecked = () => qsa('input[name="service"]:checked');
+  const servicesValue = () => servicesChecked().map(i => i.value).join(", ");
+
+  function updateServicesLabel() {
+    const lbl = qs("#servicesLabel");
+    if (!lbl) return;
+
+    const val = servicesValue();
+    if (!val) {
+      lbl.textContent = "Bitte wählen…";
+      lbl.setAttribute("data-empty", "true");
+    } else {
+      lbl.textContent = val;
+      lbl.setAttribute("data-empty", "false");
+    }
+  }
 
   const getData = (form) => {
     const fd = new FormData(form);
     return {
       inquiryId: fd.get("inquiryId") || "",
-      services: servicesValue(),
+      services: servicesValue() || "—",
       timeline: fd.get("timeline") || "",
       budget: fd.get("budget") || "Noch offen",
       website: fd.get("website") || "—",
@@ -83,7 +97,7 @@
         const id = btn.getAttribute("data-open-sheet");
         const dlg = document.getElementById(id);
         if (!dlg) return;
-        dlg.showModal();
+        if (typeof dlg.showModal === "function") dlg.showModal();
       });
     });
 
@@ -92,7 +106,7 @@
       btn.addEventListener("click", () => btn.closest("dialog")?.close());
     });
 
-    // Pick option
+    // Pick option (timeline/budget)
     qsa("[data-pick]").forEach(opt => {
       opt.addEventListener("click", () => {
         const type = opt.getAttribute("data-pick");   // timeline | budget
@@ -103,9 +117,10 @@
           const input = qs("#timeline");
           const lbl = qs("#timelineLabel");
           if (input) input.value = val;
-          if (lbl) lbl.textContent = label;
-
-          // clear errors
+          if (lbl) {
+            lbl.textContent = label;
+            lbl.setAttribute("data-empty", val ? "false" : "true");
+          }
           qs("#timelineRow")?.classList.remove("vs-error");
           qs("#timelineError")?.classList.add("u-hidden");
         }
@@ -125,16 +140,31 @@
     qsa("dialog.vs-sheet").forEach(dlg => {
       dlg.addEventListener("click", (e) => {
         const rect = dlg.getBoundingClientRect();
-        const inBox = e.clientX >= rect.left && e.clientX <= rect.right
-          && e.clientY >= rect.top && e.clientY <= rect.bottom;
+        const inBox =
+          e.clientX >= rect.left && e.clientX <= rect.right &&
+          e.clientY >= rect.top && e.clientY <= rect.bottom;
         if (!inBox) dlg.close();
       });
+    });
+
+    // Services reset
+    const resetBtn = qs("#servicesReset");
+    if (resetBtn) {
+      resetBtn.addEventListener("click", () => {
+        servicesChecked().forEach(i => { i.checked = false; });
+        updateServicesLabel();
+      });
+    }
+
+    // Services label live update
+    qsa('input[name="service"]').forEach(i => {
+      i.addEventListener("change", updateServicesLabel);
     });
   }
 
   // ---------- Validation (premium: no alerts)
   function validateServices(statusEl) {
-    const any = qsa('input[name="service"]:checked').length > 0;
+    const any = servicesChecked().length > 0;
     const err = qs("#serviceError");
     const block = qs("#serviceBlock");
 
@@ -166,9 +196,7 @@
     return true;
   }
 
-  function validateRequiredNative(form, statusEl) {
-    // native required inputs (goal/name/email/privacy) -> reportValidity helps UX
-    // timeline is hidden -> validated separately above
+  function validateRequiredNative(statusEl) {
     const goal = qs("#goal");
     const name = qs("#name");
     const email = qs("#email");
@@ -197,8 +225,8 @@
     if (urlEl) urlEl.value = window.location.href;
     if (refEl) refEl.value = document.referrer || "";
 
-    // init app pickers
     initSheets();
+    updateServicesLabel();
 
     // print
     printBtn?.addEventListener("click", () => {
@@ -207,16 +235,16 @@
       openPrint(buildPrintHtml(d));
     });
 
-    // clear service error on change
+    // clear service error when user changes something
     qsa('input[name="service"]').forEach(i => {
       i.addEventListener("change", () => {
         qs("#serviceError")?.classList.add("u-hidden");
         qs("#serviceBlock")?.classList.remove("vs-error");
-        if (statusEl.textContent.includes("Leistung")) statusEl.textContent = "";
+        if ((statusEl.textContent || "").includes("Leistung")) statusEl.textContent = "";
       });
     });
 
-    // submit (currently only UX validation; sending via EmailJS/Sheets later)
+    // submit (UX validation only; EmailJS later)
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       statusEl.textContent = "";
@@ -227,11 +255,12 @@
 
       const ok1 = validateServices(statusEl);
       const ok2 = validateTimeline(statusEl);
-      const ok3 = validateRequiredNative(form, statusEl);
+      const ok3 = validateRequiredNative(statusEl);
 
       if (!(ok1 && ok2 && ok3)) return;
 
       statusEl.textContent = "Formular ist bereit. Nächster Schritt: EmailJS/Sheets подключение.";
     });
   });
+
 })();

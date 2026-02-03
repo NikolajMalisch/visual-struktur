@@ -1,0 +1,180 @@
+/* =========================================================
+  CONTACT — Premium App Rows + Sheets (Clean)
+  Scope: kontakt.html only (loaded after styles.css)
+========================================================= */
+
+/* ---------- layout (safe even if tailwind missing) */
+.contact-layout { display: grid; gap: 1rem; align-items: start; }
+@media (min-width: 1024px) {
+  .contact-layout { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+}
+.contact-layout > * { min-width: 0; }
+
+/* ---------- utilities */
+.u-hidden { display: none !important; }
+
+/* ---------- row buttons (services/timeline/budget) */
+#servicesRow,
+#timelineRow,
+#budgetRow{
+  cursor: pointer;
+  border: 1px solid rgba(15,23,42,.16) !important;
+  background: rgba(255,255,255,.92) !important;
+  box-shadow:
+    0 12px 32px rgba(15,23,42,.10),
+    0 1px 0 rgba(255,255,255,.85) inset !important;
+  color: rgba(15,23,42,.95) !important;
+}
+
+#servicesRow:hover,
+#timelineRow:hover,
+#budgetRow:hover{
+  background: rgba(255,255,255,.98) !important;
+  border-color: rgba(15,23,42,.22) !important;
+  box-shadow:
+    0 16px 40px rgba(15,23,42,.12),
+    0 1px 0 rgba(255,255,255,.88) inset !important;
+}
+
+#servicesRow:focus-visible,
+#timelineRow:focus-visible,
+#budgetRow:focus-visible{
+  outline: 2px solid rgba(37,99,235,.35) !important;
+  outline-offset: 3px !important;
+  border-radius: 18px;
+}
+
+/* labels */
+#servicesLabel,
+#timelineLabel,
+#budgetLabel{
+  color: rgba(15,23,42,.92) !important;
+}
+
+#servicesLabel[data-empty="true"],
+#timelineLabel[data-empty="true"]{
+  color: rgba(15,23,42,.55) !important;
+}
+
+.vs-row__chev{
+  color: rgba(15,23,42,.55) !important;
+  font-size: 1.35rem;
+}
+
+/* error state */
+.vs-error{
+  border-color: rgba(220,38,38,.35) !important;
+  box-shadow: 0 0 0 3px rgba(220,38,38,.12) !important;
+}
+
+/* ---------- service chips (inside sheet) */
+:root{ --accent-blue: rgba(37,99,235,.95); }
+
+.svc-chip{
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .75rem .9rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(15,23,42,.14) !important;
+  background: rgba(255,255,255,.78) !important;
+  user-select: none;
+}
+
+.svc-chip:hover{
+  background: rgba(255,255,255,.92) !important;
+  border-color: rgba(15,23,42,.18) !important;
+}
+
+.svc-chip input{
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--accent-blue) !important;
+}
+
+/* selected look (needs :has support, ok on modern mobile) */
+.svc-chip:has(input:checked){
+  border-color: rgba(37,99,235,.28) !important;
+  background: rgba(37,99,235,.08) !important;
+}
+
+/* ---------- dialog sheets */
+dialog.vs-sheet{
+  padding: 0;
+  border: none;
+  background: transparent;
+  width: min(560px, 92vw);
+  border-radius: 1.5rem;
+}
+
+dialog.vs-sheet::backdrop{ background: rgba(0,0,0,.60); }
+
+.sheet-box{
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #0e0e0e;
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+}
+
+.sheet-head{
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  color: rgba(255,255,255,.92);
+}
+
+.sheet-title{ font-weight: 600; }
+
+.sheet-close{
+  color: rgba(255,255,255,.70);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.sheet-close:hover{ opacity: .9; }
+
+.sheet-body{
+  padding: .75rem;
+  max-height: 65vh;
+  overflow: auto;
+}
+
+/* buttons inside sheets (timeline/budget) */
+.sheet-opt{
+  width: 100%;
+  text-align: left;
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  color: rgba(255,255,255,.92);
+  cursor: pointer;
+}
+
+.sheet-opt:hover{ background: rgba(255,255,255,.10); }
+
+.sheet-foot{
+  padding: 1rem;
+  border-top: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+}
+
+/* mobile bottom-sheet vibe */
+@media (max-width: 640px){
+  dialog.vs-sheet[open]{
+    position: fixed;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+}
+
+/* motion safety */
+@media (prefers-reduced-motion: reduce){
+  #servicesRow, #timelineRow, #budgetRow,
+  .svc-chip, .sheet-opt { transition: none !important; }
+}

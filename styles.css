@@ -1452,3 +1452,85 @@ html.js .reveal.is-visible {
 .page-prozess .vs-prozess-bio {
     background: #0A0D14;
 }
+/* =========================================================
+   CONTACT — APP ROWS (FIX VISIBILITY in LUX THEME)
+   Makes rows look tappable on light background
+========================================================= */
+
+/* clickable rows (buttons) */
+#servicesRow,
+#timelineRow,
+#budgetRow{
+  cursor: pointer;
+  border: 1px solid rgba(15,23,42,.16) !important;
+  background: rgba(255,255,255,.92) !important;
+  box-shadow:
+    0 12px 32px rgba(15,23,42,.10),
+    0 1px 0 rgba(255,255,255,.85) inset !important;
+  color: rgba(15,23,42,.95) !important;
+}
+
+#servicesRow:hover,
+#timelineRow:hover,
+#budgetRow:hover{
+  background: rgba(255,255,255,.98) !important;
+  border-color: rgba(15,23,42,.22) !important;
+  box-shadow:
+    0 16px 40px rgba(15,23,42,.12),
+    0 1px 0 rgba(255,255,255,.88) inset !important;
+}
+
+/* focus (keyboard) */
+#servicesRow:focus-visible,
+#timelineRow:focus-visible,
+#budgetRow:focus-visible{
+  outline: 2px solid rgba(37,99,235,.35) !important;
+  outline-offset: 3px !important;
+  border-radius: 18px;
+}
+
+/* labels inside rows (if you use spans with ids) */
+#servicesLabel,
+#timelineLabel,
+#budgetLabel{
+  color: rgba(15,23,42,.92) !important;
+}
+
+#servicesLabel[data-empty="true"],
+#timelineLabel[data-empty="true"]{
+  color: rgba(15,23,42,.55) !important;
+}
+
+/* chevron character span */
+.vs-row__chev{
+  color: rgba(15,23,42,.55) !important;
+  font-size: 1.35rem;
+}
+
+/* error state for rows */
+.vs-error{
+  border-color: rgba(220,38,38,.35) !important;
+  box-shadow: 0 0 0 3px rgba(220,38,38,.12) !important;
+}
+
+/* chips checkboxes: blue accent (premium) */
+:root{ --accent-blue: rgba(37,99,235,.95); }
+
+.svc-chip{
+  border: 1px solid rgba(15,23,42,.14) !important;
+  background: rgba(255,255,255,.78) !important;
+}
+
+.svc-chip:hover{
+  background: rgba(255,255,255,.92) !important;
+  border-color: rgba(15,23,42,.18) !important;
+}
+
+.svc-chip input{
+  accent-color: var(--accent-blue) !important;
+}
+
+.svc-chip:has(input:checked){
+  border-color: rgba(37,99,235,.28) !important;
+  background: rgba(37,99,235,.08) !important;
+}
