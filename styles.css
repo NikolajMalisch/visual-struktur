@@ -976,94 +976,133 @@ html.js .reveal.is-visible {
 /* =========================================================
     BRANCHEN CARDS
 ========================================================= */
+/* =========================================================
+   BRANCH CARDS (Premium)
+   - 4:3 media (for your new images)
+   - premium CTA (no blue link)
+   - neutral highlight overlay (no blue tint)
+========================================================= */
+
 .branch-card {
-    background: var(--surface);
-    border: 1px solid var(--stroke);
-    border-radius: 22px;
-    box-shadow: var(--shadow1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: 22px;
+  box-shadow: var(--shadow1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .branch-media {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(180deg, rgba(2, 6, 23, 0) 0%, rgba(2, 6, 23, .30) 100%);
-    aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0) 0%, rgba(2, 6, 23, .30) 100%);
+  aspect-ratio: 4 / 3; /* was 16/9 */
 }
 
 .branch-media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
+/* Premium neutral overlay (removed blue tint) */
 .branch-media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(900px 380px at 70% 20%, rgba(59, 130, 246, .10), rgba(0, 0, 0, 0) 60%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .18) 100%);
-    opacity: .35;
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(900px 380px at 70% 20%, rgba(255,255,255,.14), rgba(0,0,0,0) 60%),
+    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.18) 100%);
+  opacity: .35;
 }
 
 .branch-tag {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 2;
-    padding: 6px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 800;
-    color: rgba(15, 23, 42, .85);
-    background: rgba(255, 255, 255, .78);
-    border: 1px solid rgba(15, 23, 42, .12);
-    box-shadow: 0 10px 26px rgba(15, 23, 42, .10);
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(15, 23, 42, .85);
+  background: rgba(255, 255, 255, .78);
+  border: 1px solid rgba(15, 23, 42, .12);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, .10);
 }
 
 .branch-body {
-    padding: 16px 16px 18px;
+  padding: 16px 16px 18px;
 }
 
 .branch-title {
-    font-weight: 600;
-    color: var(--text);
+  font-weight: 600;
+  color: var(--text);
 }
 
 .branch-desc {
-    margin-top: 6px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.55;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
 }
 
 .branch-list {
-    margin-top: 10px;
-    padding-left: 0;
-    list-style: none;
-    display: grid;
-    gap: 6px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.55;
+  margin-top: 10px;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
 }
 
+/* Premium CTA (no blue link look) */
 .branch-cta {
-    display: inline-flex;
-    margin-top: 12px;
-    font-weight: 800;
-    color: rgba(37, 99, 235, .95);
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+
+  margin-top: 12px;
+  font-weight: 700;
+
+  color: rgba(15,23,42,.92);
+  text-decoration: none;
+
+  padding: .58rem .85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15,23,42,.12);
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 10px 24px rgba(15,23,42,.08);
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease,
+    background .18s ease,
+    opacity .18s ease;
 }
 
 .branch-cta:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+  transform: translateY(-1px);
+  border-color: rgba(15,23,42,.18);
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 16px 34px rgba(15,23,42,.12);
+  text-decoration: none;
+}
+
+.branch-cta:active {
+  transform: translateY(0);
+}
+
+.branch-cta:focus-visible {
+  outline: 2px solid rgba(15,23,42,.28);
+  outline-offset: 3px;
 }
 
 /* =========================================================
