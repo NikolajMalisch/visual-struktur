@@ -1573,3 +1573,252 @@ html.js .reveal.is-visible {
   border-color: rgba(37,99,235,.28) !important;
   background: rgba(37,99,235,.08) !important;
 }
+/* =========================================================
+   IMAGE HOVER ZOOM — Premium Effect
+   Добавить в конец файла или в секцию ANIMATIONS
+========================================================= */
+
+/* Wrapper для корректного overflow */
+.proj-card .branch-media,
+.branch-card .branch-media,
+.proj-thumb,
+.media-premium,
+.hero-card__media {
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+/* Плавный zoom для всех project/branch изображений */
+.proj-card img,
+.branch-card .branch-media img,
+.proj-thumb img,
+.media-premium img,
+.hero-card__img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Hover zoom эффект */
+.proj-card:hover img,
+.branch-card:hover .branch-media img,
+.proj-thumb:hover img,
+.media-premium:hover img,
+.hero-card:hover .hero-card__img {
+  transform: scale(1.08);
+}
+
+/* Case drawer main image zoom */
+#caseImg {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 1rem;
+  overflow: hidden;
+  will-change: transform;
+}
+
+#caseImg:hover {
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   CARD HOVER LIFT — Premium 3D Effect
+========================================================= */
+
+/* Enhanced hover-lift для project cards */
+.proj-card,
+.branch-card {
+  transition: 
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.proj-card:hover,
+.branch-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 24px 60px rgba(15, 23, 42, 0.16),
+    0 1px 0 rgba(255, 255, 255, 0.75) inset;
+}
+
+/* Smooth active state */
+.proj-card:active,
+.branch-card:active {
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   BRANDING GRID IMAGES (в drawer) — Hover Zoom
+========================================================= */
+
+#caseBrandingGrid a {
+  display: block;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+#caseBrandingGrid img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+#caseBrandingGrid a:hover img {
+  transform: scale(1.1);
+}
+
+/* =========================================================
+   FILTER ANIMATION — Smooth Fade In/Out
+========================================================= */
+
+.proj-card {
+  transition: 
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* State для JS анимации (добавится через JS) */
+.proj-card[data-filtering="true"] {
+  pointer-events: none;
+}
+
+/* =========================================================
+   PERFORMANCE OPTIMIZATION
+========================================================= */
+
+/* GPU acceleration для smooth animations */
+.proj-card img,
+.branch-card img,
+#caseImg,
+.hover-lift {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Reduce motion для accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .proj-card img,
+  .branch-card img,
+  #caseImg,
+  .hover-lift {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* =========================================================
+   DRAWER BACKDROP FADE
+========================================================= */
+
+#caseBackdrop {
+  transition: opacity 0.3s ease;
+}
+
+/* Panel slide transition */
+#casePanel {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================================
+   STAGGER ANIMATION UTILITIES (для JS)
+========================================================= */
+
+/* Bullets/Stack items initial state */
+.stagger-item {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.stagger-item-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =========================================================
+   CTA BUTTON ENHANCEMENT
+========================================================= */
+
+.branch-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle shine effect on hover */
+.branch-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.branch-cta:hover::before {
+  left: 100%;
+}
+
+/* =========================================================
+   HERO CARD IMAGE ZOOM
+========================================================= */
+
+.hero-card__media {
+  overflow: hidden;
+}
+
+.hero-card__img {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-card:hover .hero-card__img {
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   MOBILE OPTIMIZATIONS
+========================================================= */
+
+@media (max-width: 640px) {
+  /* Reduce zoom intensity on mobile */
+  .proj-card:hover img,
+  .branch-card:hover .branch-media img {
+    transform: scale(1.05);
+  }
+  
+  /* Reduce lift distance */
+  .proj-card:hover,
+  .branch-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Faster transitions on mobile */
+  .proj-card img,
+  .branch-card img {
+    transition-duration: 0.4s;
+  }
+}
+
+/* =========================================================
+   LOADING STATE (optional)
+========================================================= */
+
+.proj-card.is-loading,
+.branch-card.is-loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.proj-card.is-loading img,
+.branch-card.is-loading img {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
